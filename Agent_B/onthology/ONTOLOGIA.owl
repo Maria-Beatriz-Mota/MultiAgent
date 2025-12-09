@@ -1,0 +1,2133 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/mariabeatriz/ontologies/2025/8/ontologia-renal-felina"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.semanticweb.org/mariabeatriz/ontologies/2025/8/ontologia-renal-felina">
+    <Prefix name="" IRI="http://www.semanticweb.org/mariabeatriz/ontologies/2025/8/ontologia-renal-felina/"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="#Abissinio"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AntihipertensivosACE"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Birmanes"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BloqueadoresRA"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BordelineProteinurico"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CausaIRC"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Comorbidade"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Desidratacao"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Diabetes"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DietaRenalTerapeutica"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DoencaCardiovascular"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DoencaPolicistica"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DoencaRenal"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DoencaRenalPolicistica"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#EstagioIRIS"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#EstagioIRIS1"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#EstagioIRIS2"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#EstagioIRIS3"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#EstagioIRIS4"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ExameAlbumina"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ExameBicarbonato"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ExameCalcio"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ExameCreatinina"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ExameDensidadeUrina"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ExameDiagnostico"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ExameFosforo"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ExameImagem"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ExameLaboratorial"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ExamePlaquetas"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ExamePotassio"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ExamePressao"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ExameProteinuria"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ExameSDMA"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ExameSangue"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ExameSodio"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ExameUreia"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ExameUrina"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FatorDeRisco"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FluidoterapiaSubcutanea"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Gato"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GatoComFatorRisco"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GatoComIRC"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GatoComSintomasIRC"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GatoEstagioAvancado"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GatoIdoso"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GatoParaInvestigacao"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Glomerulonefrite"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Hipertensao"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Hipertireoidismo"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Inapetencia"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#InsuficienciaRenalCronica"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Letargia"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MaineCoon"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MauHalito"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MonitoramentoRegular"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#NaoProteinurico"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#NefriteTubulointersticial"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#NeoplasiasRenais"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#NivelHipertensao"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#NivelProteinuria"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Obesidade"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Outras"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PerdaDePeso"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Persa"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Polidipsia"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Poliuria"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Proteinurico"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#QuelantesFosforo"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RacaComMaiorPredisposicao"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RacaFelina"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RadiografiaAbdominal"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RiscoBaixo"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RiscoGrave"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RiscoMinimo"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RiscoModerado"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SemRacaDefinida"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Sintoma"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SintomaCardiovascular"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SintomaGeral"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SintomaUrinario"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Subestagio"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ToxicidadeRenal"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Tratamento"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TratamentoDietetico"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TratamentoMedicamentos"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TratamentoSuporte"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TumorRenal"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#UltrassomAbdominal"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Vomito"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#agrava"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#agravadoPor"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#evoluiPara"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasCausa"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasComorbidade"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasDoenca"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasEstagio"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasExame"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasFatorRisco"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasRaca"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasSintoma"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasSubestagio"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasTratamento"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#indicaTratamento"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isCausa"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isComorbidadeDe"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isDoencaDe"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isEstagioDe"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isEvolucaoDe"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isExameDe"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isFatorRisco"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isManifestadoPor"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isRacaDe"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isSintomaDe"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isTratamentoDe"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isTratamentoIndicado"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#manifestaSintoma"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#monitoraEfeitoDe"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#requerMonitoramento"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#Imagem"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#castrado"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#dataDiagnostico"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#densidadeUrina"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#diagnostico"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#idade"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#nivelAlbumina"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#nivelBicarbonato"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#nivelCalcio"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#nivelCreatinina"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#nivelFosforo"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#nivelPlaquetas"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#nivelPotassio"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#nivelSDMA"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#nivelSodio"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#nivelUreia"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#peso"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#pressaoArterial"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#razaoProteina"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#sexo"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#sintoma"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#tratamento"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Diabetes_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Felix"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#IRC"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#IdadeAvancada"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Luna"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Max"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Mingau"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Nina"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Poliuria_1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#RacaComPredisposicao"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#RacaMaineCoon"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#RacaPersa"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SRD"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Tom"/>
+    </Declaration>
+    <EquivalentClasses>
+        <Class IRI="#BordelineProteinurico"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#razaoProteina"/>
+            <DatatypeRestriction>
+                <Datatype abbreviatedIRI="xsd:double"/>
+                <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#minInclusive">
+                    <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">0.2</Literal>
+                </FacetRestriction>
+                <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#maxInclusive">
+                    <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">0.4</Literal>
+                </FacetRestriction>
+            </DatatypeRestriction>
+        </DataSomeValuesFrom>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#EstagioIRIS1"/>
+        <ObjectUnionOf>
+            <ObjectUnionOf>
+                <DataSomeValuesFrom>
+                    <DataProperty IRI="#nivelCreatinina"/>
+                    <DatatypeRestriction>
+                        <Datatype abbreviatedIRI="xsd:double"/>
+                        <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#maxExclusive">
+                            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">1.6</Literal>
+                        </FacetRestriction>
+                    </DatatypeRestriction>
+                </DataSomeValuesFrom>
+                <DataSomeValuesFrom>
+                    <DataProperty IRI="#nivelSDMA"/>
+                    <DatatypeRestriction>
+                        <Datatype abbreviatedIRI="xsd:double"/>
+                        <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#minInclusive">
+                            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">15.0</Literal>
+                        </FacetRestriction>
+                        <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#maxInclusive">
+                            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">17.0</Literal>
+                        </FacetRestriction>
+                    </DatatypeRestriction>
+                </DataSomeValuesFrom>
+            </ObjectUnionOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#densidadeUrina"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#maxExclusive">
+                        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">1.035</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+        </ObjectUnionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#EstagioIRIS2"/>
+        <ObjectIntersectionOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#nivelCreatinina"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#minInclusive">
+                        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">1.6</Literal>
+                    </FacetRestriction>
+                    <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#maxInclusive">
+                        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">2.8</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#nivelSDMA"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#minInclusive">
+                        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">18.0</Literal>
+                    </FacetRestriction>
+                    <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#maxInclusive">
+                        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">25.0</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#EstagioIRIS3"/>
+        <ObjectIntersectionOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#nivelCreatinina"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#minInclusive">
+                        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">2.9</Literal>
+                    </FacetRestriction>
+                    <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#maxInclusive">
+                        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">5.0</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#nivelSDMA"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#minInclusive">
+                        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">26.0</Literal>
+                    </FacetRestriction>
+                    <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#maxInclusive">
+                        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">38.0</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#EstagioIRIS4"/>
+        <ObjectIntersectionOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#nivelCreatinina"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#minExclusive">
+                        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">5.0</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#nivelSDMA"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:double"/>
+                    <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#minExclusive">
+                        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">38.0</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#GatoComFatorRisco"/>
+        <ObjectUnionOf>
+            <ObjectIntersectionOf>
+                <Class IRI="#Gato"/>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="#hasComorbidade"/>
+                    <Class IRI="#Comorbidade"/>
+                </ObjectSomeValuesFrom>
+            </ObjectIntersectionOf>
+            <ObjectIntersectionOf>
+                <Class IRI="#Gato"/>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="#hasRaca"/>
+                    <Class IRI="#RacaComMaiorPredisposicao"/>
+                </ObjectSomeValuesFrom>
+            </ObjectIntersectionOf>
+            <ObjectIntersectionOf>
+                <Class IRI="#Gato"/>
+                <DataSomeValuesFrom>
+                    <DataProperty IRI="#idade"/>
+                    <DatatypeRestriction>
+                        <Datatype abbreviatedIRI="xsd:integer"/>
+                        <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#minInclusive">
+                            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">7</Literal>
+                        </FacetRestriction>
+                    </DatatypeRestriction>
+                </DataSomeValuesFrom>
+            </ObjectIntersectionOf>
+        </ObjectUnionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#GatoComIRC"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Gato"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasDoenca"/>
+                <Class IRI="#InsuficienciaRenalCronica"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#GatoComSintomasIRC"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Gato"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasSintoma"/>
+                <ObjectUnionOf>
+                    <Class IRI="#Inapetencia"/>
+                    <Class IRI="#Letargia"/>
+                    <Class IRI="#PerdaDePeso"/>
+                    <Class IRI="#Polidipsia"/>
+                    <Class IRI="#Poliuria"/>
+                    <Class IRI="#Vomito"/>
+                </ObjectUnionOf>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#GatoEstagioAvancado"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#GatoComIRC"/>
+            <ObjectUnionOf>
+                <Class IRI="#EstagioIRIS3"/>
+                <Class IRI="#EstagioIRIS4"/>
+            </ObjectUnionOf>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#GatoIdoso"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Gato"/>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#idade"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:integer"/>
+                    <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#minInclusive">
+                        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">7</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#GatoParaInvestigacao"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#GatoComFatorRisco"/>
+            <Class IRI="#GatoComSintomasIRC"/>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#NaoProteinurico"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#razaoProteina"/>
+            <DatatypeRestriction>
+                <Datatype abbreviatedIRI="xsd:double"/>
+                <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#maxExclusive">
+                    <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">0.2</Literal>
+                </FacetRestriction>
+            </DatatypeRestriction>
+        </DataSomeValuesFrom>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#NivelHipertensao"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#pressaoArterial"/>
+            <Datatype abbreviatedIRI="xsd:double"/>
+        </DataSomeValuesFrom>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#NivelProteinuria"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#razaoProteina"/>
+            <Datatype abbreviatedIRI="xsd:double"/>
+        </DataSomeValuesFrom>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Proteinurico"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#razaoProteina"/>
+            <DatatypeRestriction>
+                <Datatype abbreviatedIRI="xsd:double"/>
+                <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#minExclusive">
+                    <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">0.4</Literal>
+                </FacetRestriction>
+            </DatatypeRestriction>
+        </DataSomeValuesFrom>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#RacaFelina"/>
+        <ObjectUnionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasRaca"/>
+                <Class IRI="#RacaComMaiorPredisposicao"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasRaca"/>
+                <Class IRI="#SemRacaDefinida"/>
+            </ObjectSomeValuesFrom>
+        </ObjectUnionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#RiscoBaixo"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#pressaoArterial"/>
+            <DatatypeRestriction>
+                <Datatype abbreviatedIRI="xsd:double"/>
+                <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#minInclusive">
+                    <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">150.0</Literal>
+                </FacetRestriction>
+                <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#maxInclusive">
+                    <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">159.0</Literal>
+                </FacetRestriction>
+            </DatatypeRestriction>
+        </DataSomeValuesFrom>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#RiscoGrave"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#pressaoArterial"/>
+            <DatatypeRestriction>
+                <Datatype abbreviatedIRI="xsd:double"/>
+                <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#minInclusive">
+                    <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">180.0</Literal>
+                </FacetRestriction>
+            </DatatypeRestriction>
+        </DataSomeValuesFrom>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#RiscoMinimo"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#pressaoArterial"/>
+            <DatatypeRestriction>
+                <Datatype abbreviatedIRI="xsd:double"/>
+                <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#maxExclusive">
+                    <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">150.0</Literal>
+                </FacetRestriction>
+            </DatatypeRestriction>
+        </DataSomeValuesFrom>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#RiscoModerado"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#pressaoArterial"/>
+            <DatatypeRestriction>
+                <Datatype abbreviatedIRI="xsd:double"/>
+                <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#minInclusive">
+                    <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">160.0</Literal>
+                </FacetRestriction>
+                <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#maxInclusive">
+                    <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">179.0</Literal>
+                </FacetRestriction>
+            </DatatypeRestriction>
+        </DataSomeValuesFrom>
+    </EquivalentClasses>
+    <SubClassOf>
+        <Class IRI="#Abissinio"/>
+        <Class IRI="#RacaComMaiorPredisposicao"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AntihipertensivosACE"/>
+        <Class IRI="#TratamentoMedicamentos"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Birmanes"/>
+        <Class IRI="#RacaComMaiorPredisposicao"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BloqueadoresRA"/>
+        <Class IRI="#TratamentoMedicamentos"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BordelineProteinurico"/>
+        <Class IRI="#NivelProteinuria"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Desidratacao"/>
+        <Class IRI="#SintomaGeral"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Diabetes"/>
+        <Class IRI="#Comorbidade"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DietaRenalTerapeutica"/>
+        <Class IRI="#TratamentoDietetico"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DoencaCardiovascular"/>
+        <Class IRI="#Comorbidade"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DoencaPolicistica"/>
+        <Class IRI="#Comorbidade"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DoencaRenalPolicistica"/>
+        <Class IRI="#CausaIRC"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#EstagioIRIS1"/>
+        <Class IRI="#EstagioIRIS"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#EstagioIRIS2"/>
+        <Class IRI="#EstagioIRIS"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#EstagioIRIS3"/>
+        <Class IRI="#EstagioIRIS"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#EstagioIRIS3"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasTratamento"/>
+            <Class IRI="#FluidoterapiaSubcutanea"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#EstagioIRIS4"/>
+        <Class IRI="#EstagioIRIS"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#EstagioIRIS4"/>
+        <ObjectIntersectionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasTratamento"/>
+                <Class IRI="#DietaRenalTerapeutica"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#hasTratamento"/>
+                <Class IRI="#FluidoterapiaSubcutanea"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ExameAlbumina"/>
+        <Class IRI="#ExameSangue"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ExameBicarbonato"/>
+        <Class IRI="#ExameSangue"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ExameCalcio"/>
+        <Class IRI="#ExameSangue"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ExameCreatinina"/>
+        <Class IRI="#ExameSangue"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ExameDensidadeUrina"/>
+        <Class IRI="#ExameUrina"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ExameFosforo"/>
+        <Class IRI="#ExameSangue"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ExameImagem"/>
+        <Class IRI="#ExameDiagnostico"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ExameLaboratorial"/>
+        <Class IRI="#ExameDiagnostico"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ExamePlaquetas"/>
+        <Class IRI="#ExameSangue"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ExamePotassio"/>
+        <Class IRI="#ExameSangue"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ExamePressao"/>
+        <Class IRI="#ExameLaboratorial"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ExameProteinuria"/>
+        <Class IRI="#ExameUrina"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ExameSDMA"/>
+        <Class IRI="#ExameSangue"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ExameSangue"/>
+        <Class IRI="#ExameLaboratorial"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ExameSodio"/>
+        <Class IRI="#ExameSangue"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ExameUreia"/>
+        <Class IRI="#ExameSangue"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ExameUrina"/>
+        <Class IRI="#ExameLaboratorial"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FluidoterapiaSubcutanea"/>
+        <Class IRI="#TratamentoSuporte"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Gato"/>
+        <ObjectMinCardinality cardinality="1">
+            <ObjectProperty IRI="#hasRaca"/>
+            <Class IRI="#RacaFelina"/>
+        </ObjectMinCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Gato"/>
+        <ObjectMaxCardinality cardinality="1">
+            <ObjectProperty IRI="#hasEstagio"/>
+            <Class IRI="#EstagioIRIS"/>
+        </ObjectMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Gato"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#idade"/>
+            <DatatypeRestriction>
+                <Datatype abbreviatedIRI="xsd:integer"/>
+                <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#minExclusive">
+                    <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+                </FacetRestriction>
+            </DatatypeRestriction>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GatoComFatorRisco"/>
+        <Class IRI="#Gato"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GatoComIRC"/>
+        <Class IRI="#Gato"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Glomerulonefrite"/>
+        <Class IRI="#CausaIRC"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hipertensao"/>
+        <Class IRI="#SintomaCardiovascular"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hipertireoidismo"/>
+        <Class IRI="#Comorbidade"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Inapetencia"/>
+        <Class IRI="#SintomaGeral"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#InsuficienciaRenalCronica"/>
+        <Class IRI="#DoencaRenal"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#InsuficienciaRenalCronica"/>
+        <ObjectUnionOf>
+            <Class IRI="#EstagioIRIS1"/>
+            <Class IRI="#EstagioIRIS2"/>
+            <Class IRI="#EstagioIRIS3"/>
+            <Class IRI="#EstagioIRIS4"/>
+        </ObjectUnionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Letargia"/>
+        <Class IRI="#SintomaGeral"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MaineCoon"/>
+        <Class IRI="#RacaComMaiorPredisposicao"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MauHalito"/>
+        <Class IRI="#SintomaGeral"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MonitoramentoRegular"/>
+        <Class IRI="#TratamentoSuporte"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#NaoProteinurico"/>
+        <Class IRI="#NivelProteinuria"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#NefriteTubulointersticial"/>
+        <Class IRI="#CausaIRC"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#NeoplasiasRenais"/>
+        <Class IRI="#CausaIRC"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#NivelHipertensao"/>
+        <Class IRI="#Subestagio"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#NivelHipertensao"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isEstagioDe"/>
+            <Class IRI="#EstagioIRIS"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#NivelProteinuria"/>
+        <Class IRI="#Subestagio"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#NivelProteinuria"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#isEstagioDe"/>
+            <Class IRI="#EstagioIRIS"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Obesidade"/>
+        <Class IRI="#Comorbidade"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Outras"/>
+        <Class IRI="#DoencaRenal"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PerdaDePeso"/>
+        <Class IRI="#SintomaGeral"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Persa"/>
+        <Class IRI="#RacaComMaiorPredisposicao"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Polidipsia"/>
+        <Class IRI="#SintomaUrinario"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Poliuria"/>
+        <Class IRI="#SintomaUrinario"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Proteinurico"/>
+        <Class IRI="#NivelProteinuria"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#QuelantesFosforo"/>
+        <Class IRI="#TratamentoMedicamentos"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RacaComMaiorPredisposicao"/>
+        <Class IRI="#RacaFelina"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RadiografiaAbdominal"/>
+        <Class IRI="#ExameImagem"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RiscoBaixo"/>
+        <Class IRI="#NivelHipertensao"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RiscoGrave"/>
+        <Class IRI="#NivelHipertensao"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RiscoMinimo"/>
+        <Class IRI="#NivelHipertensao"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RiscoModerado"/>
+        <Class IRI="#NivelHipertensao"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SemRacaDefinida"/>
+        <Class IRI="#RacaFelina"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SintomaCardiovascular"/>
+        <Class IRI="#Sintoma"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SintomaGeral"/>
+        <Class IRI="#Sintoma"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SintomaUrinario"/>
+        <Class IRI="#Sintoma"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Subestagio"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasSubestagio"/>
+            <ObjectUnionOf>
+                <Class IRI="#NivelHipertensao"/>
+                <Class IRI="#NivelProteinuria"/>
+            </ObjectUnionOf>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ToxicidadeRenal"/>
+        <Class IRI="#CausaIRC"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TratamentoDietetico"/>
+        <Class IRI="#Tratamento"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TratamentoMedicamentos"/>
+        <Class IRI="#Tratamento"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TratamentoSuporte"/>
+        <Class IRI="#Tratamento"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TumorRenal"/>
+        <Class IRI="#Comorbidade"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#UltrassomAbdominal"/>
+        <Class IRI="#ExameImagem"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Vomito"/>
+        <Class IRI="#SintomaGeral"/>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="#Abissinio"/>
+        <Class IRI="#Birmanes"/>
+        <Class IRI="#MaineCoon"/>
+        <Class IRI="#Persa"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#AntihipertensivosACE"/>
+        <Class IRI="#BloqueadoresRA"/>
+        <Class IRI="#QuelantesFosforo"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#BordelineProteinurico"/>
+        <Class IRI="#NaoProteinurico"/>
+        <Class IRI="#Proteinurico"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Desidratacao"/>
+        <Class IRI="#Inapetencia"/>
+        <Class IRI="#Letargia"/>
+        <Class IRI="#MauHalito"/>
+        <Class IRI="#PerdaDePeso"/>
+        <Class IRI="#Vomito"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Diabetes"/>
+        <Class IRI="#DoencaCardiovascular"/>
+        <Class IRI="#DoencaPolicistica"/>
+        <Class IRI="#Hipertireoidismo"/>
+        <Class IRI="#Obesidade"/>
+        <Class IRI="#TumorRenal"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#DoencaRenalPolicistica"/>
+        <Class IRI="#Glomerulonefrite"/>
+        <Class IRI="#NefriteTubulointersticial"/>
+        <Class IRI="#NeoplasiasRenais"/>
+        <Class IRI="#ToxicidadeRenal"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#EstagioIRIS1"/>
+        <Class IRI="#EstagioIRIS2"/>
+        <Class IRI="#EstagioIRIS3"/>
+        <Class IRI="#EstagioIRIS4"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#ExameImagem"/>
+        <Class IRI="#ExameLaboratorial"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#FluidoterapiaSubcutanea"/>
+        <Class IRI="#MonitoramentoRegular"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Polidipsia"/>
+        <Class IRI="#Poliuria"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#RacaComMaiorPredisposicao"/>
+        <Class IRI="#SemRacaDefinida"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#RiscoBaixo"/>
+        <Class IRI="#RiscoGrave"/>
+        <Class IRI="#RiscoMinimo"/>
+        <Class IRI="#RiscoModerado"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#SintomaCardiovascular"/>
+        <Class IRI="#SintomaGeral"/>
+        <Class IRI="#SintomaUrinario"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#TratamentoDietetico"/>
+        <Class IRI="#TratamentoMedicamentos"/>
+        <Class IRI="#TratamentoSuporte"/>
+    </DisjointClasses>
+    <ClassAssertion>
+        <Class IRI="#Diabetes"/>
+        <NamedIndividual IRI="#Diabetes_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Gato"/>
+        <NamedIndividual IRI="#Felix"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#InsuficienciaRenalCronica"/>
+        <NamedIndividual IRI="#IRC"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#FatorDeRisco"/>
+        <NamedIndividual IRI="#IdadeAvancada"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Gato"/>
+        <NamedIndividual IRI="#Luna"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Gato"/>
+        <NamedIndividual IRI="#Max"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Gato"/>
+        <NamedIndividual IRI="#Mingau"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Gato"/>
+        <NamedIndividual IRI="#Nina"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Poliuria"/>
+        <NamedIndividual IRI="#Poliuria_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#RacaComMaiorPredisposicao"/>
+        <NamedIndividual IRI="#RacaComPredisposicao"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#RacaComMaiorPredisposicao"/>
+        <NamedIndividual IRI="#RacaMaineCoon"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#RacaFelina"/>
+        <NamedIndividual IRI="#RacaMaineCoon"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#RacaComMaiorPredisposicao"/>
+        <NamedIndividual IRI="#RacaPersa"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#RacaFelina"/>
+        <NamedIndividual IRI="#RacaPersa"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SemRacaDefinida"/>
+        <NamedIndividual IRI="#SRD"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Gato"/>
+        <NamedIndividual IRI="#Tom"/>
+    </ClassAssertion>
+    <DifferentIndividuals>
+        <NamedIndividual IRI="#RacaComPredisposicao"/>
+        <NamedIndividual IRI="#SRD"/>
+    </DifferentIndividuals>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasComorbidade"/>
+        <NamedIndividual IRI="#Felix"/>
+        <NamedIndividual IRI="#Diabetes_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasDoenca"/>
+        <NamedIndividual IRI="#Felix"/>
+        <NamedIndividual IRI="#IRC"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasRaca"/>
+        <NamedIndividual IRI="#Felix"/>
+        <NamedIndividual IRI="#RacaMaineCoon"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasComorbidade"/>
+        <NamedIndividual IRI="#Luna"/>
+        <NamedIndividual IRI="#Diabetes_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasDoenca"/>
+        <NamedIndividual IRI="#Luna"/>
+        <NamedIndividual IRI="#IRC"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasRaca"/>
+        <NamedIndividual IRI="#Luna"/>
+        <NamedIndividual IRI="#SRD"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasSintoma"/>
+        <NamedIndividual IRI="#Luna"/>
+        <NamedIndividual IRI="#Poliuria_1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasDoenca"/>
+        <NamedIndividual IRI="#Max"/>
+        <NamedIndividual IRI="#IRC"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasRaca"/>
+        <NamedIndividual IRI="#Max"/>
+        <NamedIndividual IRI="#SRD"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasDoenca"/>
+        <NamedIndividual IRI="#Mingau"/>
+        <NamedIndividual IRI="#IRC"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasRaca"/>
+        <NamedIndividual IRI="#Mingau"/>
+        <NamedIndividual IRI="#SRD"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasDoenca"/>
+        <NamedIndividual IRI="#Nina"/>
+        <NamedIndividual IRI="#IRC"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasRaca"/>
+        <NamedIndividual IRI="#Nina"/>
+        <NamedIndividual IRI="#SRD"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasDoenca"/>
+        <NamedIndividual IRI="#Tom"/>
+        <NamedIndividual IRI="#IRC"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasRaca"/>
+        <NamedIndividual IRI="#Tom"/>
+        <NamedIndividual IRI="#RacaPersa"/>
+    </ObjectPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#idade"/>
+        <NamedIndividual IRI="#Felix"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">10</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nivelCreatinina"/>
+        <NamedIndividual IRI="#Felix"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">6.5</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nivelSDMA"/>
+        <NamedIndividual IRI="#Felix"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">50.0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#peso"/>
+        <NamedIndividual IRI="#Felix"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">4.0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#pressaoArterial"/>
+        <NamedIndividual IRI="#Felix"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">185.0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#razaoProteina"/>
+        <NamedIndividual IRI="#Felix"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">0.5</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#idade"/>
+        <NamedIndividual IRI="#Luna"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">5</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nivelCreatinina"/>
+        <NamedIndividual IRI="#Luna"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">2.5</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nivelSDMA"/>
+        <NamedIndividual IRI="#Luna"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">20.0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nivelUreia"/>
+        <NamedIndividual IRI="#Luna"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">4.0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#peso"/>
+        <NamedIndividual IRI="#Luna"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">3.2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#pressaoArterial"/>
+        <NamedIndividual IRI="#Luna"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">160.0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#razaoProteina"/>
+        <NamedIndividual IRI="#Luna"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">0.15</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#idade"/>
+        <NamedIndividual IRI="#Max"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">12</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nivelCreatinina"/>
+        <NamedIndividual IRI="#Max"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">7.2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nivelSDMA"/>
+        <NamedIndividual IRI="#Max"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">52.0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#peso"/>
+        <NamedIndividual IRI="#Max"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">3.1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#pressaoArterial"/>
+        <NamedIndividual IRI="#Max"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">185.0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#razaoProteina"/>
+        <NamedIndividual IRI="#Max"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">0.65</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#idade"/>
+        <NamedIndividual IRI="#Mingau"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">8</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nivelCreatinina"/>
+        <NamedIndividual IRI="#Mingau"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">3.5</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nivelSDMA"/>
+        <NamedIndividual IRI="#Mingau"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">26.0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#peso"/>
+        <NamedIndividual IRI="#Mingau"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">3.5</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#pressaoArterial"/>
+        <NamedIndividual IRI="#Mingau"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">155.0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#razaoProteina"/>
+        <NamedIndividual IRI="#Mingau"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">0.3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#idade"/>
+        <NamedIndividual IRI="#Nina"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">6</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nivelCreatinina"/>
+        <NamedIndividual IRI="#Nina"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">2.2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nivelSDMA"/>
+        <NamedIndividual IRI="#Nina"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">22.0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#peso"/>
+        <NamedIndividual IRI="#Nina"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">4.2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#pressaoArterial"/>
+        <NamedIndividual IRI="#Nina"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">155.0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#razaoProteina"/>
+        <NamedIndividual IRI="#Nina"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">0.3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#densidadeUrina"/>
+        <NamedIndividual IRI="#Tom"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">1.032</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#idade"/>
+        <NamedIndividual IRI="#Tom"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">8</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nivelCreatinina"/>
+        <NamedIndividual IRI="#Tom"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">1.5</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nivelSDMA"/>
+        <NamedIndividual IRI="#Tom"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">16.0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#peso"/>
+        <NamedIndividual IRI="#Tom"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">3.5</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#pressaoArterial"/>
+        <NamedIndividual IRI="#Tom"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">145.5</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#razaoProteina"/>
+        <NamedIndividual IRI="#Tom"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">0.18</Literal>
+    </DataPropertyAssertion>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#agrava"/>
+        <ObjectProperty IRI="#agravadoPor"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#evoluiPara"/>
+        <ObjectProperty IRI="#isEvolucaoDe"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasCausa"/>
+        <ObjectProperty IRI="#isCausa"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasComorbidade"/>
+        <ObjectProperty IRI="#isComorbidadeDe"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasDoenca"/>
+        <ObjectProperty IRI="#isDoencaDe"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasEstagio"/>
+        <ObjectProperty IRI="#isEstagioDe"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasExame"/>
+        <ObjectProperty IRI="#isExameDe"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasFatorRisco"/>
+        <ObjectProperty IRI="#isFatorRisco"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasRaca"/>
+        <ObjectProperty IRI="#isRacaDe"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasSintoma"/>
+        <ObjectProperty IRI="#isSintomaDe"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasTratamento"/>
+        <ObjectProperty IRI="#isTratamentoDe"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#indicaTratamento"/>
+        <ObjectProperty IRI="#isTratamentoIndicado"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#isManifestadoPor"/>
+        <ObjectProperty IRI="#manifestaSintoma"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#monitoraEfeitoDe"/>
+        <ObjectProperty IRI="#requerMonitoramento"/>
+    </InverseObjectProperties>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#hasEstagio"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#hasRaca"/>
+    </FunctionalObjectProperty>
+    <AsymmetricObjectProperty>
+        <ObjectProperty IRI="#agrava"/>
+    </AsymmetricObjectProperty>
+    <AsymmetricObjectProperty>
+        <ObjectProperty IRI="#hasComorbidade"/>
+    </AsymmetricObjectProperty>
+    <TransitiveObjectProperty>
+        <ObjectProperty IRI="#evoluiPara"/>
+    </TransitiveObjectProperty>
+    <TransitiveObjectProperty>
+        <ObjectProperty IRI="#isEvolucaoDe"/>
+    </TransitiveObjectProperty>
+    <IrreflexiveObjectProperty>
+        <ObjectProperty IRI="#agrava"/>
+    </IrreflexiveObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#agrava"/>
+        <ObjectUnionOf>
+            <Class IRI="#Comorbidade"/>
+            <Class IRI="#FatorDeRisco"/>
+        </ObjectUnionOf>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#agravadoPor"/>
+        <Class IRI="#DoencaRenal"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#evoluiPara"/>
+        <Class IRI="#EstagioIRIS"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasCausa"/>
+        <Class IRI="#DoencaRenal"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasComorbidade"/>
+        <Class IRI="#Gato"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasDoenca"/>
+        <Class IRI="#Gato"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasEstagio"/>
+        <Class IRI="#Gato"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasExame"/>
+        <Class IRI="#Gato"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasFatorRisco"/>
+        <Class IRI="#Gato"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasRaca"/>
+        <Class IRI="#Gato"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasSintoma"/>
+        <Class IRI="#Gato"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasSubestagio"/>
+        <Class IRI="#EstagioIRIS"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasTratamento"/>
+        <Class IRI="#Gato"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#indicaTratamento"/>
+        <Class IRI="#EstagioIRIS"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isRacaDe"/>
+        <Class IRI="#RacaFelina"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#agrava"/>
+        <Class IRI="#DoencaRenal"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#agravadoPor"/>
+        <ObjectUnionOf>
+            <Class IRI="#Comorbidade"/>
+            <Class IRI="#FatorDeRisco"/>
+        </ObjectUnionOf>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#evoluiPara"/>
+        <Class IRI="#EstagioIRIS"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasCausa"/>
+        <Class IRI="#CausaIRC"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasComorbidade"/>
+        <Class IRI="#Comorbidade"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasDoenca"/>
+        <Class IRI="#DoencaRenal"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasEstagio"/>
+        <Class IRI="#EstagioIRIS"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasExame"/>
+        <Class IRI="#ExameDiagnostico"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasFatorRisco"/>
+        <Class IRI="#FatorDeRisco"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasRaca"/>
+        <Class IRI="#RacaFelina"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasSintoma"/>
+        <Class IRI="#Sintoma"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasSubestagio"/>
+        <Class IRI="#Subestagio"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasTratamento"/>
+        <Class IRI="#Tratamento"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#indicaTratamento"/>
+        <Class IRI="#Tratamento"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isRacaDe"/>
+        <Class IRI="#Gato"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#castrado"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#dataDiagnostico"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#idade"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#peso"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#sexo"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="#Imagem"/>
+        <Class IRI="#Gato"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#castrado"/>
+        <Class IRI="#Gato"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#densidadeUrina"/>
+        <Class IRI="#Gato"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#idade"/>
+        <Class IRI="#Gato"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#nivelAlbumina"/>
+        <Class IRI="#Gato"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#nivelBicarbonato"/>
+        <Class IRI="#Gato"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#nivelCalcio"/>
+        <Class IRI="#Gato"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#nivelCreatinina"/>
+        <Class IRI="#Gato"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#nivelFosforo"/>
+        <Class IRI="#Gato"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#nivelPlaquetas"/>
+        <Class IRI="#Gato"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#nivelPotassio"/>
+        <Class IRI="#Gato"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#nivelSDMA"/>
+        <Class IRI="#Gato"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#nivelSodio"/>
+        <Class IRI="#Gato"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#nivelUreia"/>
+        <Class IRI="#Gato"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#peso"/>
+        <Class IRI="#Gato"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#pressaoArterial"/>
+        <Class IRI="#Gato"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#razaoProteina"/>
+        <Class IRI="#Gato"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#sexo"/>
+        <Class IRI="#Gato"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#sintoma"/>
+        <Class IRI="#Gato"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#tratamento"/>
+        <Class IRI="#Gato"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#Imagem"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#castrado"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#dataDiagnostico"/>
+        <Datatype abbreviatedIRI="xsd:dateTime"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#densidadeUrina"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#idade"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#nivelAlbumina"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#nivelBicarbonato"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#nivelCalcio"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#nivelCreatinina"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#nivelFosforo"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#nivelPlaquetas"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#nivelPotassio"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#nivelSDMA"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#nivelSodio"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#nivelUreia"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#peso"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#pressaoArterial"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#razaoProteina"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#sexo"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#sintoma"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#tratamento"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Birmanes</IRI>
+        <Literal>Raça Birmanesa tem SDMA de referência específico (3.4-19.2 μg/dL) conforme diretrizes IRIS 2023.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#CausaIRC</IRI>
+        <Literal>Doenças que levam podem causar IRC</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Comorbidade</IRI>
+        <Literal>Comorbidade Gerais</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#DoencaRenal</IRI>
+        <Literal>Doenças Nefrologicas</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#EstagioIRIS</IRI>
+        <Literal>Estagios da IRC de acordo coma International Renal Interest Society (IRIS)</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#EstagioIRIS1</IRI>
+        <Literal>Estágio 1 IRIS: DRC inicial com creatinina &lt; 1.6 mg/dL ou SDMA 15-17 μg/dL. Pode haver densidade urinária inadequada ou proteinúria.
+Gato com suspeita de IRC</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#EstagioIRIS2</IRI>
+        <Literal>Estágio 2 IRIS: DRC leve com creatinina 1.6-2.8 mg/dL e SDMA 18-25 μg/dL. Sintomas podem estar presentes mas são leves.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#EstagioIRIS3</IRI>
+        <Literal>Estágio 3 IRIS: DRC moderada com creatinina 2.9-5.0 mg/dL ou SDMA 26-38 μg/dL. Sintomas clínicos evidentes e necessita tratamento ativo.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#EstagioIRIS4</IRI>
+        <Literal>Estágio 4 IRIS: DRC grave com creatinina &gt; 5.0 mg/dL ou SDMA &gt; 38 μg/dL. Sintomas severos, tratamento intensivo e consideração de qualidade de vida.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ExameAlbumina</IRI>
+        <Literal>Mede a concentração dessa proteína no sangue e auxilia na avaliação do estado nutricional.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ExameBicarbonato</IRI>
+        <Literal>Mede a concentração do íon bicarbonato no sangue para desequilibrios metabolicos</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ExameCalcio</IRI>
+        <Literal>Mede a quantidade de cálcio no organismo</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ExameCreatinina</IRI>
+        <Literal>mede uma substância produzida pelos músculos e eliminada pelos rins</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ExameDensidadeUrina</IRI>
+        <Literal>Detecta a capacidade dos rins de concentrar a urina</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ExameDiagnostico</IRI>
+        <Literal>Exames de Diagnostico para IRIS</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ExameFosforo</IRI>
+        <Literal>auxilia na avaliação a saúde renal, é um exame complementar</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ExameImagem</IRI>
+        <Literal>Exames de imagem Raio x, ultrassom</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ExameLaboratorial</IRI>
+        <Literal>Exames laboratorias: amostras de sangue, pressão e urina</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ExamePlaquetas</IRI>
+        <Literal>Através de um hemograma avalia a contagem da celulas plaquetas</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ExamePotassio</IRI>
+        <Literal>Mede a concentração de Potassio no sangue, verificando o funcionamento muscula e cardíaco</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ExamePressao</IRI>
+        <Literal>Exame de pressão, mede a pressão do animal</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ExameProteinuria</IRI>
+        <Literal>Detecta a presença de proteínas na urina (UP/C)</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ExameSDMA</IRI>
+        <Literal>Biomarcador que detecta precocemente a IRC</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ExameSangue</IRI>
+        <Literal>Exames de sangue</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ExameSodio</IRI>
+        <Literal>Para diagnosticar a IRC Mede a quantidade de sodio no sangue.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ExameUreia</IRI>
+        <Literal>Mede os níveis dessa substância produzida no fígado e eliminada pelos rins, para avaliar a função renal.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ExameUrina</IRI>
+        <Literal>Exames de Urina</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#InsuficienciaRenalCronica</IRI>
+        <Literal>A IRC</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Outras</IRI>
+        <Literal>Outras Doenças Renais, algumas podem causar a IRC</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#RadiografiaAbdominal</IRI>
+        <Literal>Raidiografia abdominal</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#UltrassomAbdominal</IRI>
+        <Literal>Ultrassom abdominal</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+
