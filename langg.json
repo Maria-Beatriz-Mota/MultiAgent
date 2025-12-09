@@ -1,0 +1,7 @@
+{
+  "dependencies": ["."],
+  "graphs": {
+    "iris_diagnosis_system": "./run_lg.py:app"
+  },
+  "env": ".env"
+}

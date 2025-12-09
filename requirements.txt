@@ -1,0 +1,33 @@
+# LangGraph e dependências
+langgraph>=0.2.0
+langgraph-cli
+langchain>=0.3.0
+langchain-core>=0.3.0
+langchain-community>=0.3.0
+
+# Embeddings e base vetorial
+langchain-chroma
+langchain_google_genai
+
+chromadb>=0.4.0
+sentence-transformers
+
+# Processamento de PDFs
+pypdf
+pypdfium2
+
+# Ontologia OWL
+owlready2>=0.46
+
+# Reasoner Pellet (necessário para owlready2)
+# Certifique-se de ter Java instalado no sistema
+
+# Utilidades
+pydantic>=2.0
+requests
+python-dotenv
+
+# Opcional: para interface web
+streamlit>=1.28.0
+# Opcional: Langsmith
+#pip install -U "langgraph-cli[inmem]"
