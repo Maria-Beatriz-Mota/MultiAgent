@@ -1,0 +1,15 @@
+.env
+venv_mas/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.ipynb_checkpoints/
+.vscode/
+.idea/
