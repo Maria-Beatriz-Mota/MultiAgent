@@ -1,4 +1,4 @@
-"""
+p"""
 Sistema Multi-Agente para Diagnóstico IRIS em Gatos (CORRIGIDO)
 ---------------------------------------------------------------
 

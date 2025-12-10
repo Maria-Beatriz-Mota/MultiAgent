@@ -1,0 +1,16 @@
+{
+  "formulario": {
+    "nome": "Mimi",
+    "sexo": "F",
+    "raca": "Siamês",
+    "sdma": 18.5,
+    "creatinina": 2.3,
+    "idade": 8,
+    "peso": 4.2,
+    "pressao": 145,
+    "upc": 0.3,
+    "sintomas": "poliúria, polidipsia",
+    "comorbidades": "hipertensão"
+  },
+  "texto_livre": "Qual o estágio da doença renal?"
+}

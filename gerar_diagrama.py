@@ -114,8 +114,8 @@ if __name__ == "__main__":
             print("   Ou use LangGraph Studio: langgraph dev")
             
         except Exception as e2:
-            print(f"❌ Erro ao gerar diagrama: {e2}")
-            print("\n💡 ALTERNATIVAS:")
+            print(f" Erro ao gerar diagrama: {e2}")
+            print("\n ALTERNATIVAS:")
             print("   1. Use LangGraph Studio (langgraph dev)")
             print("   2. Instale: pip install pygraphviz")
             print("   3. Use o diagrama ASCII acima para documentação")

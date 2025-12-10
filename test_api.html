@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste API - Sistema IRIS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            opacity: 0.9;
+            font-size: 14px;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .result {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .result h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .result pre {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error {
+            background: #ffebee;
+            border-left-color: #f44336;
+        }
+
+        .success {
+            background: #e8f5e9;
+            border-left-color: #4caf50;
+        }
+
+        .info-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            background: #667eea;
+            color: white;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🐱 Sistema IRIS - Teste de API</h1>
+            <p>Diagnóstico de Doença Renal Crônica em Gatos</p>
+        </header>
+
+        <div class="content">
+            <form id="diagnosisForm">
+                <h2 style="margin-bottom: 20px; color: #333;">Dados do Paciente</h2>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label>Nome do Gato</label>
+                        <input type="text" id="nome" placeholder="Ex: Mimi">
+                    </div>
+                    <div class="form-group">
+                        <label>Sexo</label>
+                        <select id="sexo">
+                            <option value="">Selecione</option>
+                            <option value="M">Macho</option>
+                            <option value="F">Fêmea</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Raça</label>
+                    <input type="text" id="raca" placeholder="Ex: Siamês">
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label>SDMA (µg/dL) <span class="info-badge">Obrigatório*</span></label>
+                        <input type="number" step="0.1" id="sdma" placeholder="Ex: 18.5">
+                    </div>
+                    <div class="form-group">
+                        <label>Creatinina (mg/dL) <span class="info-badge">Obrigatório*</span></label>
+                        <input type="number" step="0.1" id="creatinina" placeholder="Ex: 2.3">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label>Idade (anos)</label>
+                        <input type="number" id="idade" placeholder="Ex: 8">
+                    </div>
+                    <div class="form-group">
+                        <label>Peso (kg)</label>
+                        <input type="number" step="0.1" id="peso" placeholder="Ex: 4.2">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label>Pressão Arterial (mmHg)</label>
+                        <input type="number" id="pressao" placeholder="Ex: 145">
+                    </div>
+                    <div class="form-group">
+                        <label>UPC</label>
+                        <input type="number" step="0.01" id="upc" placeholder="Ex: 0.3">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Sintomas (separados por vírgula)</label>
+                    <textarea id="sintomas" placeholder="Ex: poliúria, polidipsia"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Comorbidades (separadas por vírgula)</label>
+                    <textarea id="comorbidades" placeholder="Ex: hipertensão"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Pergunta ou Observação</label>
+                    <textarea id="texto_livre" placeholder="Ex: Qual o estágio da doença renal?"></textarea>
+                </div>
+
+                <button type="submit" id="submitBtn">🔬 Processar Diagnóstico</button>
+            </form>
+
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Processando diagnóstico...</p>
+                <small>Aguarde enquanto os agentes analisam os dados</small>
+            </div>
+
+            <div id="result"></div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('diagnosisForm');
+        const loading = document.getElementById('loading');
+        const resultDiv = document.getElementById('result');
+        const submitBtn = document.getElementById('submitBtn');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Coletar dados do formulário
+            const formulario = {
+                nome: document.getElementById('nome').value,
+                sexo: document.getElementById('sexo').value,
+                raca: document.getElementById('raca').value,
+                sdma: parseFloat(document.getElementById('sdma').value) || undefined,
+                creatinina: parseFloat(document.getElementById('creatinina').value) || undefined,
+                idade: parseInt(document.getElementById('idade').value) || undefined,
+                peso: parseFloat(document.getElementById('peso').value) || undefined,
+                pressao: parseFloat(document.getElementById('pressao').value) || undefined,
+                upc: parseFloat(document.getElementById('upc').value) || undefined,
+                sintomas: document.getElementById('sintomas').value,
+                comorbidades: document.getElementById('comorbidades').value
+            };
+
+            const texto_livre = document.getElementById('texto_livre').value;
+
+            // Validação básica
+            if (!formulario.sdma && !formulario.creatinina) {
+                alert('⚠️ SDMA ou Creatinina são obrigatórios!');
+                return;
+            }
+
+            // Mostrar loading
+            loading.classList.add('active');
+            resultDiv.innerHTML = '';
+            submitBtn.disabled = true;
+
+            try {
+                const response = await fetch('http://localhost:3001/api/diagnosis', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        formulario,
+                        texto_livre
+                    })
+                });
+
+                const data = await response.json();
+
+                // Esconder loading
+                loading.classList.remove('active');
+                submitBtn.disabled = false;
+
+                // Mostrar resultado
+                if (data.success) {
+                    const resultado = data.resultado;
+                    const classificacao = resultado.classificacao;
+                    const paciente = resultado.paciente;
+                    const biomarcadores = resultado.biomarcadores;
+                    
+                    // Função auxiliar para formatar valores
+                    const fmt = (val) => val != null ? val : 'N/A';
+                    
+                    resultDiv.innerHTML = `
+                        <div class="result success">
+                            <h3>✅ Diagnóstico IRIS - Resultado</h3>
+                            
+                            <div style="background: white; padding: 15px; border-radius: 8px; margin: 15px 0;">
+                                <h4 style="color: #667eea; margin-bottom: 10px;">🐱 Dados do Paciente</h4>
+                                <p><strong>Nome:</strong> ${fmt(paciente.nome)}</p>
+                                <p><strong>Sexo:</strong> ${fmt(paciente.sexo)} | <strong>Raça:</strong> ${fmt(paciente.raca)}</p>
+                                <p><strong>Idade:</strong> ${fmt(paciente.idade)} anos | <strong>Peso:</strong> ${fmt(paciente.peso)} kg</p>
+                            </div>
+
+                            <div style="background: white; padding: 15px; border-radius: 8px; margin: 15px 0;">
+                                <h4 style="color: #667eea; margin-bottom: 10px;">🔬 Biomarcadores</h4>
+                                <p><strong>Creatinina:</strong> ${fmt(biomarcadores.creatinina)} mg/dL</p>
+                                <p><strong>SDMA:</strong> ${fmt(biomarcadores.sdma)} µg/dL</p>
+                                <p><strong>UPC:</strong> ${fmt(biomarcadores.upc)}</p>
+                                <p><strong>Pressão Arterial:</strong> ${fmt(biomarcadores.pressao_arterial)} mmHg</p>
+                            </div>
+
+                            <div style="background: #e8f5e9; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #4caf50;">
+                                <h4 style="color: #2e7d32; margin-bottom: 10px;">📊 Classificação IRIS</h4>
+                                <p style="font-size: 18px;"><strong>Estágio:</strong> <span style="color: #4caf50; font-weight: 700;">${classificacao.estagio}</span></p>
+                                <p><strong>Subetágio AP:</strong> ${fmt(classificacao.subestagio_ap)}</p>
+                                <p><strong>Subetágio HT:</strong> ${fmt(classificacao.subestagio_ht)}</p>
+                                <p><strong>Confiança:</strong> <span style="color: ${classificacao.confianca === 'ALTA' ? '#4caf50' : classificacao.confianca === 'MODERADA' ? '#ff9800' : '#f44336'}; font-weight: 600;">${classificacao.confianca}</span></p>
+                            </div>
+
+                            ${resultado.resposta_pergunta ? `
+                            <div style="background: white; padding: 15px; border-radius: 8px; margin: 15px 0;">
+                                <h4 style="color: #667eea; margin-bottom: 10px;">💬 Resposta à Pergunta</h4>
+                                <p style="white-space: pre-wrap;">${resultado.resposta_pergunta}</p>
+                            </div>
+                            ` : ''}
+
+                            ${resultado.recomendacoes && resultado.recomendacoes.length > 0 ? `
+                            <div style="background: white; padding: 15px; border-radius: 8px; margin: 15px 0;">
+                                <h4 style="color: #667eea; margin-bottom: 10px;">💊 Recomendações Terapêuticas</h4>
+                                <ul style="margin: 0; padding-left: 20px;">
+                                    ${resultado.recomendacoes.map(rec => `<li>${rec}</li>`).join('')}
+                                </ul>
+                            </div>
+                            ` : ''}
+
+                            <div style="background: white; padding: 15px; border-radius: 8px; margin: 15px 0;">
+                                <h4 style="color: #667eea; margin-bottom: 10px;">✅ Validação</h4>
+                                <p><strong>Ontologia (Agente B):</strong> ${resultado.validacao.estagio_ontologia}</p>
+                                <p><strong>RAG (Agente C):</strong> ${resultado.validacao.estagio_rag}</p>
+                                <p><strong>Concordância:</strong> ${resultado.validacao.concordancia ? '✅ Sim' : '❌ Não'}</p>
+                            </div>
+
+                            <p style="text-align: center; margin-top: 15px; color: #666;">
+                                <strong>Tempo de processamento:</strong> ${data.metadata?.total_time_ms}ms | 
+                                <strong>Documentos RAG:</strong> ${resultado.metadados.num_documentos_rag}
+                            </p>
+
+                            <details style="margin-top: 15px;">
+                                <summary style="cursor: pointer; font-weight: 600; margin-bottom: 10px; color: #667eea;">📄 Ver resposta completa do sistema</summary>
+                                <pre style="max-height: 400px; overflow-y: auto;">${data.resposta_completa}</pre>
+                            </details>
+
+                            <details style="margin-top: 10px;">
+                                <summary style="cursor: pointer; font-weight: 600; margin-bottom: 10px; color: #999;">🔍 Ver dados técnicos (JSON)</summary>
+                                <pre style="max-height: 400px; overflow-y: auto;">${JSON.stringify(data, null, 2)}</pre>
+                            </details>
+                        </div>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <div class="result error">
+                            <h3>❌ Erro no Processamento</h3>
+                            <p><strong>Erro:</strong> ${data.error}</p>
+                            <p><strong>Código:</strong> ${data.code || 'N/A'}</p>
+                            <details style="margin-top: 15px;">
+                                <summary style="cursor: pointer; font-weight: 600; margin-bottom: 10px;">Ver detalhes</summary>
+                                <pre>${JSON.stringify(data, null, 2)}</pre>
+                            </details>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                loading.classList.remove('active');
+                submitBtn.disabled = false;
+
+                resultDiv.innerHTML = `
+                    <div class="result error">
+                        <h3>❌ Erro de Conexão</h3>
+                        <p><strong>Mensagem:</strong> ${error.message}</p>
+                        <p>Verifique se o servidor está rodando em <code>http://localhost:3001</code></p>
+                    </div>
+                `;
+            }
+        });
+
+        // Preencher dados de exemplo
+        window.addEventListener('load', () => {
+            document.getElementById('nome').value = 'Mimi';
+            document.getElementById('sexo').value = 'F';
+            document.getElementById('raca').value = 'Siamês';
+            document.getElementById('sdma').value = '18.5';
+            document.getElementById('creatinina').value = '2.3';
+            document.getElementById('idade').value = '8';
+            document.getElementById('peso').value = '4.2';
+            document.getElementById('pressao').value = '145';
+            document.getElementById('upc').value = '0.3';
+            document.getElementById('sintomas').value = 'poliúria, polidipsia';
+            document.getElementById('comorbidades').value = 'hipertensão';
+            document.getElementById('texto_livre').value = 'Qual o estágio da doença renal?';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+{
+  "name": "multiagent-iris-api",
+  "version": "1.0.0",
+  "description": "API Express para Sistema Multi-Agente de Diagnóstico IRIS em Gatos",
+  "main": "api/server.js",
+  "scripts": {
+    "start": "node api/server.js",
+    "dev": "nodemon api/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "iris",
+    "veterinary",
+    "diagnosis",
+    "multi-agent",
+    "express",
+    "api"
+  ],
+  "author": "Maria Beatriz Mota",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "joi": "^17.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  }
+}

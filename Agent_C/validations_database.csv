@@ -160,3 +160,20 @@ De acordo com as diretrizes IRIS, a pressão arterial deve ser monitorada regula
 
 - A creatinina sérica está acima do valor de referência normal (1,6 mg/dL), o que sugere azotemia, um marcador de DRC.
 - A maioria dos gatos (30/32) apresenta valores de creatinina en",5,RAG
+2025-12-10 19:17:24,2.3,18.5,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,Qual o est??gio da doen??a renal?,"📚 Para determinar o estágio da doença renal crônica felina, é necessário considerar tanto os níveis de creatinina quanto os níveis de SDMA (Semi-Desidratina de Methylarginina). De acordo com as diretrizes da IRIS (International Renal Interest Society), os estágios da doença renal crônica felina são ",5,RAG
+2025-12-10 19:26:16,2.3,18.5,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,Qual o estÃ¡gio da doenÃ§a renal?,"📚 Com base no contexto fornecido, podemos determinar o estágio da doença renal crônica felina utilizando o sistema de classificação IRIS. 
+
+O valor de creatinina médio (± DP) é de 2,10 mg/dL (± 0,78), e apenas 2 dos 32 gatos não apresentam azotemia, com valores de creatinina de 1,43 e 1,50 mg/dL. No",5,RAG
+2025-12-10 19:29:02,2.3,18.5,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,Qual o est??gio da doen??a renal?,"📚 Para determinar o estágio da doença renal crônica felina, é necessário considerar os valores de creatinina e SDMA (Semi-Desidratina de Methylamine) no sangue do animal.
+
+Se o valor de creatinina estiver entre 1,6 e 2,8 mg/dL, o estágio da doença renal crônica pode ser determinado com base no valor",5,RAG
+2025-12-10 19:29:33,2.3,18.5,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,Qual o est??gio da doen??a renal?,"📚 Para determinar o estágio da doença renal crônica felina, é necessário considerar tanto o nível de creatinina quanto o nível de SDMA (Semi-Desidratina de Methylamine). 
+
+Se o nível de creatinina estiver entre 1,6 e 2,8 mg/dL, o estágio da doença renal crônica pode ser determinado com base no nível",5,RAG
+2025-12-10 19:33:14,2.3,18.5,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,Qual o estágio da doença renal?,"📚 Para determinar o estágio da doença renal crônica felina, é necessário considerar tanto a concentração de creatinina quanto a concentração de SDMA (semialbumina de metilamina) no sangue do animal.
+
+Se a concentração de creatinina estiver entre 1,6 e 2,8 mg/dL, e a concentração de SDMA estiver pers",5,RAG
+2025-12-10 19:43:13,2.3,18.5,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,Qual o estágio da doença renal?,"📚 Para determinar o estágio da doença renal crônica felina, precisamos considerar os níveis de creatinina e SDMA (Semi-Desidratina de Músculo Esquelético) no sangue do animal.
+
+Se o nível de creatinina estiver entre 1,6 e 2,8 mg/dL, e o nível de SDMA for persistente > 25 µg/dL, o estágio da doença r",5,RAG
+2025-12-10 19:45:45,2.3,20.0,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,Qual a severidade do gato Putin?,"📚 Para determinar a severidade da doença renal crônica felina do gato Putin, precisamos considerar os níveis de creatinina e SDMA. De acordo com as diretrizes IRIS, um gato com creatinina entre 1,6 e 2,8 mg/dL é classificado como IRIS CKD Stage 2. No entanto, se o nível de SDMA for persistente > 25 ",5,RAG
