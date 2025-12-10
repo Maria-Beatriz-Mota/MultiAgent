@@ -18,7 +18,8 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 from Agent_C.agent_c_db import (
     index_local_folder, 
-    index_online_pdf, 
+    index_online_pdf,
+    index_web_page,
     clear_chroma_db,
     test_rag_search,
     CHROMA_PATH as DEFAULT_CHROMA_PATH
@@ -77,18 +78,21 @@ def setup_rag_database():
         print("-" * 70)
         print("1. Indexar PDFs da pasta local")
         print("2. Indexar PDF online (URL)")
-        print("3. Testar busca RAG")
-        print("4. Sair")
+        print("3. Indexar página web (HTML)")
+        print("4. Testar busca RAG")
+        print("5. Sair")
         
-        escolha = input("\nEscolha uma opção (1-4): ").strip()
+        escolha = input("\nEscolha uma opção (1-5): ").strip()
         
         if escolha == "1":
             indexar_pasta_local()
         elif escolha == "2":
             indexar_pdf_online()
         elif escolha == "3":
-            test_rag_search()
+            indexar_pagina_web()
         elif escolha == "4":
+            test_rag_search()
+        elif escolha == "5":
             break
         else:
             print("❌ Opção inválida")
@@ -204,6 +208,39 @@ def indexar_pdf_online():
         print(f"\n✅ Indexação concluída com sucesso!")
         print(f"   • URL: {result['source_url']}")
         print(f"   • Páginas: {result['source_documents']}")
+        print(f"   • Chunks: {result['indexed_chunks']}")
+
+
+def indexar_pagina_web():
+    """Indexa página web HTML"""
+    print("\n" + "-" * 70)
+    print("🌐 INDEXAÇÃO: Página Web")
+    print("-" * 70)
+    
+    print("\n💡 Cole a URL da página web (ex: artigos, blogs, guidelines online)")
+    print("   • Pressionar Enter para cancelar")
+    
+    url = input("\nURL: ").strip()
+    
+    if not url:
+        print("❌ Operação cancelada")
+        return
+    
+    if not url.startswith("http"):
+        print("❌ URL inválida (deve começar com http:// ou https://)")
+        return
+    
+    print(f"\n📥 Indexando página: {url}")
+    result = index_web_page(
+        url=url,
+        chroma_path=str(CHROMA_PATH)
+    )
+    
+    if "error" in result:
+        print(f"❌ Erro: {result['error']}")
+    else:
+        print(f"\n✅ Indexação concluída com sucesso!")
+        print(f"   • URL: {result['source_url']}")
         print(f"   • Chunks: {result['indexed_chunks']}")
 
 

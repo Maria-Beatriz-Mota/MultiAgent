@@ -1,0 +1,170 @@
+{
+  "total_casos": 8,
+  "casos_sucesso": 7,
+  "casos_falha": 1,
+  "taxa_sucesso_geral": 87.5,
+  "concordancia_iris": {
+    "corretos": 7,
+    "total": 8,
+    "percentual": 87.5
+  },
+  "precisao_ap": {
+    "corretos": 5,
+    "total": 5,
+    "percentual": 100.0
+  },
+  "precisao_ht": {
+    "corretos": 6,
+    "total": 6,
+    "percentual": 100.0
+  },
+  "detalhes_casos": [
+    {
+      "id": "IRIS1_NORMAL",
+      "descricao": "Gato saudável - IRIS 1",
+      "sucesso": true,
+      "detalhes": {
+        "estagio_correto": true,
+        "ap_correto": true,
+        "ht_correto": true
+      },
+      "metricas": {
+        "estagio_detectado": "IRIS 1",
+        "subestagio_ap": "AP0",
+        "subestagio_ht": "HT0",
+        "caso": 1,
+        "confianca": "ALTA",
+        "validacao_ok": null
+      },
+      "resposta_completa": "🩺 Avaliação Clínica – Doença Renal Crônica Felina\n======================================================================\n\n📋 Dados do Paciente:\n----------------------------------------------------------------------\n  • Paciente: Luna | Sexo: Fêmea | Raça: SRD | Idade: 2.0 anos | Peso: 3.5 kg\n\n\n📌 Estágio IRIS sugerido: IRIS1 — Subetágios: AP0 (não proteinúrico), HT0 (risco mínimo)\n\n📄 Fundamentação:\n----------------------------------------------------------------------\nANÁLISE CLÍNICA - DOENÇA RENAL CRÔNICA FELINA\n\nBIOMARCADORES OBSERVADOS:\n• Creatinina: 1.4 mg/dL\n• SDMA: 14.0 µg/dL\n• UPC: 0.15\n• Pressão Arterial: 120.0 mmHg\n\nSUBETÁGIOS IRIS:\n• AP0: não proteinúrico\n• HT0: risco mínimo\n\nVALIDAÇÃO: ✅ Validação confirmada: Creatinina e SDMA concordam em IRIS 1\n\nBASE CIENTÍFICA: Concordância perfeita (tabela IRIS oficial)\n\n\nRESPOSTA À PERGUNTA:\n📚 Com base no contexto fornecido, não é possível determinar se o gato está saudável ou não, pois não há informações específicas sobre o estado de saúde do animal. No entanto, posso fornecer orientação geral sobre como avaliar a saúde renal de um gato.\n\nA doença renal crônica (DRC) é uma das doenças mais comuns em gatos velhos. Para avaliar a saúde renal de um gato, é importante medir a creatinina sérica e o SDMA (semidesoxianidrina) sérica. O SDMA é um marcador de doença renal que pode ser mais sensível do que a creatinina em alguns casos.\n\nSe o SDMA for persistente > 25 µg/dl em um gato com creatinina entre 1,6 e 2,8 mg/dl (estágio 2 de DRC de acordo com a IRIS), o gato deve ser considerado como um paciente de estágio 3 de DRC. Se o SDMA for persistente > 38 µg/dl em um gato com creatinina entre 2,9 e 5,0 mg/dl (estágio 3 de DRC de acordo com a IRIS), o gato deve ser considerado como um paciente de estágio 3 de DRC.\n\nPortanto, sem informações específicas sobre o gato em questão, não é possível determinar se ele está saudável ou não. É importante realizar uma avaliação completa, incluindo exames laboratoriais e físicos, para determinar o estado de saúde do animal.\n\n\n📚 REFERÊNCIAS BIBLIOGRÁFICAS:\n----------------------------------------------------------------------\n  [1] 2_IRIS_Staging_of_CKD_2023.pdf, página 2\n  [2] 10.1177_1098612X16631234.pdf, página 18\n  [3] 10.1177_1098612X16631234.pdf, página 17\n  [4] 10.1177_1098612X16631234.pdf, página 1\n  [5] IRIS_CAT_Treatment_Recommendations_2023.pdf, página 5\n----------------------------------------------------------------------\n\nCONCLUSÃO: A inferência ontológica está correta e validada pelas diretrizes IRIS.\n\n⚠️  Observações:\n----------------------------------------------------------------------\n  • ✅ Inferência ontológica validada pela literatura científica.\n\n💊 Recomendações Terapêuticas:\n----------------------------------------------------------------------\n  1. Monitorar creatinina e SDMA a cada 6–12 meses\n  2. Avaliar fatores de risco e comorbidades\n\n----------------------------------------------------------------------\n🟢 Confiança da análise: ALTA\n📊 Caso: 1\n======================================================================"
+    },
+    {
+      "id": "IRIS2_INICIAL",
+      "descricao": "DRC inicial - IRIS 2",
+      "sucesso": true,
+      "detalhes": {
+        "estagio_correto": true,
+        "ap_correto": true,
+        "ht_correto": true
+      },
+      "metricas": {
+        "estagio_detectado": "IRIS 2",
+        "subestagio_ap": "AP1",
+        "subestagio_ht": "HT1",
+        "caso": 1,
+        "confianca": "ALTA",
+        "validacao_ok": null
+      },
+      "resposta_completa": "🩺 Avaliação Clínica – Doença Renal Crônica Felina\n======================================================================\n\n📋 Dados do Paciente:\n----------------------------------------------------------------------\n  • Paciente: Mimi | Sexo: Fêmea | Raça: Persa | Idade: 8.0 anos | Peso: 3.0 kg\n\n\n📌 Estágio IRIS sugerido: IRIS2 — Subetágios: AP1 (borderline proteinúrico), HT1 (risco baixo)\n\n📄 Fundamentação:\n----------------------------------------------------------------------\nANÁLISE CLÍNICA - DOENÇA RENAL CRÔNICA FELINA\n\nBIOMARCADORES OBSERVADOS:\n• Creatinina: 2.1 mg/dL\n• SDMA: 20.0 µg/dL\n• UPC: 0.25\n• Pressão Arterial: 145.0 mmHg\n\nSUBETÁGIOS IRIS:\n• AP1: borderline proteinúrico\n• HT1: risco baixo\n\nVALIDAÇÃO: ✅ Validação confirmada: Creatinina e SDMA concordam em IRIS 2\n\nBASE CIENTÍFICA: Concordância perfeita (tabela IRIS oficial)\n\n\nRESPOSTA À PERGUNTA:\n📚 De acordo com as diretrizes da IRIS (International Renal Interest Society), o tratamento recomendado para um gato com doença renal crônica (CKD) depende da etapa da doença. \n\nPara um gato com CKD Stage 2, com creatinina entre 1,6 e 2,8 mg/dl, o tratamento recomendado inclui:\n\n1. Suspender todos os medicamentos potencialmente nefrotóxicos, se possível.\n2. Identificar e tratar qualquer anormalidade pré-renal ou pós-renal.\n\nSe o nível de SDMA for persistente >25 µg/dl, o gato deve ser classificado e tratado como um paciente IRIS CKD Stage 3.\n\nPara um gato com CKD Stage 3, com creatinina entre 2,9 e 5,0 mg/dl, o tratamento recomendado inclui:\n\n1. Suspender todos os medicamentos potencialmente nefrotóxicos, se possível.\n2. Identificar e tratar qualquer anormalidade pré-renal ou pós-renal.\n3. Considerar a redução da ingestão de proteínas e a administração de suplementos de fósforo.\n\nÉ importante lembrar que essas são diretrizes gerais e que o tratamento deve ser individualizado com base no histórico clínico e nos resultados de laboratório do gato.\n\n\n📚 REFERÊNCIAS BIBLIOGRÁFICAS:\n----------------------------------------------------------------------\n  [1] 2_IRIS_Staging_of_CKD_2023.pdf, página 2\n  [2] 10.1177_1098612X16631234.pdf, página 18\n  [3] 10.1177_1098612X16631234.pdf, página 17\n  [4] IRIS_CAT_Treatment_Recommendations_2023.pdf, página 5\n  [5] IRIS_CAT_Treatment_Recommendations_2023.pdf, página 2\n----------------------------------------------------------------------\n\nCONCLUSÃO: A inferência ontológica está correta e validada pelas diretrizes IRIS.\n\n⚠️  Observações:\n----------------------------------------------------------------------\n  • ✅ Inferência ontológica validada pela literatura científica.\n\n💊 Recomendações Terapêuticas:\n----------------------------------------------------------------------\n  1. Introduzir dieta renal\n  2. Monitorar pressão arterial\n  3. Avaliar proteinúria (UPC)\n\n----------------------------------------------------------------------\n🟢 Confiança da análise: ALTA\n📊 Caso: 1\n======================================================================"
+    },
+    {
+      "id": "IRIS2_PROTEINURICO",
+      "descricao": "IRIS 2 com proteinúria",
+      "sucesso": true,
+      "detalhes": {
+        "estagio_correto": true,
+        "ap_correto": true,
+        "ht_correto": true
+      },
+      "metricas": {
+        "estagio_detectado": "IRIS 2",
+        "subestagio_ap": "AP2",
+        "subestagio_ht": "HT1",
+        "caso": 1,
+        "confianca": "ALTA",
+        "validacao_ok": null
+      },
+      "resposta_completa": "🩺 Avaliação Clínica – Doença Renal Crônica Felina\n======================================================================\n\n📋 Dados do Paciente:\n----------------------------------------------------------------------\n  • Paciente: Bob | Sexo: Macho | Raça: Maine Coon | Idade: 10.0 anos | Peso: 5.2 kg\n\n\n📌 Estágio IRIS sugerido: IRIS2 — Subetágios: AP2 (proteinúrico), HT1 (risco baixo)\n\n📄 Fundamentação:\n----------------------------------------------------------------------\nANÁLISE CLÍNICA - DOENÇA RENAL CRÔNICA FELINA\n\nBIOMARCADORES OBSERVADOS:\n• Creatinina: 2.5 mg/dL\n• SDMA: 23.0 µg/dL\n• UPC: 0.6\n• Pressão Arterial: 155.0 mmHg\n\nSUBETÁGIOS IRIS:\n• AP2: proteinúrico\n• HT1: risco baixo\n\nVALIDAÇÃO: ✅ Validação confirmada: Creatinina e SDMA concordam em IRIS 2\n\nBASE CIENTÍFICA: Concordância perfeita (tabela IRIS oficial)\n\n\nRESPOSTA À PERGUNTA:\n📚 A proteinúria é um indicador importante da doença renal crônica felina. De acordo com as diretrizes IRIS, a proteinúria é considerada grave quando o índice de proteína na urina em relação à creatinina (UP/C) é maior que 0,4. Isso é especialmente verdadeiro para gatos em estágios 3 e 4 da doença renal crônica, onde a proteinúria pode ser um sinal de lesão renal grave. Portanto, a proteinúria é considerada grave e requer investigação e tratamento adequados.\n\n\n📚 REFERÊNCIAS BIBLIOGRÁFICAS:\n----------------------------------------------------------------------\n  [1] 2_IRIS_Staging_of_CKD_2023.pdf, página 2\n  [2] IRIS_CAT_Treatment_Recommendations_2023.pdf, página 14\n  [3] 10.1177_1098612X16631234.pdf, página 17\n  [4] IRIS_CAT_Treatment_Recommendations_2023.pdf, página 10\n  [5] 2_IRIS_Staging_of_CKD_2023.pdf, página 3\n----------------------------------------------------------------------\n\nCONCLUSÃO: A inferência ontológica está correta e validada pelas diretrizes IRIS.\n\n⚠️  Observações:\n----------------------------------------------------------------------\n  • ✅ Inferência ontológica validada pela literatura científica.\n\n💊 Recomendações Terapêuticas:\n----------------------------------------------------------------------\n  1. Introduzir dieta renal\n  2. Monitorar pressão arterial\n  3. Avaliar proteinúria (UPC)\n\n----------------------------------------------------------------------\n🟢 Confiança da análise: ALTA\n📊 Caso: 1\n======================================================================"
+    },
+    {
+      "id": "IRIS3_MODERADO",
+      "descricao": "DRC moderada - IRIS 3",
+      "sucesso": true,
+      "detalhes": {
+        "estagio_correto": true,
+        "ap_correto": true,
+        "ht_correto": true
+      },
+      "metricas": {
+        "estagio_detectado": "IRIS 3",
+        "subestagio_ap": "AP2",
+        "subestagio_ht": "HT2",
+        "caso": 1,
+        "confianca": "ALTA",
+        "validacao_ok": null
+      },
+      "resposta_completa": "🩺 Avaliação Clínica – Doença Renal Crônica Felina\n======================================================================\n\n📋 Dados do Paciente:\n----------------------------------------------------------------------\n  • Paciente: Thor | Sexo: Macho | Raça: Siamês | Idade: 12.0 anos | Peso: 3.8 kg\n\n\n📌 Estágio IRIS sugerido: IRIS3 — Subetágios: AP2 (proteinúrico), HT2 (risco moderado)\n\n📄 Fundamentação:\n----------------------------------------------------------------------\nANÁLISE CLÍNICA - DOENÇA RENAL CRÔNICA FELINA\n\nBIOMARCADORES OBSERVADOS:\n• Creatinina: 3.5 mg/dL\n• SDMA: 30.0 µg/dL\n• UPC: 0.8\n• Pressão Arterial: 170.0 mmHg\n\nSUBETÁGIOS IRIS:\n• AP2: proteinúrico\n• HT2: risco moderado\n\nVALIDAÇÃO: ✅ Validação confirmada: Creatinina e SDMA concordam em IRIS 3\n\nBASE CIENTÍFICA: Concordância perfeita (tabela IRIS oficial)\n\n\nRESPOSTA À PERGUNTA:\n📚 O prognóstico para um paciente felino com doença renal crônica (DRC) depende do estágio da doença, que é determinado pela concentração de creatinina no sangue e pela concentração de SDMA (semidesoxiálato de metilamina). De acordo com as diretrizes da International Renal Interest Society (IRIS), o estágio da doença renal crônica felina é dividido em quatro estágios, com o estágio 1 sendo o menos grave e o estágio 4 sendo o mais grave.\n\nO prognóstico para um paciente felino com DRC geralmente é pior à medida que o estágio da doença aumenta. Pacientes com estágio 2 ou 3 de DRC têm uma expectativa de vida maior do que pacientes com estágio 4. No entanto, a expectativa de vida pode variar dependendo de fatores como a idade do paciente, a presença de doenças concomitantes e a eficácia do tratamento.\n\nÉ importante notar que a DRC é uma doença crônica e progressiva, e o prognóstico pode ser melhorado com um tratamento adequado e uma gestão cuidadosa da doença. O veterinário pode trabalhar com o dono do animal para estabelecer um plano de tratamento personalizado e monitorar a progressão da doença.\n\n\n📚 REFERÊNCIAS BIBLIOGRÁFICAS:\n----------------------------------------------------------------------\n  [1] 2_IRIS_Staging_of_CKD_2023.pdf, página 2\n  [2] 10.1177_1098612X16631234.pdf, página 18\n  [3] 10.1177_1098612X16631234.pdf, página 17\n  [4] 2_IRIS_Staging_of_CKD_2023.pdf, página 2\n  [5] 10.1177_1098612X16631234.pdf, página 4\n----------------------------------------------------------------------\n\nCONCLUSÃO: A inferência ontológica está correta e validada pelas diretrizes IRIS.\n\n⚠️  Observações:\n----------------------------------------------------------------------\n  • ✅ Inferência ontológica validada pela literatura científica.\n\n💊 Recomendações Terapêuticas:\n----------------------------------------------------------------------\n  1. Dieta renal estrita\n  2. Controle rigoroso de pressão arterial\n  3. Considerar quelantes de fósforo\n\n----------------------------------------------------------------------\n🟢 Confiança da análise: ALTA\n📊 Caso: 1\n======================================================================"
+    },
+    {
+      "id": "IRIS4_AVANCADO",
+      "descricao": "DRC avançada - IRIS 4",
+      "sucesso": true,
+      "detalhes": {
+        "estagio_correto": true,
+        "ap_correto": true,
+        "ht_correto": true
+      },
+      "metricas": {
+        "estagio_detectado": "IRIS 4",
+        "subestagio_ap": "AP2",
+        "subestagio_ht": "HT3",
+        "caso": 1,
+        "confianca": "ALTA",
+        "validacao_ok": null
+      },
+      "resposta_completa": "🩺 Avaliação Clínica – Doença Renal Crônica Felina\n======================================================================\n\n📋 Dados do Paciente:\n----------------------------------------------------------------------\n  • Paciente: Bella | Sexo: Fêmea | Raça: Ragdoll | Idade: 15.0 anos | Peso: 2.5 kg\n\n\n📌 Estágio IRIS sugerido: IRIS4 — Subetágios: AP2 (proteinúrico), HT3 (risco grave)\n\n📄 Fundamentação:\n----------------------------------------------------------------------\nANÁLISE CLÍNICA - DOENÇA RENAL CRÔNICA FELINA\n\nBIOMARCADORES OBSERVADOS:\n• Creatinina: 6.2 mg/dL\n• SDMA: 55.0 µg/dL\n• UPC: 1.2\n• Pressão Arterial: 195.0 mmHg\n\nSUBETÁGIOS IRIS:\n• AP2: proteinúrico\n• HT3: risco grave\n\nVALIDAÇÃO: ✅ Validação confirmada: Creatinina e SDMA concordam em IRIS 4\n\nBASE CIENTÍFICA: Concordância perfeita (tabela IRIS oficial)\n\n\nRESPOSTA À PERGUNTA:\n📚 O cuidado paliativo para doença renal crônica felina (CKD) visa melhorar a qualidade de vida do animal, reduzir a dor e os sintomas, e prolongar a sua vida. Isso inclui:\n\n- Gerenciamento da diurese: uso de medicamentos para reduzir a perda de líquidos e minimizar a desidratação.\n- Controle da hipertensão: uso de medicamentos para reduzir a pressão arterial e proteger os rins.\n- Alimentação adequada: dieta especializada para CKD, rica em proteínas de baixa fosforo e baixa sódio.\n- Controle da dor: uso de medicamentos analgésicos para reduzir a dor e os sintomas.\n- Monitoramento regular: acompanhamento regular do animal para ajustar o tratamento e prevenir complicações.\n\nÉ importante lembrar que o cuidado paliativo é uma abordagem individualizada e deve ser adaptada às necessidades específicas de cada animal.\n\n\n📚 REFERÊNCIAS BIBLIOGRÁFICAS:\n----------------------------------------------------------------------\n  [1] 2_IRIS_Staging_of_CKD_2023.pdf, página 2\n  [2] 10.1177_1098612X16631234.pdf, página 18\n  [3] 10.1177_1098612X16631234.pdf, página 17\n  [4] 10.1177_1098612X16631234.pdf, página 1\n  [5] IRIS_CAT_Treatment_Recommendations_2023.pdf, página 5\n----------------------------------------------------------------------\n\nCONCLUSÃO: A inferência ontológica está correta e validada pelas diretrizes IRIS.\n\n⚠️  Observações:\n----------------------------------------------------------------------\n  • ✅ Inferência ontológica validada pela literatura científica.\n\n💊 Recomendações Terapêuticas:\n----------------------------------------------------------------------\n  1. Suporte clínico intensivo\n  2. Controle sintomático\n  3. Cuidados paliativos quando indicado\n\n----------------------------------------------------------------------\n🟢 Confiança da análise: ALTA\n📊 Caso: 1\n======================================================================"
+    },
+    {
+      "id": "DISCREPANCIA_1_ESTAGIO",
+      "descricao": "Discrepância aceitável (1 estágio)",
+      "sucesso": true,
+      "detalhes": {
+        "estagio_correto": true
+      },
+      "metricas": {
+        "estagio_detectado": "IRIS 3",
+        "subestagio_ap": "AP1",
+        "subestagio_ht": "HT1",
+        "caso": 1,
+        "confianca": "ALTA",
+        "validacao_ok": null
+      },
+      "resposta_completa": "🩺 Avaliação Clínica – Doença Renal Crônica Felina\n======================================================================\n\n📋 Dados do Paciente:\n----------------------------------------------------------------------\n  • Paciente: Max | Sexo: Macho | Raça: SRD | Idade: 9.0 anos | Peso: 4.0 kg\n\n\n📌 Estágio IRIS sugerido: IRIS3 — Subetágios: AP1 (borderline proteinúrico), HT1 (risco baixo)\n\n📄 Fundamentação:\n----------------------------------------------------------------------\nANÁLISE CLÍNICA - DOENÇA RENAL CRÔNICA FELINA\n\nBIOMARCADORES OBSERVADOS:\n• Creatinina: 2.1 mg/dL\n• SDMA: 28.0 µg/dL\n• UPC: 0.3\n• Pressão Arterial: 150.0 mmHg\n\nSUBETÁGIOS IRIS:\n• AP1: borderline proteinúrico\n• HT1: risco baixo\n\nVALIDAÇÃO: ✅ Validação confirmada: Discrepância de 1 estágio aceita, usando IRIS 3 (maior valor)\n\nBASE CIENTÍFICA: Regra IRIS: usar maior valor quando diff≤1\n\n\nRESPOSTA À PERGUNTA:\n📚 A discrepância na classificação da doença renal crônica felina (CKD) com base no nível de SDMA (Semi-Desaminada Metionina) e creatinina pode ser explicada pelas diferentes faixas de referência estabelecidas para cada valor. Em particular, a classificação de IRIS sugere que um nível de SDMA persistente >25 µg/dl em um gato com creatinina entre 1,6 e 2,8 mg/dl (IRIS CKD estágio 2 baseado em creatinina) deve ser considerado como um estágio 3 de CKD. No entanto, se o nível de SDMA for persistente >18 µg/dl em um gato com creatinina <1,6 mg/dl (IRIS CKD estágio 1 baseado em creatinina), o paciente deve ser classificado como um estágio 2 de CKD. Essa discrepância pode ser devido à sensibilidade e especificidade diferentes dos testes de SDMA em diferentes estágios de CKD.\n\n\n📚 REFERÊNCIAS BIBLIOGRÁFICAS:\n----------------------------------------------------------------------\n  [1] 2_IRIS_Staging_of_CKD_2023.pdf, página 2\n  [2] 10.1177_1098612X16631234.pdf, página 18\n  [3] 10.1177_1098612X16631234.pdf, página 17\n  [4] 10.1177_1098612X16631234.pdf, página 3\n  [5] 2_IRIS_Staging_of_CKD_2023.pdf, página 2\n----------------------------------------------------------------------\n\nCONCLUSÃO: A inferência ontológica está correta e validada pelas diretrizes IRIS.\n\n⚠️  Observações:\n----------------------------------------------------------------------\n  • ✅ Inferência ontológica validada pela literatura científica.\n\n💊 Recomendações Terapêuticas:\n----------------------------------------------------------------------\n  1. Dieta renal estrita\n  2. Controle rigoroso de pressão arterial\n  3. Considerar quelantes de fósforo\n\n----------------------------------------------------------------------\n🟢 Confiança da análise: ALTA\n📊 Caso: 1\n======================================================================"
+    },
+    {
+      "id": "DISCREPANCIA_GRAVE",
+      "descricao": "Discrepância inaceitável (3 estágios)",
+      "sucesso": false,
+      "detalhes": {
+        "caso_correto": false
+      },
+      "metricas": {
+        "estagio_detectado": "IRIS 1",
+        "subestagio_ap": null,
+        "subestagio_ht": null,
+        "caso": null,
+        "confianca": null,
+        "validacao_ok": null
+      },
+      "resposta_completa": "🩺 Avaliação Clínica – Doença Renal Crônica Felina\n======================================================================\n\n📋 Dados do Paciente:\n----------------------------------------------------------------------\n  • Paciente: Nina | Sexo: Fêmea | Raça: Persa | Idade: 11.0 anos | Peso: 3.2 kg\n\n\n⚠️ ==================================================================\n⚠️  ATENÇÃO: VALORES LABORATORIAIS INCONSISTENTES\n⚠️ ==================================================================\n\n⚠️ DISCREPÂNCIA DETECTADA:\n\nDiscrepância de 3 estágios: Creatinina indica IRIS 1, SDMA indica IRIS 4\n\n📋 Ações:\n• Repetir exames\n• Verificar interferências pré-analíticas\n• Avaliar condições atípicas\n\n📋 Ações Recomendadas:\n   ⚠️ INCONSISTÊNCIA CRÍTICA: Valores de creatinina e SDMA apresentam discrepância significativa.\n   📋 Ação requerida: Repetir exames laboratoriais antes de prosseguir com o tratamento.\n\n======================================================================"
+    },
+    {
+      "id": "HIPERTENSAO_GRAVE",
+      "descricao": "Hipertensão grave (HT3)",
+      "sucesso": true,
+      "detalhes": {
+        "estagio_correto": true,
+        "ht_correto": true
+      },
+      "metricas": {
+        "estagio_detectado": "IRIS 2",
+        "subestagio_ap": "AP1",
+        "subestagio_ht": "HT3",
+        "caso": 1,
+        "confianca": "ALTA",
+        "validacao_ok": null
+      },
+      "resposta_completa": "🩺 Avaliação Clínica – Doença Renal Crônica Felina\n======================================================================\n\n📋 Dados do Paciente:\n----------------------------------------------------------------------\n  • Paciente: Felix | Sexo: Macho | Raça: Siamês | Idade: 13.0 anos | Peso: 3.5 kg\n\n\n📌 Estágio IRIS sugerido: IRIS2 — Subetágios: AP1 (borderline proteinúrico), HT3 (risco grave)\n\n📄 Fundamentação:\n----------------------------------------------------------------------\nANÁLISE CLÍNICA - DOENÇA RENAL CRÔNICA FELINA\n\nBIOMARCADORES OBSERVADOS:\n• Creatinina: 2.8 mg/dL\n• SDMA: 25.0 µg/dL\n• UPC: 0.4\n• Pressão Arterial: 195.0 mmHg\n\nSUBETÁGIOS IRIS:\n• AP1: borderline proteinúrico\n• HT3: risco grave\n\nVALIDAÇÃO: ✅ Validação confirmada: Creatinina e SDMA concordam em IRIS 2\n\nBASE CIENTÍFICA: Concordância perfeita (tabela IRIS oficial)\n\n\nRESPOSTA À PERGUNTA:\n📚 A pressão arterial elevada pode ser um problema significativo em gatos com doença renal crônica (DRC), pois pode contribuir para a progressão da doença renal e aumentar o risco de complicações cardiovasculares.\n\nDe acordo com as diretrizes IRIS, a pressão arterial deve ser monitorada regularmente em gatos com DRC, especialmente em estágios avançados da doença. Se a pressão arterial for elevada, o veterinário pode recomendar tratamento para controlar a pressão arterial e prevenir complicações.\n\nÉ importante lembrar que a pressão arterial elevada pode ser um sinal de hipertensão, que é um problema comum em gatos com DRC. Portanto, é fundamental monitorar a pressão arterial regularmente e ajustar o tratamento conforme necessário para evitar complicações.\n\n\n📚 REFERÊNCIAS BIBLIOGRÁFICAS:\n----------------------------------------------------------------------\n  [1] 2_IRIS_Staging_of_CKD_2023.pdf, página 2\n  [2] 10.1177_1098612X16631234.pdf, página 18\n  [3] 10.1177_1098612X16631234.pdf, página 17\n  [4] IRIS_CAT_Treatment_Recommendations_2023.pdf, página 5\n  [5] 10.1177_1098612X16631234.pdf, página 1\n----------------------------------------------------------------------\n\nCONCLUSÃO: A inferência ontológica está correta e validada pelas diretrizes IRIS.\n\n⚠️  Observações:\n----------------------------------------------------------------------\n  • ✅ Inferência ontológica validada pela literatura científica.\n\n💊 Recomendações Terapêuticas:\n----------------------------------------------------------------------\n  1. Introduzir dieta renal\n  2. Monitorar pressão arterial\n  3. Avaliar proteinúria (UPC)\n\n----------------------------------------------------------------------\n🟢 Confiança da análise: ALTA\n📊 Caso: 1\n======================================================================"
+    }
+  ]
+}

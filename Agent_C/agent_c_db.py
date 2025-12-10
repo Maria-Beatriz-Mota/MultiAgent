@@ -10,7 +10,7 @@ from typing import List, Dict, Any
 
 from langchain_chroma import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings
-from langchain_community.document_loaders import PyPDFLoader, DirectoryLoader
+from langchain_community.document_loaders import PyPDFLoader, DirectoryLoader, WebBaseLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from sentence_transformers import SentenceTransformer
 from transformers import AutoTokenizer, AutoModel
@@ -291,6 +291,74 @@ def index_online_pdf(url: str, chroma_path: str = CHROMA_PATH) -> Dict[str, Any]
         
     except Exception as e:
         temp_pdf.unlink(missing_ok=True)
+        return {"error": f"Erro ao criar banco vetorial: {e}"}
+
+
+def index_web_page(url: str, chroma_path: str = CHROMA_PATH) -> Dict[str, Any]:
+    """
+    Indexa uma página web HTML
+    
+    Args:
+        url: URL da página web
+        chroma_path: Caminho para salvar o banco Chroma
+    
+    Returns:
+        Dict com status da indexação
+    """
+    print("\n" + "="*70)
+    print("[INDEXAÇÃO] 🌐 Indexando página web...")
+    print("="*70)
+    
+    try:
+        print(f"[INDEXAÇÃO] 🔍 Carregando: {url}")
+        loader = WebBaseLoader(url)
+        documents = loader.load()
+        
+        if not documents:
+            return {"error": "Nenhum conteúdo encontrado na página"}
+        
+        print(f"[INDEXAÇÃO] ✅ Página carregada")
+        
+    except Exception as e:
+        return {"error": f"Erro ao carregar página: {e}"}
+    
+    # Dividir em chunks
+    try:
+        chunks = _split_documents(documents)
+    except Exception as e:
+        return {"error": f"Erro ao dividir documento: {e}"}
+    
+    # Criar/atualizar banco vetorial
+    try:
+        print(f"[INDEXAÇÃO] 🧠 Criando embeddings...")
+        embeddings = _get_embeddings()
+        
+        # Verificar se banco já existe
+        if Path(chroma_path).exists():
+            print(f"[INDEXAÇÃO] 📦 Adicionando ao banco existente...")
+            vectordb = Chroma(
+                persist_directory=chroma_path,
+                embedding_function=embeddings
+            )
+            vectordb.add_documents(chunks)
+        else:
+            print(f"[INDEXAÇÃO] 📦 Criando novo banco...")
+            vectordb = Chroma.from_documents(
+                documents=chunks,
+                embedding=embeddings,
+                persist_directory=chroma_path
+            )
+        
+        print(f"[INDEXAÇÃO] 💾 Banco salvo em: {chroma_path}")
+        print(f"[INDEXAÇÃO] ✅ {len(chunks)} chunks indexados com sucesso!")
+        
+        return {
+            "indexed_chunks": len(chunks),
+            "source_url": url,
+            "chroma_path": chroma_path
+        }
+        
+    except Exception as e:
         return {"error": f"Erro ao criar banco vetorial: {e}"}
 
 

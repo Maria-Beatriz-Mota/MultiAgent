@@ -46,7 +46,7 @@ class MASState(BaseModel):
     # Resultado da inferência ontológica do Agente B
     inference_result: Dict[str, Any] = Field(
         default_factory=dict,
-        description="Resultado da inferência ontológica (estágio, reasoner_ok, etc.)"
+        description="Resultado da inferência ontológica (estágio, subetágios AP/HT, reasoner_ok, etc.)"
     )
     
     # ===== VALIDAÇÃO (C → A) =====

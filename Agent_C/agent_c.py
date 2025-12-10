@@ -548,114 +548,86 @@ def gerar_recomendacao(
         except Exception as e:
             print(f"[AGENTE C] ⚠️ Erro no RAG: {e}")
 
-    # ----------- VALIDAÇÃO: Se RAG falhou, usar REGRAS -----------
-    if estagio_rag is None and not RAG_AVAILABLE:
-        print("[AGENTE C] 🔬 Validando por regras IRIS oficiais...")
-        validacao_regras = validar_por_regras_iris(creat, sdma, estagio_b)
-        
-        valida_b = validacao_regras["valido"]
-        estagio_esperado = validacao_regras["estagio_esperado"]
-        
-        # Construir mensagem detalhada
-        resposta_texto = f"ANÁLISE CLÍNICA - DOENÇA RENAL CRÔNICA FELINA\n\n"
-        resposta_texto += f"BIOMARCADORES OBSERVADOS:\n"
-        resposta_texto += f"• Creatinina: {creat} mg/dL\n"
-        resposta_texto += f"• SDMA: {sdma} µg/dL\n"
-        if upc is not None:
-            resposta_texto += f"• UPC: {upc}\n"
-        if pressao is not None:
-            resposta_texto += f"• Pressão Arterial: {pressao} mmHg\n"
-        resposta_texto += f"\n"
-        
-        # Adicionar subetágios se disponíveis
-        if subestagio_ap_b or subestagio_ht_b:
-            resposta_texto += f"SUBETÁGIOS IRIS:\n"
-            if subestagio_ap_b:
-                ap_desc = {"AP0": "não proteinúrico", "AP1": "borderline proteinúrico", "AP2": "proteinúrico"}.get(subestagio_ap_b, subestagio_ap_b)
-                resposta_texto += f"• {subestagio_ap_b}: {ap_desc}\n"
-            if subestagio_ht_b:
-                ht_desc = {"HT0": "risco mínimo", "HT1": "risco baixo", "HT2": "risco moderado", "HT3": "risco grave"}.get(subestagio_ht_b, subestagio_ht_b)
-                resposta_texto += f"• {subestagio_ht_b}: {ht_desc}\n"
-            resposta_texto += f"\n"
-        
-        resposta_texto += f"VALIDAÇÃO: {validacao_regras['mensagem']}\n\n"
-        resposta_texto += f"BASE CIENTÍFICA: {validacao_regras['regra_aplicada']}\n"
-        
-        if valida_b:
-            caso = 1
-            estagio_final = estagio_b
-            inconsistencia = False
-            resposta_texto += f"\nCONCLUSÃO: A inferência ontológica está correta e validada pelas diretrizes IRIS.\n"
-        elif valida_b is False:
-            caso = 3
-            estagio_final = estagio_esperado
-            inconsistencia = True
-            resposta_texto += f"\n⚠️ ATENÇÃO: Discrepância identificada. Recomenda-se revisar os dados e repetir exames laboratoriais.\n"
-        else:
-            caso = 2
-            estagio_final = estagio_esperado
-            inconsistencia = False
-            resposta_texto += f"\nNOTA: Classificação baseada nos biomarcadores disponíveis.\n"
+    # ----------- VALIDAÇÃO: SEMPRE usar REGRAS IRIS (não comparação textual RAG) -----------
+    # LÓGICA CORRIGIDA: RAG serve para Q&A, NÃO para validar estágios
+    # Validação deve ser feita contra as REGRAS numéricas oficiais IRIS
+    print("[AGENTE C] 🔬 Validando por regras IRIS oficiais...")
+    validacao_regras = validar_por_regras_iris(creat, sdma, estagio_b)
     
-    else:
-        # ----------- VALIDAÇÃO: Comparar B vs RAG -----------
-        valida_b = None
-        inconsistencia = False
-        caso = None
-        resposta_texto = ""
-        estagio_esperado = None
-
-        if estagio_b and estagio_rag:
-            valida_b = (estagio_b == estagio_rag)
-            if valida_b:
-                caso = 1
-                resposta_texto = f"ANÁLISE CLÍNICA - DOENÇA RENAL CRÔNICA FELINA\n\n"
-                resposta_texto += f"BIOMARCADORES OBSERVADOS:\n"
-                resposta_texto += f"• Creatinina: {creat} mg/dL\n"
-                resposta_texto += f"• SDMA: {sdma} µg/dL\n\n"
-                resposta_texto += f"ESTÁGIO IDENTIFICADO: {estagio_b}\n\n"
-                resposta_texto += f"\nVALIDAÇÃO: A inferência ontológica ({estagio_b}) está confirmada pela literatura científica IRIS ({estagio_rag}).\n\n"
-                resposta_texto += f"BASE CIENTÍFICA: Concordância entre raciocínio ontológico e diretrizes IRIS publicadas.\n"
-                
-                # Adicionar resposta à pergunta se houver
-                if resposta_pergunta:
-                    resposta_texto += f"\n\nRESPOSTA À PERGUNTA:\n{resposta_pergunta}\n"
-            else:
-                caso = 3
-                inconsistencia = True
-                resposta_texto = f"ANÁLISE CLÍNICA - DISCREPÂNCIA DETECTADA\n\n"
-                resposta_texto += f"BIOMARCADORES OBSERVADOS:\n"
-                resposta_texto += f"• Creatinina: {creat} mg/dL\n"
-                resposta_texto += f"• SDMA: {sdma} µg/dL\n\n"
-                resposta_texto += f"DISCREPÂNCIA: A inferência ontológica ({estagio_b}) difere da literatura científica ({estagio_rag}).\n\n"
-                resposta_texto += f"⚠️ RECOMENDAÇÃO: Revisar dados clínicos, verificar possíveis erros laboratoriais e repetir avaliação.\n"
-        
-        elif estagio_b and not estagio_rag:
-            caso = 1
-            valida_b = True
-            resposta_texto = f"ANÁLISE CLÍNICA - DOENÇA RENAL CRÔNICA FELINA\n\n"
-            resposta_texto += f"BIOMARCADORES OBSERVADOS:\n"
-            resposta_texto += f"• Creatinina: {creat} mg/dL\n"
-            resposta_texto += f"• SDMA: {sdma} µg/dL\n\n"
-            resposta_texto += f"ESTÁGIO IDENTIFICADO: {estagio_b}\n\n"
-            resposta_texto += f"VALIDAÇÃO: Classificação baseada em inferência ontológica. Literatura científica consultada não forneceu contradição.\n\n"
-            resposta_texto += f"NOTA: Recomenda-se indexar mais literatura IRIS para validação completa.\n"
+    valida_b = validacao_regras["valido"]
+    estagio_esperado = validacao_regras["estagio_esperado"]
+    
+    # Construir mensagem detalhada
+    resposta_texto = f"ANÁLISE CLÍNICA - DOENÇA RENAL CRÔNICA FELINA\n\n"
+    resposta_texto += f"BIOMARCADORES OBSERVADOS:\n"
+    resposta_texto += f"• Creatinina: {creat} mg/dL\n"
+    resposta_texto += f"• SDMA: {sdma} µg/dL\n"
+    if upc is not None:
+        resposta_texto += f"• UPC: {upc}\n"
+    if pressao is not None:
+        resposta_texto += f"• Pressão Arterial: {pressao} mmHg\n"
+    resposta_texto += f"\n"
+    
+    # Adicionar subetágios se disponíveis
+    if subestagio_ap_b or subestagio_ht_b:
+        resposta_texto += f"SUBETÁGIOS IRIS:\n"
+        if subestagio_ap_b:
+            ap_desc = {"AP0": "não proteinúrico", "AP1": "borderline proteinúrico", "AP2": "proteinúrico"}.get(subestagio_ap_b, subestagio_ap_b)
+            resposta_texto += f"• {subestagio_ap_b}: {ap_desc}\n"
+        if subestagio_ht_b:
+            ht_desc = {"HT0": "risco mínimo", "HT1": "risco baixo", "HT2": "risco moderado", "HT3": "risco grave"}.get(subestagio_ht_b, subestagio_ht_b)
+            resposta_texto += f"• {subestagio_ht_b}: {ht_desc}\n"
+        resposta_texto += f"\n"
+    
+    resposta_texto += f"VALIDAÇÃO: {validacao_regras['mensagem']}\n\n"
+    resposta_texto += f"BASE CIENTÍFICA: {validacao_regras['regra_aplicada']}\n"
+    
+    # Adicionar resposta do RAG à pergunta do usuário (se houver)
+    if resposta_pergunta:
+        resposta_texto += f"\n\nRESPOSTA À PERGUNTA:\n{resposta_pergunta}\n"
+    
+    # Adicionar referências bibliográficas dos documentos utilizados
+    if docs and len(docs) > 0:
+        resposta_texto += "\n\n📚 REFERÊNCIAS BIBLIOGRÁFICAS:\n"
+        resposta_texto += "-" * 70 + "\n"
+        referencias_unicas = set()
+        for i, doc in enumerate(docs, 1):
+            metadata = getattr(doc, 'metadata', {})
+            source = metadata.get('source', 'Documento desconhecido')
+            page = metadata.get('page', None)
             
-            # Adicionar resposta à pergunta se houver
-            if resposta_pergunta:
-                resposta_texto += f"\n\nRESPOSTA À PERGUNTA:\n{resposta_pergunta}\n"
-        
-        elif not estagio_b and estagio_rag:
-            caso = 2
-            valida_b = None
-            resposta_texto = f"📚 Literatura indica: {estagio_rag}\n"
-            resposta_texto += "⚠️ Agent B não realizou inferência\n"
-        
-        else:
-            caso = 4
-            resposta_texto = "⚠️ Validação inconclusiva - dados insuficientes\n"
-
-        estagio_final = estagio_rag or estagio_b
+            # Extrair apenas o nome do arquivo
+            if source:
+                source_name = Path(source).name if isinstance(source, str) else str(source)
+            else:
+                source_name = f"Documento {i}"
+            
+            # Criar referência única
+            if page is not None:
+                ref = f"[{i}] {source_name}, página {page + 1}"
+            else:
+                ref = f"[{i}] {source_name}"
+            
+            if ref not in referencias_unicas:
+                referencias_unicas.add(ref)
+                resposta_texto += f"  {ref}\n"
+        resposta_texto += "-" * 70 + "\n"
+    
+    if valida_b:
+        caso = 1
+        estagio_final = estagio_b
+        inconsistencia = False
+        resposta_texto += f"\nCONCLUSÃO: A inferência ontológica está correta e validada pelas diretrizes IRIS.\n"
+    elif valida_b is False:
+        caso = 3
+        estagio_final = estagio_esperado
+        inconsistencia = True
+        resposta_texto += f"\n⚠️ ATENÇÃO: Discrepância identificada. Recomenda-se revisar os dados e repetir exames laboratoriais.\n"
+    else:
+        caso = 2
+        estagio_final = estagio_esperado
+        inconsistencia = False
+        resposta_texto += f"\nNOTA: Classificação baseada nos biomarcadores disponíveis.\n"
 
     # ----------- Tratamento -----------
     tratamento = TRATAMENTO_IRIS.get(estagio_final, [])
@@ -674,6 +646,8 @@ def gerar_recomendacao(
         "estagio_rag": estagio_rag,
         "estagio_b": estagio_b,
         "estagio_final": estagio_final,
+        "subestagio_ap": subestagio_ap_b,  # NOVO: Propagar subetágios
+        "subestagio_ht": subestagio_ht_b,  # NOVO: Propagar subetágios
         "valida_b": valida_b,
         "inconsistencia": inconsistencia,
         "resposta_clinica": resposta_texto.strip(),
@@ -693,7 +667,9 @@ def gerar_recomendacao(
         }
     }
 
-    print(f"[AGENTE C] ✅ Validação concluída - CASO {caso}")
+    print(f"[AGENTE C] ✅ Validação concluída - CASO {caso}, Estágio: {estagio_final}")
+    if subestagio_ap_b or subestagio_ht_b:
+        print(f"[AGENTE C] 📊 Subetágios: AP={subestagio_ap_b}, HT={subestagio_ht_b}")
     print(f"[AGENTE C] 🎯 Validação: {'✅ Confirmada' if valida_b else '❌ Reprovada' if valida_b is False else '⚠️ Inconclusiva'}")
     if inconsistencia:
         estagio_comparacao = estagio_rag if estagio_rag else (estagio_esperado if 'estagio_esperado' in locals() else 'N/A')

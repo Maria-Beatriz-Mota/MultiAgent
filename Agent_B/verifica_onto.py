@@ -12,7 +12,7 @@ from owlready2 import (
 # =====================================================================
 # CONFIGURAÇÃO DO CAMINHO DA ONTOLOGIA
 # =====================================================================
-ONTO_PATH = Path(r"Agent_B/onthology/Ontology_MAS_pro_teste1.owl")
+ONTO_PATH = Path(r"Agent_B/onthology/Ontology_MAS_projeto.owl")
 
 def _load_ontology():
     """Carrega a ontologia com tratamento de erros robusto"""

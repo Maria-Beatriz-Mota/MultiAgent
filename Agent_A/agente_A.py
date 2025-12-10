@@ -31,7 +31,7 @@ if os.environ.get("OPENAI_API_KEY"):
 
 # 2. Groq (rápido e gratuito, requer API key)
 if os.environ.get("GROQ_API_KEY"):
-    providers_to_try.append(("groq", "Groq Llama"))
+    providers_to_try.append(("groq", "Groq gpt-oss-120b"))
 
 # 3. HuggingFace (gratuito, menos confiável)
 if os.environ.get("HUGGINGFACEHUB_API_TOKEN"):
@@ -47,7 +47,7 @@ for provider, name in providers_to_try:
             
         elif provider == "groq":
             from langchain_groq import ChatGroq
-            llm = ChatGroq(model="llama-3.1-8b-instant", temperature=0.3)
+            llm = ChatGroq(model="openai/gpt-oss-120b", temperature=0.3)
             LLM_PROVIDER = "Groq"
             
         elif provider == "huggingface":
@@ -62,16 +62,16 @@ for provider, name in providers_to_try:
         
         # Testar se funciona
         LLM_DISPONIVEL = True
-        print(f"[AGENTE A] ✅ LLM {LLM_PROVIDER} configurado")
+        print(f"[AGENTE A] LLM {LLM_PROVIDER} configurado")
         break
         
     except Exception as e:
-        print(f"[AGENTE A] ⚠️ {name} não disponível: {e}")
+        print(f"[AGENTE A] {name} não disponível: {e}")
         continue
 
 if not LLM_DISPONIVEL:
-    print("[AGENTE A] ⚠️ Nenhum LLM disponível - usando modo texto direto")
-    print("[AGENTE A] 💡 Configure: OPENAI_API_KEY, GROQ_API_KEY ou HUGGINGFACEHUB_API_TOKEN")
+    print("[AGENTE A] Nenhum LLM disponível - usando modo texto direto")
+    print("[AGENTE A] Configure: OPENAI_API_KEY, GROQ_API_KEY ou HUGGINGFACEHUB_API_TOKEN")
 
 def gerar_explicacao_clinica(
     resultado_b: Dict[str, Any],
@@ -79,7 +79,16 @@ def gerar_explicacao_clinica(
     dados_clinicos: Dict[str, Any]
 ) -> str:
     """
-    Usa LLM para humanizar e organizar o resultado da validação do Agente C
+    ⚠️ FUNÇÃO DESATIVADA - NÃO USAR
+    
+    MOTIVO: LLM pode distorcer informações médicas críticas ao "humanizar" texto.
+    O Agente C é o validador científico oficial - sua resposta já está correta
+    e validada por RAG + regras IRIS. Não deve ser alterada.
+    
+    DECISÃO DE ARQUITETURA:
+    - Agente C = Validador científico (resposta autoritativa)
+    - LLM = Pode alucinar/modificar dados médicos (RISCO)
+    - Solução = Usar resposta original de C sem modificações
     
     Args:
         resultado_b: Resultado da inferência ontológica
@@ -188,12 +197,14 @@ def processar_input_usuario(
     formulario = formulario or {}
 
     dados = {
+        "nome": formulario.get("nome"),
+        "sexo": formulario.get("sexo"),
+        "raca": formulario.get("raca"),
         "creatinina": _to_float(formulario.get("creatinina")),
         "sdma": _to_float(formulario.get("sdma")),
         "idade": _to_float(formulario.get("idade")),
-        "sexo": formulario.get("sexo"),
         "peso": _to_float(formulario.get("peso")),
-        "pas": _to_float(formulario.get("pressao_arterial")),
+        "pressao_arterial": _to_float(formulario.get("pressao_arterial") or formulario.get("pressao")),
         "upc": _to_float(formulario.get("upc")),
         "sintomas": formulario.get("sintomas", ""),
         "comorbidades": formulario.get("comorbidades", ""),
@@ -271,18 +282,13 @@ def consolidar_resultados(
     # CASOS 1 e 2: CLASSIFICAÇÃO VÁLIDA
     # =====================================================================
     
-    # Gerar explicação clínica com LLM
-    mensagem = ""
-    if estagio_final and dados_clinicos:
-        try:
-            mensagem = gerar_explicacao_clinica(resultado_b, resultado_c, dados_clinicos)
-        except Exception as e:
-            print(f"[AGENTE A] ⚠️ Erro ao gerar explicação: {e}")
-            # Fallback para mensagem do Agente C
-            mensagem = resultado_c.get("resposta_clinica", "")
-    else:
-        # Usar mensagem básica do Agente C
-        mensagem = resultado_c.get("resposta_clinica", "")
+    # USAR DIRETAMENTE A RESPOSTA DO AGENTE C (JÁ VALIDADA)
+    # O Agente C é o validador científico - sua resposta não deve ser alterada
+    # LLM pode introduzir erros ou "alucinar" informações médicas
+    mensagem = resultado_c.get("resposta_clinica", "")
+    
+    print("[AGENTE A] ✅ Usando resposta validada do Agente C (sem LLM)")
+    print("[AGENTE A] 📋 Resposta científica preservada para garantir precisão")
     
     # Plano terapêutico
     plano = resultado_c.get("tratamento_recomendado", [])
@@ -302,6 +308,8 @@ def consolidar_resultados(
     
     return {
         "estagio_final": estagio_final,
+        "subestagio_ap": resultado_c.get("subestagio_ap"),  # NOVO: Propagar subetágios
+        "subestagio_ht": resultado_c.get("subestagio_ht"),  # NOVO: Propagar subetágios
         "mensagem": mensagem,
         "plano_terapeutico": plano,
         "alertas": alertas,
@@ -370,8 +378,25 @@ def formatar_resposta_final(resultado: Dict[str, Any], dados_clinicos: Dict[str,
     
     # Estágio IRIS
     estagio = resultado.get("estagio_final")
+    subestagio_ap = resultado.get("subestagio_ap")
+    subestagio_ht = resultado.get("subestagio_ht")
+    
     if estagio:
-        resposta.append(f"\n📌 Estágio IRIS sugerido: {estagio}")
+        linha_estagio = f"\n📌 Estágio IRIS sugerido: {estagio}"
+        
+        # Adicionar subetágios se disponíveis
+        subetagios_str = []
+        if subestagio_ap:
+            ap_desc = {"AP0": "não proteinúrico", "AP1": "borderline proteinúrico", "AP2": "proteinúrico"}.get(subestagio_ap, subestagio_ap)
+            subetagios_str.append(f"{subestagio_ap} ({ap_desc})")
+        if subestagio_ht:
+            ht_desc = {"HT0": "risco mínimo", "HT1": "risco baixo", "HT2": "risco moderado", "HT3": "risco grave"}.get(subestagio_ht, subestagio_ht)
+            subetagios_str.append(f"{subestagio_ht} ({ht_desc})")
+        
+        if subetagios_str:
+            linha_estagio += f" — Subetágios: {', '.join(subetagios_str)}"
+        
+        resposta.append(linha_estagio)
     else:
         resposta.append(f"\n⚠️ Estágio IRIS: NÃO DETERMINADO")
     

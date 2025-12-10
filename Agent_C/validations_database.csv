@@ -16,3 +16,147 @@ timestamp,creatinina,sdma,estagio_b,estagio_rag,estagio_final,validacao,caso,con
 2025-12-09 21:47:56,2.5,20.0,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,Ela tem risco?,"📚 Com base no contexto fornecido, não há informações específicas sobre a fêmea que apresenta risco. No entanto, posso fornecer orientação geral sobre a doença renal crônica felina (CKD) e os fatores de risco associados.
 
 A CKD é uma condição crônica que pode levar a complicações graves se não for tr",5,RAG
+2025-12-10 15:09:09,2.3,20.0,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,Ela está em risco grave?,"📚 A pergunta não fornece informações específicas sobre o estado clínico da fêmea, portanto, não posso determinar com certeza se ela está em risco grave. No entanto, como especialista em doença renal crônica felina, posso dizer que a presença de CKD (Doença Renal Crônica) em qualquer estágio é um fat",5,RAG
+2025-12-10 15:12:18,2.3,20.0,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,Ele está em risco grave?,"📚 Considerando o contexto fornecido, não há informações específicas sobre o risco grave do paciente. No entanto, posso fornecer orientação geral sobre a doença renal crônica felina (CKD).
+
+Em geral, os pacientes com CKD podem estar em risco grave se apresentarem sinais clínicos graves, como:
+
+* Urem",5,RAG
+2025-12-10 15:14:49,2.3,20.0,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,Ele está em risco grave?,"📚 O paciente está em risco grave se apresentar sinais clínicos graves, como vômitos, diarreia, anorexia, fraqueza muscular, perda de peso, aumento de volume corporal, oligúria (produção de urina reduzida) ou anúria (ausência de urina). Além disso, se o paciente tiver uma concentração de creatinina e",5,RAG
+2025-12-10 15:19:09,1.4,14.0,IRIS1,IRIS1,IRIS1,Confirmada,1,ALTA,O gato está saudável?,"📚 Não, o gato não está saudável. A presença de doença renal crônica (DRC) é indicada pela concentração de creatinina no sangue entre 1,6 e 2,8 mg/dl, o que corresponde ao estágio 2 da doença renal crônica de acordo com as diretrizes da IRIS. Além disso, a concentração de SDMA (semicarbazida de metil",5,RAG
+2025-12-10 15:19:16,2.1,20.0,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,Qual o tratamento recomendado?,"📚 O tratamento recomendado para um gato com doença renal crônica (DRC) depende do estágio da doença, que é determinado pela concentração de creatinina e SDMA no sangue.
+
+Segundo as diretrizes da IRIS, para um gato com DRC, o tratamento recomendado é:
+
+- Para gatos com estágio 1 (creatinina < 1,6 mg/",5,RAG
+2025-12-10 15:19:23,2.5,23.0,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,A proteinúria é grave?,"📚 A proteinúria é considerada grave quando o rácio de proteína a creatinina (UP/C) é maior que 0,4, especialmente em estágios avançados da doença renal crônica felina (CKD). Isso é indicado na literatura IRIS para pacientes com CKD em estágios 3 e 4, onde a investigação de processos subjacentes à pr",5,RAG
+2025-12-10 15:19:30,3.5,30.0,IRIS3,IRIS3,IRIS3,Confirmada,1,ALTA,Qual o prognóstico?,"📚 O prognóstico para um gato com doença renal crônica (DRC) depende de vários fatores, incluindo a etapa da doença, a presença de complicações e a eficácia do tratamento. De acordo com as diretrizes da IRIS, a etapa da doença pode ser determinada pelo nível de creatinina e SDMA no sangue. Em geral, ",5,RAG
+2025-12-10 15:19:37,6.2,55.0,IRIS4,IRIS4,IRIS4,Confirmada,1,ALTA,Qual o cuidado paliativo?,"📚 O cuidado paliativo para gatos com doença renal crônica (DRC) visa melhorar a qualidade de vida e reduzir os sintomas da doença. Além das recomendações de tratamento listadas nos estágios 1 e 2 da IRIS, é importante considerar a seguinte abordagem paliativa:
+
+- Gerenciamento da hidratação: garanti",5,RAG
+2025-12-10 15:19:50,2.8,25.0,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,A pressão é perigosa?,"📚 A pressão arterial é um fator importante a considerar em pacientes com doença renal crônica felina. No entanto, não há menção direta à pressão arterial nos textos fornecidos. No entanto, é conhecido que a doença renal crônica pode levar a hipertensão, que é perigosa e pode agravar a doença renal.
+",5,RAG
+2025-12-10 15:47:09,1.4,14.0,IRIS1,IRIS1,IRIS1,Confirmada,1,ALTA,O gato está saudável?,"📚 Para determinar se o gato está saudável, precisamos considerar os critérios de saúde renal. De acordo com o contexto fornecido, não há informações específicas sobre o gato em questão. No entanto, podemos considerar as diretrizes IRIS para CKD (Doença Renal Crônica) em gatos.
+
+Se o gato não apresen",5,RAG
+2025-12-10 15:47:16,2.1,20.0,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,Qual o tratamento recomendado?,"📚 O tratamento recomendado para uma feline com Doença Renal Crônica (DRC) depende do estágio da doença. De acordo com as diretrizes da IRIS, o tratamento recomendado é:
+
+- Para felines com DRC estágio 1: 
+  - Suspender medicamentos potencialmente nefrotóxicos, se possível;
+  - Identificar e tratar q",5,RAG
+2025-12-10 15:47:23,2.5,23.0,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,A proteinúria é grave?,"📚 A proteinúria é considerada grave quando o índice de proteína na urina em relação à creatinina (UP/C) é superior a 0,4. Isso é especialmente preocupante em pacientes com doença renal crônica (DRC) em estágios avançados (IRIS CKD 3 e 4). Nesses casos, é importante investigar e tratar as causas subj",5,RAG
+2025-12-10 15:47:30,3.5,30.0,IRIS3,IRIS3,IRIS3,Confirmada,1,ALTA,Qual o prognóstico?,"📚 O prognóstico para um gato com doença renal crônica (DRC) depende de vários fatores, incluindo a etapa da doença, a presença de complicações e a resposta ao tratamento. De acordo com as diretrizes da IRIS, a etapa da doença pode ser determinada pela concentração de creatinina e SDMA no sangue. Em ",5,RAG
+2025-12-10 15:47:37,6.2,55.0,IRIS4,IRIS4,IRIS4,Confirmada,1,ALTA,Qual o cuidado paliativo?,"📚 O cuidado paliativo para pacientes com doença renal crônica felina (CKD) inclui a implementação de medidas para aliviar os sintomas e melhorar a qualidade de vida do animal. Isso pode incluir:
+
+- Restrição de líquidos: para evitar a sobrecarga renal e reduzir a pressão sanguínea.
+- Dieta específic",5,RAG
+2025-12-10 15:47:43,2.1,28.0,IRIS3,IRIS2,IRIS3,Confirmada,1,ALTA,Por que há discrepância?,📚 A discrepância entre a classificação do CKD (Doença Renal Crônica) com base no creatinina e na SDMA (Semi-Desidratina de Methylamine) pode ocorrer devido a várias razões. Uma delas é a sensibilidade e especificidade das análises laboratoriais utilizadas para determinar a concentração de creatinina,5,RAG
+2025-12-10 15:47:50,2.8,25.0,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,A pressão é perigosa?,"📚 A pressão arterial é um fator importante a ser monitorado em pacientes com doença renal crônica (DRC). Em felines, a pressão arterial elevada pode ser um indicador de hipertensão renal, que é uma complicação comum da DRC. A hipertensão renal pode levar a danos nos rins e aumentar a progressão da d",5,RAG
+2025-12-10 15:56:48,1.4,14.0,IRIS1,IRIS1,IRIS1,Confirmada,1,ALTA,O gato está saudável?,"📚 Para determinar se o gato está saudável, precisamos considerar o contexto fornecido. No entanto, não há informações específicas sobre o estado de saúde do gato. Como especialista veterinário em doença renal crônica felina, posso dizer que a saúde renal é um fator importante a considerar.
+
+De acord",5,RAG
+2025-12-10 15:56:55,2.1,20.0,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,Qual o tratamento recomendado?,"📚 Para determinar o tratamento recomendado, é necessário saber a etapa da doença renal crônica felina (CKD) do paciente. De acordo com as diretrizes da IRIS, o tratamento recomendado varia de acordo com a etapa da doença.
+
+- Para pacientes com CKD em estágio 1, o tratamento recomendado é:
+  - Suspen",5,RAG
+2025-12-10 15:57:02,2.5,23.0,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,A proteinúria é grave?,"📚 A proteinúria é considerada grave quando o índice de proteína na urina em relação à creatinina (UP/C) é superior a 0,4. Isso é especialmente preocupante em gatos com doença renal crônica (DRC) em estágios 3 e 4, pois pode indicar danos renais mais avançados e necessidade de investigação e tratamen",5,RAG
+2025-12-10 15:57:08,3.5,30.0,IRIS3,IRIS3,IRIS3,Confirmada,1,ALTA,Qual o prognóstico?,"📚 O prognóstico para um gato com doença renal crônica (DRC) depende do estágio da doença e da resposta ao tratamento. De acordo com as diretrizes da IRIS, o prognóstico geralmente é melhor para os gatos com estágio inicial da doença (IRIS CKD 1 e 2), enquanto os gatos com estágio avançado (IRIS CKD ",5,RAG
+2025-12-10 15:57:15,6.2,55.0,IRIS4,IRIS4,IRIS4,Confirmada,1,ALTA,Qual o cuidado paliativo?,"📚 O cuidado paliativo para pacientes felinos com doença renal crônica (DRC) inclui medidas para aliviar os sintomas e melhorar a qualidade de vida do animal. Além das recomendações de tratamento listadas anteriormente, é importante considerar a seguinte abordagem paliativa:
+
+- Gerenciamento da diure",5,RAG
+2025-12-10 15:57:22,2.1,28.0,IRIS3,IRIS2,IRIS3,Confirmada,1,ALTA,Por que há discrepância?,📚 A discrepância entre a classificação do paciente com doença renal crônica (DRC) com base no creatinina e na concentração de SDMA (semialbumina de metilamina) pode ocorrer devido a várias razões. Uma delas é a sensibilidade e especificidade dos testes utilizados para medir esses parâmetros. Além di,5,RAG
+2025-12-10 15:57:29,2.8,25.0,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,A pressão é perigosa?,"📚 A pressão arterial elevada (hipertensão) é um problema comum em gatos com doença renal crônica (DRC), pois pode agravar a lesão renal e aumentar o risco de complicações cardiovasculares. É importante monitorar a pressão arterial regularmente em gatos com DRC e controlá-la com medicamentos se neces",5,RAG
+2025-12-10 16:04:39,1.4,14.0,IRIS1,IRIS1,IRIS1,Confirmada,1,ALTA,O gato está saudável?,"📚 Não, o gato não está saudável. De acordo com o contexto fornecido, o gato tem doença renal crônica (CKD) e está sendo tratado como um paciente IRIS CKD Stage 2 ou 3, dependendo dos níveis de creatinina e SDMA. Isso indica que o gato tem comprometimento renal significativo e requer monitoramento e ",5,RAG
+2025-12-10 16:04:47,2.1,20.0,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,Qual o tratamento recomendado?,"📚 De acordo com as diretrizes da IRIS, o tratamento recomendado para um paciente felino com doença renal crônica (CKD) depende do estágio da doença. Aqui estão as recomendações gerais:
+
+- Para pacientes com CKD estágio 1, é recomendado:
+  - Suspender medicamentos potencialmente nefrotóxicos, se poss",5,RAG
+2025-12-10 16:04:54,2.5,23.0,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,A proteinúria é grave?,"📚 A proteinúria é considerada grave quando o índice de proteína na urina em relação à creatinina (UP/C) é maior que 0,4, especialmente em estágios avançados de doença renal crônica felina (CKD). Isso é indicado tanto para a investigação de processos patológicos subjacentes quanto para o tratamento d",5,RAG
+2025-12-10 16:05:01,3.5,30.0,IRIS3,IRIS3,IRIS3,Confirmada,1,ALTA,Qual o prognóstico?,"📚 O prognóstico para um gato com doença renal crônica (DRC) depende de vários fatores, incluindo a etapa da doença, a presença de complicações e a resposta ao tratamento. De acordo com as diretrizes da IRIS, a etapa da doença renal pode ser determinada pela concentração de creatinina e SDMA no sangu",5,RAG
+2025-12-10 16:05:08,6.2,55.0,IRIS4,IRIS4,IRIS4,Confirmada,1,ALTA,Qual o cuidado paliativo?,"📚 O cuidado paliativo para pacientes felinos com doença renal crônica (DRC) é fundamental para melhorar a qualidade de vida e controlar os sintomas. Além das recomendações de tratamento listadas anteriormente, é importante considerar a seguinte abordagem paliativa:
+
+- Gerenciamento da diurese: uso d",5,RAG
+2025-12-10 16:05:15,2.1,28.0,IRIS3,IRIS2,IRIS3,Confirmada,1,ALTA,Por que há discrepância?,"📚 A discrepância entre a classificação da doença renal crônica (CKD) com base no nível de creatinina e SDMA (semialbumina de metilamina) pode ocorrer devido a várias razões. Uma delas é a presença de hipertensão arterial, que pode afetar a função renal e alterar os níveis de creatinina e SDMA. No ex",5,RAG
+2025-12-10 16:05:23,2.8,25.0,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,A pressão é perigosa?,"📚 A pressão arterial é um fator importante a ser monitorado em pacientes com doença renal crônica felina. No entanto, a pergunta não está clara. Se você está se referindo à pressão arterial alta (hipertensão), é um problema comum em pacientes com doença renal crônica felina e pode ser perigosa se nã",5,RAG
+2025-12-10 16:19:40,2.1,20.0,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,Qual o tratamento recomendado?,"📚 O tratamento recomendado para um gato com doença renal crônica (CKD) depende do estágio da doença, que é determinado com base nos níveis de creatinina e SDMA no sangue.
+
+De acordo com as diretrizes da IRIS, para um gato com CKD, o tratamento recomendado é:
+
+- Para gatos com CKD estágio 1: 
+  - Sus",5,RAG
+2025-12-10 16:23:20,2.1,20.0,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,Qual o tratamento recomendado?,"📚 De acordo com as diretrizes IRIS, o tratamento recomendado para um gato com doença renal crônica (CKD) depende do estágio da doença. Aqui estão as recomendações gerais:
+
+- Para gatos com CKD estágio 1, o tratamento recomendado é:
+  - Suspender todos os medicamentos potencialmente nefrotóxicos, se ",5,RAG
+2025-12-10 16:24:59,2.1,20.0,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,Qual o tratamento recomendado?,"📚 Para determinar o tratamento recomendado para um gato com doença renal crônica (DRC), é necessário considerar o estágio da doença, que pode ser determinado com base nos níveis de creatinina e SDMA (semidesoxiálato de metilamina) no sangue.
+
+Segundo as diretrizes da IRIS (2019), para gatos com DRC,",5,RAG
+2025-12-10 16:30:04,1.4,14.0,IRIS1,IRIS1,IRIS1,Confirmada,1,ALTA,O gato está saudável?,"📚 Não, o gato não está saudável. De acordo com o contexto fornecido, o gato foi diagnosticado com doença renal crônica (CKD) e está sendo tratado como um paciente IRIS CKD Stage 2 ou 3, dependendo dos níveis de creatinina e SDMA. Isso indica que o gato tem comprometimento renal significativo e reque",5,RAG
+2025-12-10 16:30:11,2.1,20.0,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,Qual o tratamento recomendado?,"📚 Com base no contexto fornecido, o tratamento recomendado para um gato com doença renal crônica (CKD) depende do estágio da doença, que é determinado pela concentração de creatinina e SDMA no sangue.
+
+Para um gato com CKD, o tratamento recomendado é:
+
+- Para gatos com CKD estágio 1: 
+  - Suspender ",5,RAG
+2025-12-10 16:30:18,2.5,23.0,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,A proteinúria é grave?,"📚 A proteinúria é considerada grave quando o índice de proteína na urina (UP/C) é superior a 0,4. Isso é especialmente verdadeiro para gatos em estágios avançados de doença renal crônica (DRC), como estágios 3 e 4, onde a presença de proteinúria pode indicar danos renais mais graves. Além disso, a p",5,RAG
+2025-12-10 16:30:25,3.5,30.0,IRIS3,IRIS3,IRIS3,Confirmada,1,ALTA,Qual o prognóstico?,"📚 O prognóstico para um gato com doença renal crônica (DRC) depende de vários fatores, incluindo a etapa da doença, a presença de complicações e a eficácia do tratamento. De acordo com as diretrizes da IRIS, o prognóstico geralmente é melhor para gatos com DRC em estágios iniciais (IRIS CKD 1 e 2) e",5,RAG
+2025-12-10 16:30:32,6.2,55.0,IRIS4,IRIS4,IRIS4,Confirmada,1,ALTA,Qual o cuidado paliativo?,"📚 O cuidado paliativo para pacientes felinos com doença renal crônica (DRC) inclui:
+
+1. **Gerenciamento da hidratação**: garantir que o animal esteja bem hidratado, pois a desidratação pode agravar a doença renal.
+2. **Alimentação adequada**: fornecer uma dieta equilibrada e específica para DRC, que",5,RAG
+2025-12-10 16:30:39,2.1,28.0,IRIS3,IRIS2,IRIS3,Confirmada,1,ALTA,Por que há discrepância?,"📚 A discrepância entre a classificação da doença renal crônica (DRC) baseada na creatinina e na concentração de SDMA (semidesoxiálato de metilamina) pode ocorrer devido às seguintes razões:
+
+1. **Concentração de SDMA**: A concentração de SDMA pode ser influenciada por fatores como a idade, o peso, a",5,RAG
+2025-12-10 16:30:46,2.8,25.0,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,A pressão é perigosa?,"📚 A pressão arterial elevada pode ser perigosa para os felinos com doença renal crônica (DRC), pois pode aumentar a carga de trabalho dos rins danificados, agravando a progressão da doença. Além disso, a hipertensão pode levar a complicações cardiovasculares e renais adicionais. É importante monitor",5,RAG
+2025-12-10 16:37:23,2.3,23.0,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,O que pode me informar sobre este gato?,"📚 Com base no contexto fornecido, posso informar que o gato em questão tem doença renal crônica (DRC) e está sendo avaliado com base nos critérios da IRIS. Para determinar a etapa da DRC, precisamos considerar os níveis de creatinina e SDMA (semidesoxiálato de metilamina) no sangue do gato.
+
+Se os n",5,RAG
+2025-12-10 16:41:38,5.9,40.0,IRIS4,,IRIS4,Confirmada,1,ALTA,Este gato está em fator de risco? ele é idoso? O que recomenda fazer para sua situação?,"📚 Para determinar o fator de risco do gato, precisamos considerar sua idade e condição renal. Se o gato é idoso (geralmente considerado como > 7 anos), ele está em um fator de risco aumentado para doenças renais crônicas.
+
+Considerando o contexto fornecido, se o gato tem uma creatinina entre 1,6 e 2",5,Regras IRIS
+2025-12-10 16:43:22,2.1,20.0,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,Qual o tratamento recomendado?,"📚 A resposta ao tratamento recomendado depende do estágio da doença renal crônica felina (CKD) do paciente. Segundo as diretrizes da IRIS, o tratamento recomendado para cada estágio é o seguinte:
+
+- Para pacientes com CKD estágio 1: 
+  - Descontinuar todos os medicamentos potencialmente nefrotóxicos",5,RAG
+2025-12-10 16:44:01,2.1,20.0,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,Qual o tratamento recomendado?,"📚 Considerando o contexto fornecido, o tratamento recomendado para um paciente felino com doença renal crônica (CKD) depende do estágio da doença, que é determinado pela concentração de creatinina e SDMA no sangue.
+
+Para um paciente com CKD estágio 1, o tratamento recomendado é:
+
+1. Suspender todos ",5,RAG
+2025-12-10 16:47:06,2.1,20.0,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,Qual o tratamento recomendado?,"📚 De acordo com as diretrizes da IRIS, o tratamento recomendado para um paciente felino com doença renal crônica (CKD) depende do estágio da doença. Aqui estão as recomendações gerais:
+
+- Para pacientes com CKD estágio 1, é recomendado:
+  - Suspender todos os medicamentos potencialmente nefrotóxicos",5,RAG
+2025-12-10 16:47:54,1.4,14.0,IRIS1,IRIS1,IRIS1,Confirmada,1,ALTA,O gato está saudável?,"📚 Com base no contexto fornecido, não é possível determinar se o gato está saudável ou não, pois não há informações específicas sobre os parâmetros clínicos do animal. No entanto, posso fornecer orientação geral sobre como avaliar a saúde renal de um gato.
+
+A doença renal crônica (DRC) é uma condiçã",5,RAG
+2025-12-10 16:48:01,2.1,20.0,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,Qual o tratamento recomendado?,"📚 Para determinar o tratamento recomendado para um gato com doença renal crônica (DRC), é necessário conhecer a etapa da doença, que pode ser determinada com base nos níveis de creatinina e SDMA (semidesoxiálato de metilamina) no sangue.
+
+De acordo com as diretrizes da IRIS, o tratamento recomendado",5,RAG
+2025-12-10 16:48:08,2.5,23.0,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,A proteinúria é grave?,"📚 A gravidade da proteinúria em gatos com doença renal crônica (DRC) depende do nível de proteína na urina em relação à creatinina. De acordo com as diretrizes da IRIS, a proteinúria é considerada grave quando o índice de proteína na urina em relação à creatinina (UP/C) é maior que 0,4. Isso indica ",5,RAG
+2025-12-10 16:48:15,3.5,30.0,IRIS3,IRIS3,IRIS3,Confirmada,1,ALTA,Qual o prognóstico?,"📚 O prognóstico para um gato com doença renal crônica (DRC) depende de vários fatores, incluindo a estadiação da doença, a presença de complicações e a eficácia do tratamento. De acordo com as diretrizes da IRIS, a estadiação da DRC em gatos é feita com base nos níveis de creatinina e SDMA no sangue",5,RAG
+2025-12-10 16:48:22,6.2,55.0,IRIS4,IRIS4,IRIS4,Confirmada,1,ALTA,Qual o cuidado paliativo?,"📚 O cuidado paliativo para pacientes felinos com doença renal crônica (DRC) inclui a implementação de medidas para aliviar os sintomas e melhorar a qualidade de vida do animal. Isso pode incluir a administração de fluidos intravenosos para evitar a desidratação, a redução da ingestão de proteínas pa",5,RAG
+2025-12-10 16:48:29,2.1,28.0,IRIS3,IRIS2,IRIS3,Confirmada,1,ALTA,Por que há discrepância?,📚 A discrepância entre a classificação da doença renal crônica (DRC) baseada na concentração de creatinina e na concentração de SDMA (semialbumina de metilamina) pode ocorrer devido à variabilidade na relação entre esses dois marcadores de função renal. A concentração de SDMA pode ser mais sensível ,5,RAG
+2025-12-10 16:48:37,2.8,25.0,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,A pressão é perigosa?,"📚 A pressão arterial elevada pode ser um problema em pacientes com doença renal crônica felina, pois pode aumentar a carga de trabalho do coração e piorar a função renal. No entanto, a pergunta não está clara sobre o que é ""perigosa"". Se você se refere à pressão arterial elevada, é importante monito",5,RAG
+2025-12-10 16:58:24,1.4,14.0,IRIS1,IRIS1,IRIS1,Confirmada,1,ALTA,O gato está saudável?,"📚 Com base no contexto fornecido, não é possível determinar se o gato está saudável ou não, pois não há informações específicas sobre o estado de saúde do animal. No entanto, posso fornecer orientação geral sobre como avaliar a saúde renal de um gato.
+
+A doença renal crônica (DRC) é uma das doenças ",5,RAG
+2025-12-10 16:58:30,2.1,20.0,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,Qual o tratamento recomendado?,"📚 De acordo com as diretrizes da IRIS (International Renal Interest Society), o tratamento recomendado para um gato com doença renal crônica (CKD) depende da etapa da doença. 
+
+Para um gato com CKD Stage 2, com creatinina entre 1,6 e 2,8 mg/dl, o tratamento recomendado inclui:
+
+1. Suspender todos os",5,RAG
+2025-12-10 16:58:38,2.5,23.0,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,A proteinúria é grave?,"📚 A proteinúria é um indicador importante da doença renal crônica felina. De acordo com as diretrizes IRIS, a proteinúria é considerada grave quando o índice de proteína na urina em relação à creatinina (UP/C) é maior que 0,4. Isso é especialmente verdadeiro para gatos em estágios 3 e 4 da doença re",5,RAG
+2025-12-10 16:58:45,3.5,30.0,IRIS3,IRIS3,IRIS3,Confirmada,1,ALTA,Qual o prognóstico?,"📚 O prognóstico para um paciente felino com doença renal crônica (DRC) depende do estágio da doença, que é determinado pela concentração de creatinina no sangue e pela concentração de SDMA (semidesoxiálato de metilamina). De acordo com as diretrizes da International Renal Interest Society (IRIS), o ",5,RAG
+2025-12-10 16:58:52,6.2,55.0,IRIS4,,IRIS4,Confirmada,1,ALTA,Qual o cuidado paliativo?,"📚 O cuidado paliativo para doença renal crônica felina (CKD) visa melhorar a qualidade de vida do animal, reduzir a dor e os sintomas, e prolongar a sua vida. Isso inclui:
+
+- Gerenciamento da diurese: uso de medicamentos para reduzir a perda de líquidos e minimizar a desidratação.
+- Controle da hipe",5,Regras IRIS
+2025-12-10 16:58:58,2.1,28.0,IRIS3,IRIS2,IRIS3,Confirmada,1,ALTA,Por que há discrepância?,"📚 A discrepância na classificação da doença renal crônica felina (CKD) com base no nível de SDMA (Semi-Desaminada Metionina) e creatinina pode ser explicada pelas diferentes faixas de referência estabelecidas para cada valor. Em particular, a classificação de IRIS sugere que um nível de SDMA persist",5,RAG
+2025-12-10 16:59:05,2.8,25.0,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,A pressão é perigosa?,"📚 A pressão arterial elevada pode ser um problema significativo em gatos com doença renal crônica (DRC), pois pode contribuir para a progressão da doença renal e aumentar o risco de complicações cardiovasculares.
+
+De acordo com as diretrizes IRIS, a pressão arterial deve ser monitorada regularmente ",5,RAG
+2025-12-10 17:18:47,2.3,17.0,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,Este gatos está com risco?,"📚 Com base no contexto fornecido, o gato está com risco de doença renal crônica (DRC) devido aos seguintes motivos:
+
+- A creatinina sérica está acima do valor de referência normal (1,6 mg/dL), o que sugere azotemia, um marcador de DRC.
+- A maioria dos gatos (30/32) apresenta valores de creatinina en",5,RAG
