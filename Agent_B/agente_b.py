@@ -26,7 +26,7 @@ from owlready2 import (
 # =====================================================================
 # CONFIGURAÇÃO
 # =====================================================================
-ONTO_PATH = Path(r"Agent_B/onthology/Ontology_MAS_pro_teste1.owl")
+ONTO_PATH = Path(r"Agent_B/onthology/Ontology_MAS_projeto.owl")
 
 
 def _load_ontology():
@@ -138,11 +138,18 @@ def classificar_estagio_iris_com_validacao(
         print(f"[AGENTE B] ✅ Concordância perfeita")
         return f"EstagioIRIS{stage_creat}", True, None
     
+    elif discrepancia == 1:
+        # ✅ Discrepância de 1 estágio - ACEITAR (usar o maior)
+        estagio_final = max(stage_creat, stage_sdma)
+        print(f"[AGENTE B] ✅ Discrepância de 1 estágio aceita (regra IRIS)")
+        print(f"[AGENTE B]    Usando IRIS {estagio_final} (maior valor)")
+        return f"EstagioIRIS{estagio_final}", True, None
+    
     else:
-        # ❌ Discrepância grande - NÃO CLASSIFICAR!
+        # ❌ Discrepância ≥2 estágios - NÃO CLASSIFICAR!
         motivo = f"Discrepância de {discrepancia} estágios: Creatinina indica IRIS {stage_creat}, SDMA indica IRIS {stage_sdma}"
         
-        print(f"[AGENTE B] ❌ ERRO: Discrepância encontrada: ({discrepancia} estágios)")
+        print(f"[AGENTE B] ❌ ERRO: Discrepância muito grande ({discrepancia} estágios)")
         print(f"[AGENTE B]    Creat={creat} → IRIS {stage_creat}")
         print(f"[AGENTE B]    SDMA={sdma} → IRIS {stage_sdma}")
         print(f"[AGENTE B]    → NÃO É POSSÍVEL CLASSIFICAR COM SEGURANÇA")
@@ -237,8 +244,63 @@ def _extract_iris_stage(is_a_list: List[str]) -> Optional[str]:
     return None
 
 
+def _classificar_subestagio_proteinuria(upc: Optional[float]) -> Optional[str]:
+    """
+    Classifica subetágios de proteinúria (AP) conforme IRIS
+    
+    Diretrizes IRIS para proteinúria:
+    - AP0: Não proteinúrico (UPC < 0.2)
+    - AP1: Borderline proteinúrico (UPC 0.2-0.4)
+    - AP2: Proteinúrico (UPC > 0.4)
+    
+    Args:
+        upc: Razão proteína/creatinina urinária
+        
+    Returns:
+        Subetágio AP (AP0, AP1, AP2) ou None
+    """
+    if upc is None:
+        return None
+    
+    if upc < 0.2:
+        return "AP0"  # Não proteinúrico
+    elif 0.2 <= upc <= 0.4:
+        return "AP1"  # Borderline
+    else:  # upc > 0.4
+        return "AP2"  # Proteinúrico
+
+
+def _classificar_subestagio_hipertensao(pressao: Optional[float]) -> Optional[str]:
+    """
+    Classifica subetágios de hipertensão (HT) conforme IRIS
+    
+    Diretrizes IRIS para pressão arterial sistólica:
+    - HT0: Risco mínimo (< 140 mmHg)
+    - HT1: Risco baixo (140-159 mmHg)
+    - HT2: Risco moderado (160-179 mmHg)
+    - HT3: Risco grave (≥ 180 mmHg)
+    
+    Args:
+        pressao: Pressão arterial sistólica em mmHg
+        
+    Returns:
+        Subetágio HT (HT0, HT1, HT2, HT3) ou None
+    """
+    if pressao is None:
+        return None
+    
+    if pressao < 140:
+        return "HT0"  # Risco mínimo
+    elif 140 <= pressao < 160:
+        return "HT1"  # Risco baixo
+    elif 160 <= pressao < 180:
+        return "HT2"  # Risco moderado
+    else:  # pressao >= 180
+        return "HT3"  # Risco grave
+
+
 def _extract_substage(is_a_list: List[str]) -> Optional[str]:
-    """Extrai subestágio"""
+    """Extrai subestágio (mantido para compatibilidade com ontologia)"""
     parts = []
     for cls in is_a_list:
         cls_lower = str(cls).lower()
@@ -397,19 +459,53 @@ def handle_inference(clinical_data: Dict[str, Any]) -> Dict[str, Any]:
     
     substage = _extract_substage(is_a)
     
+    # ===== CLASSIFICAR SUBETÁGIOS IRIS (AP e HT) =====
+    upc = clinical_data.get("upc") or clinical_data.get("proteinuria")
+    pressao = clinical_data.get("pressao") or clinical_data.get("pressao_arterial")
+    
+    subestagio_ap = _classificar_subestagio_proteinuria(upc)
+    subestagio_ht = _classificar_subestagio_hipertensao(pressao)
+    
+    # Montar descrição de subetágios
+    subestagios_iris = []
+    if subestagio_ap:
+        descricao_ap = {
+            "AP0": "não proteinúrico",
+            "AP1": "borderline proteinúrico", 
+            "AP2": "proteinúrico"
+        }.get(subestagio_ap, subestagio_ap)
+        subestagios_iris.append(f"{subestagio_ap} ({descricao_ap})")
+        print(f"[AGENTE B]   Proteinúria: {subestagio_ap} - UPC={upc}")
+    
+    if subestagio_ht:
+        descricao_ht = {
+            "HT0": "risco mínimo",
+            "HT1": "risco baixo",
+            "HT2": "risco moderado",
+            "HT3": "risco grave"
+        }.get(subestagio_ht, subestagio_ht)
+        subestagios_iris.append(f"{subestagio_ht} ({descricao_ht})")
+        print(f"[AGENTE B]   Hipertensão: {subestagio_ht} - PA={pressao} mmHg")
+    
+    subestagios_completo = ", ".join(subestagios_iris) if subestagios_iris else substage
+    
     # ===== RESULTADO =====
     result = {
         "estagio": detected_stage,
-        "subestagio": substage,
+        "subestagio": subestagios_completo,
+        "subestagio_ap": subestagio_ap,  # ← NOVO
+        "subestagio_ht": subestagio_ht,  # ← NOVO
         "reasoner_ok": reasoner_ok,
-        "classificacao_valida": classificacao_valida,  # ← NOVO
-        "motivo_invalido": motivo_invalido,  # ← NOVO (None se válido)
+        "classificacao_valida": classificacao_valida,
+        "motivo_invalido": motivo_invalido,
         "properties": properties,
         "question": question
     }
     
     print(f"[AGENTE B] ✅ Inferência concluída")
     print(f"[AGENTE B]   Estágio: {detected_stage}")
+    if subestagios_completo:
+        print(f"[AGENTE B]   Subetágios: {subestagios_completo}")
     print(f"[AGENTE B]   Classificação válida: {classificacao_valida}")
     print("="*70 + "\n")
     

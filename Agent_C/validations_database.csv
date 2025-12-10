@@ -1,0 +1,18 @@
+timestamp,creatinina,sdma,estagio_b,estagio_rag,estagio_final,validacao,caso,confianca,pergunta_usuario,resposta_fornecida,num_docs_rag,regra_aplicada
+2025-12-09 21:05:20,2.3,23.0,IRIS2,,IRIS2,Confirmada,1,ALTA,este gato tem risco?,⚠️ Não há informações disponíveis na base de conhecimento indexada para responder esta pergunta. Recomenda-se consultar a literatura IRIS oficial ou indexar mais documentos.,0,Regras IRIS
+2025-12-09 21:06:53,2.4,23.0,IRIS2,,IRIS2,Confirmada,1,ALTA,qual o tratamento recomendado?,⚠️ Não há informações disponíveis na base de conhecimento indexada para responder esta pergunta. Recomenda-se consultar a literatura IRIS oficial ou indexar mais documentos.,0,Regras IRIS
+2025-12-09 21:06:58,3.2,28.0,IRIS3,,IRIS3,Confirmada,1,ALTA,qual o prognóstico?,⚠️ Não há informações disponíveis na base de conhecimento indexada para responder esta pergunta. Recomenda-se consultar a literatura IRIS oficial ou indexar mais documentos.,0,Regras IRIS
+2025-12-09 21:09:03,6.0,40.0,IRIS4,,IRIS4,Confirmada,1,ALTA,O gato está em risco? qual melhor tratamento?,⚠️ Não há informações disponíveis na base de conhecimento indexada para responder esta pergunta. Recomenda-se consultar a literatura IRIS oficial ou indexar mais documentos.,0,Regras IRIS
+2025-12-09 21:10:32,6.0,40.0,IRIS4,,IRIS4,Confirmada,1,ALTA,Qual tratamento para o estagio inferido?,⚠️ Não há informações disponíveis na base de conhecimento indexada para responder esta pergunta. Recomenda-se consultar a literatura IRIS oficial ou indexar mais documentos.,0,Regras IRIS
+2025-12-09 21:11:40,6.0,40.0,IRIS4,,IRIS4,Confirmada,1,ALTA,what can you tell me about the stage of CDK?,⚠️ Não há informações disponíveis na base de conhecimento indexada para responder esta pergunta. Recomenda-se consultar a literatura IRIS oficial ou indexar mais documentos.,0,Regras IRIS
+2025-12-09 21:16:44,2.3,23.0,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,Qual tratamento para o estagio inferido?,,5,RAG
+2025-12-09 21:23:29,2.4,23.0,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,,,5,RAG
+2025-12-09 21:27:14,2.5,23.0,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,qual o risco do gato?,,5,RAG
+2025-12-09 21:34:03,2.4,20.0,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,o gato birmanês tem parametros diferentes?,,5,RAG
+2025-12-09 21:37:40,3.3,34.0,IRIS3,IRIS3,IRIS3,Confirmada,1,ALTA,o gato birmanês tem parametros diferentes?,,5,RAG
+2025-12-09 21:41:22,1.4,15.0,IRIS1,IRIS1,IRIS1,Confirmada,1,ALTA,Qual subestagio do gato?,"📚 Para determinar a subestagio do gato com doença renal crônica, é necessário considerar os níveis de creatinina e SDMA (semialbumina de metilamina) no sangue. De acordo com as diretrizes IRIS, as subestagios são definidas da seguinte forma:
+
+- IRIS CKD Stage 1: Creatinina < 1,6 mg/dl e SDMA < 18 µg",5,RAG
+2025-12-09 21:47:56,2.5,20.0,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,Ela tem risco?,"📚 Com base no contexto fornecido, não há informações específicas sobre a fêmea que apresenta risco. No entanto, posso fornecer orientação geral sobre a doença renal crônica felina (CKD) e os fatores de risco associados.
+
+A CKD é uma condição crônica que pode levar a complicações graves se não for tr",5,RAG

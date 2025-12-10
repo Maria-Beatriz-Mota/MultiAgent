@@ -266,16 +266,19 @@ if __name__ == "__main__":
     
     print("\nModos de uso:")
     print("  1. Formulário completo (recomendado)")
-    print("  3. Executar exemplos")
-    print("  4. Sair")
+    print("  2. Executar exemplos")
+    print("  3. Sair")
     
-    escolha = input("\nEscolha uma opção (1-4): ").strip()
+    escolha = input("\nEscolha uma opção (1-3): ").strip()
     
     if escolha == "1":
         print("\n--- MODO FORMULÁRIO ---")
         print("Forneça os dados clínicos:")
         
         try:
+            nome = input("Nome do gato: ").strip()
+            sexo = input("Sexo (M/F): ").strip().upper()
+            raca = input("Raça: ").strip()
             sdma = input("SDMA (µg/dL): ").strip()
             creat = input("Creatinina (mg/dL): ").strip()
             idade = input("Idade (anos): ").strip()
@@ -287,6 +290,9 @@ if __name__ == "__main__":
             pergunta = input("Pergunta: ").strip()
             
             formulario = {}
+            if nome: formulario["nome"] = nome
+            if sexo: formulario["sexo"] = sexo
+            if raca: formulario["raca"] = raca
             if sdma: formulario["sdma"] = float(sdma)
             if creat: formulario["creatinina"] = float(creat)
             if idade: formulario["idade"] = int(idade)
@@ -308,7 +314,7 @@ if __name__ == "__main__":
         except Exception as e:
             print(f"\n❌ Erro: {e}")
     
-    elif escolha == "3":
+    elif escolha == "2":
         print("\n--- EXECUTANDO EXEMPLOS ---")
         
         exemplo_completo()
@@ -322,7 +328,7 @@ if __name__ == "__main__":
         
         exemplo_pergunta_fora_escopo()
     
-    elif escolha == "4":
+    elif escolha == "3":
         print("\nEncerrando...")
         sys.exit(0)
     

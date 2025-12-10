@@ -154,7 +154,8 @@ def node_agente_a_saida(state: MASState) -> MASState:
         # 🔥 CORREÇÃO: Consolidar B + C ANTES de formatar
         resultado_consolidado = consolidar_resultados(
             resultado_b=state.inference_result,
-            resultado_c=state.validated_result
+            resultado_c=state.validated_result,
+            dados_clinicos=state.clinical_data
         )
         
         print(f"[AGENTE A] Resultado consolidado:")
@@ -162,8 +163,8 @@ def node_agente_a_saida(state: MASState) -> MASState:
         print(f"  • Confiança: {resultado_consolidado.get('confianca')}")
         print(f"  • Caso: {resultado_consolidado.get('caso')}")
         
-        # Formatar para apresentação
-        resposta_final = formatar_resposta_final(resultado_consolidado)
+        # Formatar para apresentação (incluindo dados clínicos)
+        resposta_final = formatar_resposta_final(resultado_consolidado, state.clinical_data)
         
     except Exception as e:
         print(f"[ERRO SAÍDA] {e}")
