@@ -177,3 +177,10 @@ Se a concentração de creatinina estiver entre 1,6 e 2,8 mg/dL, e a concentraç
 
 Se o nível de creatinina estiver entre 1,6 e 2,8 mg/dL, e o nível de SDMA for persistente > 25 µg/dL, o estágio da doença r",5,RAG
 2025-12-10 19:45:45,2.3,20.0,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,Qual a severidade do gato Putin?,"📚 Para determinar a severidade da doença renal crônica felina do gato Putin, precisamos considerar os níveis de creatinina e SDMA. De acordo com as diretrizes IRIS, um gato com creatinina entre 1,6 e 2,8 mg/dL é classificado como IRIS CKD Stage 2. No entanto, se o nível de SDMA for persistente > 25 ",5,RAG
+2025-12-10 21:37:41,2.3,18.5,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,Qual o estágio da doença renal?,"📚 Para determinar o estágio da doença renal crônica felina, precisamos considerar os níveis de creatinina e SDMA no sangue do animal.
+
+Se o nível de creatinina estiver entre 1,6 e 2,8 mg/dL, e o nível de SDMA for persistente > 25 µg/dL, o estágio da doença renal crônica felina é considerado IRIS CKD",5,RAG
+2025-12-10 22:44:02,2.5,22.0,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,Por que este gato está no estágio 2 e qual o tratamento indicado?," Com base no contexto fornecido, o gato está no estágio 2 de doença renal crônica (CKD) de acordo com as diretrizes IRIS, pois seu valor de creatinina é entre 1,6 e 2,8 mg/dL. Além disso, a SDMA (Semi-Desidratase de Mucopolissacarídeos) não foi mencionada como persistente acima de 25 µg/dL, o que nã",5,RAG
+2025-12-10 22:44:09,2.0,20.0,IRIS2,IRIS2,IRIS2,Confirmada,1,ALTA,O gato gosta de brincar com laser?," Infelizmente, a pergunta sobre o gato gostar de brincar com laser não está relacionada ao contexto da doença renal crônica felina e ao sistema de classificação IRIS. No entanto, posso fornecer uma resposta geral baseada em conhecimento veterinário.
+
+Gatos são animais naturais de caça e podem se ben",5,RAG

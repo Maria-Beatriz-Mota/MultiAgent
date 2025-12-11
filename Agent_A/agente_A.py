@@ -79,7 +79,7 @@ def gerar_explicacao_clinica(
     dados_clinicos: Dict[str, Any]
 ) -> str:
     """
-    ⚠️ FUNÇÃO DESATIVADA - NÃO USAR
+    !!FUNÇÃO DESATIVADA - NÃO USAR!!
     
     MOTIVO: LLM pode distorcer informações médicas críticas ao "humanizar" texto.
     O Agente C é o validador científico oficial - sua resposta já está correta
@@ -106,7 +106,7 @@ def gerar_explicacao_clinica(
     
     # Se não tem LLM, retornar direto a mensagem do C
     if not LLM_DISPONIVEL or llm is None:
-        print("[AGENTE A] ⚠️ LLM não disponível, usando texto direto do Agente C")
+        print("[AGENTE A] !! LLM não disponível, usando texto direto do Agente C")
         return mensagem_c
     
     # Construir prompt para humanizar o texto
@@ -128,7 +128,7 @@ INSTRUÇÕES:
 Avaliação reescrita em português:"""
     
     try:
-        print(f"[AGENTE A] 🧠 Humanizando texto com LLM ({LLM_PROVIDER})...")
+        print(f"[AGENTE A]...Humanizando texto com LLM ({LLM_PROVIDER})...")
         
         # Diferentes métodos de invocação por provider
         if LLM_PROVIDER in ["OpenAI", "Groq"]:
@@ -139,11 +139,11 @@ Avaliação reescrita em português:"""
             resposta = llm.invoke(prompt)
             texto = resposta if isinstance(resposta, str) else str(resposta)
         
-        print("[AGENTE A] ✅ Texto humanizado com sucesso")
+        print("[AGENTE A] Texto humanizado com sucesso")
         return texto.strip()
         
     except Exception as e:
-        print(f"[AGENTE A] ⚠️ Erro ao humanizar com LLM: {str(e)[:100]}")
+        print(f"[AGENTE A] !! Erro ao humanizar com LLM: {str(e)[:100]}")
         # Fallback: retornar texto do C sem modificação
         return mensagem_c
 
@@ -236,7 +236,7 @@ def consolidar_resultados(
     
     dados_clinicos = dados_clinicos or {}
     
-    # 🔥 PRIORIZAR campos do Agente C (ele já consolidou tudo)
+    # !PRIORIZAR campos do Agente C (ele já consolidou tudo)!
     estagio_final = resultado_c.get("estagio_final")
     caso = resultado_c.get("caso")
     inconsistencia = resultado_c.get("inconsistencia", False)
@@ -252,8 +252,8 @@ def consolidar_resultados(
             "mensagem": resultado_c.get("resposta_clinica", "Discrepância detectada nos biomarcadores."),
             "plano_terapeutico": [],
             "alertas": [
-                "⚠️ INCONSISTÊNCIA CRÍTICA: Valores de creatinina e SDMA apresentam discrepância significativa.",
-                "📋 Ação requerida: Repetir exames laboratoriais antes de prosseguir com o tratamento."
+                "!!!! INCONSISTÊNCIA CRÍTICA: Valores de creatinina e SDMA apresentam discrepância significativa.",
+                "Ação requerida: Repetir exames laboratoriais antes de prosseguir com o tratamento."
             ],
             "confianca": "INVÁLIDA",
             "caso": caso
@@ -271,7 +271,7 @@ def consolidar_resultados(
             ),
             "plano_terapeutico": [],
             "alertas": [
-                "⚠️ Dados clínicos insuficientes.",
+                "!!!!Dados clínicos insuficientes.",
                 "Por favor, forneça valores de creatinina e/ou SDMA."
             ],
             "confianca": "BAIXA",
@@ -287,8 +287,8 @@ def consolidar_resultados(
     # LLM pode introduzir erros ou "alucinar" informações médicas
     mensagem = resultado_c.get("resposta_clinica", "")
     
-    print("[AGENTE A] ✅ Usando resposta validada do Agente C (sem LLM)")
-    print("[AGENTE A] 📋 Resposta científica preservada para garantir precisão")
+    print("[AGENTE A] Usando resposta validada do Agente C (sem LLM)")
+    print("[AGENTE A] Resposta científica preservada para garantir precisão")
     
     # Plano terapêutico
     plano = resultado_c.get("tratamento_recomendado", [])
@@ -298,11 +298,11 @@ def consolidar_resultados(
     if valida_b is True:
         confianca = "ALTA"
         if caso == 1:
-            alertas.append("✅ Inferência ontológica validada pela literatura científica.")
+            alertas.append("Inferência ontológica validada pela literatura científica.")
     elif valida_b is None:
         confianca = "MODERADA"
         if caso == 2:
-            alertas.append("💡 Classificação baseada na literatura (ontologia não inferiu estágio).")
+            alertas.append("Classificação baseada na literatura (ontologia não inferiu estágio).")
     else:
         confianca = "MODERADA"
     
@@ -332,7 +332,7 @@ def formatar_resposta_final(resultado: Dict[str, Any], dados_clinicos: Dict[str,
     """
     
     resposta = []
-    resposta.append("🩺 Avaliação Clínica – Doença Renal Crônica Felina")
+    resposta.append("Avaliação Clínica – Doença Renal Crônica Felina")
     resposta.append("=" * 70)
     
     # Adicionar informações do paciente se disponíveis
@@ -352,7 +352,7 @@ def formatar_resposta_final(resultado: Dict[str, Any], dados_clinicos: Dict[str,
         
         if info_paciente:
             resposta.append("")
-            resposta.append("📋 Dados do Paciente:")
+            resposta.append("Dados do Paciente:")
             resposta.append("-" * 70)
             resposta.append("  • " + " | ".join(info_paciente))
             resposta.append("")
@@ -360,15 +360,15 @@ def formatar_resposta_final(resultado: Dict[str, Any], dados_clinicos: Dict[str,
     # 🔥 CASO 3: Inconsistência - destaque especial
     if resultado.get("confianca") == "INVÁLIDA":
         resposta.append("")
-        resposta.append("⚠️ " + "="*66)
-        resposta.append("⚠️  ATENÇÃO: VALORES LABORATORIAIS INCONSISTENTES")
-        resposta.append("⚠️ " + "="*66)
+        resposta.append("!!!!" + "="*66)
+        resposta.append("!!!!  ATENÇÃO: VALORES LABORATORIAIS INCONSISTENTES")
+        resposta.append("!!!! " + "="*66)
         resposta.append("")
         resposta.append(resultado.get("mensagem", ""))
         resposta.append("")
         
         if resultado.get("alertas"):
-            resposta.append("📋 Ações Recomendadas:")
+            resposta.append("Ações Recomendadas:")
             for a in resultado["alertas"]:
                 resposta.append(f"   {a}")
         
@@ -382,7 +382,7 @@ def formatar_resposta_final(resultado: Dict[str, Any], dados_clinicos: Dict[str,
     subestagio_ht = resultado.get("subestagio_ht")
     
     if estagio:
-        linha_estagio = f"\n📌 Estágio IRIS sugerido: {estagio}"
+        linha_estagio = f"\n Estágio IRIS sugerido: {estagio}"
         
         # Adicionar subetágios se disponíveis
         subetagios_str = []
@@ -398,11 +398,11 @@ def formatar_resposta_final(resultado: Dict[str, Any], dados_clinicos: Dict[str,
         
         resposta.append(linha_estagio)
     else:
-        resposta.append(f"\n⚠️ Estágio IRIS: NÃO DETERMINADO")
+        resposta.append(f"\n!!!! Estágio IRIS: NÃO DETERMINADO")
     
     # Fundamentação clínica
     resposta.append("")
-    resposta.append("📄 Fundamentação:")
+    resposta.append("Fundamentação:")
     resposta.append("-" * 70)
     mensagem = resultado.get("mensagem", "Nenhuma informação disponível")
     resposta.append(mensagem)
@@ -410,7 +410,7 @@ def formatar_resposta_final(resultado: Dict[str, Any], dados_clinicos: Dict[str,
     # Alertas
     if resultado.get("alertas"):
         resposta.append("")
-        resposta.append("⚠️  Observações:")
+        resposta.append("! OBSERVAÇÕES !:")
         resposta.append("-" * 70)
         for a in resultado["alertas"]:
             resposta.append(f"  • {a}")
@@ -418,7 +418,7 @@ def formatar_resposta_final(resultado: Dict[str, Any], dados_clinicos: Dict[str,
     # Plano terapêutico
     if resultado.get("plano_terapeutico"):
         resposta.append("")
-        resposta.append("💊 Recomendações Terapêuticas:")
+        resposta.append(" Recomendações Terapêuticas:")
         resposta.append("-" * 70)
         for idx, item in enumerate(resultado["plano_terapeutico"], 1):
             resposta.append(f"  {idx}. {item}")

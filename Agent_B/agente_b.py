@@ -8,8 +8,8 @@ NOVA REGRA IMPLEMENTADA:
 - Se discrepância ≤ 1 estágio: Usar o maior (regra IRIS padrão)
 
 Exemplo:
-- Creat=2.5 (IRIS 2), SDMA=28 (IRIS 3) → OK, usar IRIS 3 ✅
-- Creat=1.5 (IRIS 1), SDMA=50 (IRIS 4) → ERRO, não classificar! ❌
+- Creat=2.5 (IRIS 2), SDMA=28 (IRIS 3) → OK, usar IRIS 3 
+- Creat=1.5 (IRIS 1), SDMA=50 (IRIS 4) → ERRO, não classificar! 
 """
 
 import os
@@ -23,9 +23,9 @@ from owlready2 import (
     sync_reasoner_hermit
 )
 
-# =====================================================================
+
 # CONFIGURAÇÃO
-# =====================================================================
+
 ONTO_PATH = Path(r"Agent_B/onthology/Ontology_MAS_projeto.owl")
 
 
@@ -46,10 +46,8 @@ def _load_ontology():
     except Exception as e:
         raise Exception(f"Erro ao carregar ontologia: {e}")
 
+# CLASSIFICAÇÃO IRIS COM VALIDAÇÃO DE DISCREPÂNCIA
 
-# =====================================================================
-# 🔧 CLASSIFICAÇÃO IRIS COM VALIDAÇÃO DE DISCREPÂNCIA
-# =====================================================================
 def classificar_estagio_iris_com_validacao(
     creat: Optional[float], 
     sdma: Optional[float]
@@ -110,7 +108,7 @@ def classificar_estagio_iris_com_validacao(
         else:  # sdma > 38.0
             stage_sdma = 4
     
-    # ===== VALIDAÇÃO DE DISCREPÂNCIA =====
+    #VALIDAÇÃO DE DISCREPÂNCIA
     
     # Caso 1: Só tem um biomarcador
     if stage_creat is None and stage_sdma is not None:
@@ -131,7 +129,7 @@ def classificar_estagio_iris_com_validacao(
     print(f"[AGENTE B]   SDMA {sdma} µg/dL → IRIS {stage_sdma}")
     print(f"[AGENTE B]   Discrepância: {discrepancia} estágios")
     
-    # ===== REGRA DE VALIDAÇÃO =====
+    # REGRA DE VALIDAÇÃO
     
     if discrepancia == 0:
         # ✅ Concordância perfeita
@@ -163,9 +161,9 @@ def classificar_estagio_iris_com_validacao(
         return None, False, motivo
 
 
-# =====================================================================
-# CRIAR PACIENTE NA ONTOLOGIA (mantido)
-# =====================================================================
+
+# CRIAR PACIENTE NA ONTOLOGIA
+
 def _create_patient_instance(world, onto, patient_id: str, clinical: Dict[str, Any]):
     """Cria instância de paciente na ontologia"""
     Gato = onto.search_one(iri="*Gato")
@@ -201,10 +199,8 @@ def _create_patient_instance(world, onto, patient_id: str, clinical: Dict[str, A
     
     return patient
 
+# EXTRAIR INFORMAÇÕES
 
-# =====================================================================
-# EXTRAIR INFORMAÇÕES (mantido)
-# =====================================================================
 def _extract_claims_from_instance(instance):
     """Extrai informações inferidas"""
     is_a = []
@@ -300,7 +296,7 @@ def _classificar_subestagio_hipertensao(pressao: Optional[float]) -> Optional[st
 
 
 def _extract_substage(is_a_list: List[str]) -> Optional[str]:
-    """Extrai subestágio (mantido para compatibilidade com ontologia)"""
+    """Extrai subestágio """
     parts = []
     for cls in is_a_list:
         cls_lower = str(cls).lower()
@@ -323,9 +319,9 @@ def _extract_substage(is_a_list: List[str]) -> Optional[str]:
     return ", ".join(parts) if parts else None
 
 
-# =====================================================================
-# 🔧 FUNÇÃO PRINCIPAL CORRIGIDA
-# =====================================================================
+
+# FUNÇÃO PRINCIPAL
+
 def handle_inference(clinical_data: Dict[str, Any]) -> Dict[str, Any]:
     """
     Função principal com validação de discrepância
@@ -375,7 +371,7 @@ def handle_inference(clinical_data: Dict[str, Any]) -> Dict[str, Any]:
             "question": question
         }
     
-    # ===== CARREGAR ONTOLOGIA =====
+    #CARREGAR ONTOLOGIA
     try:
         world, onto = _load_ontology()
     except Exception as e:
@@ -389,7 +385,7 @@ def handle_inference(clinical_data: Dict[str, Any]) -> Dict[str, Any]:
             "question": question
         }
     
-    # ===== CRIAR INSTÂNCIA =====
+    #CRIAR INSTÂNCIA
     patient_id = str(uuid.uuid4())[:8]
     print(f"[AGENTE B] Criando paciente: {patient_id}")
     
@@ -406,7 +402,7 @@ def handle_inference(clinical_data: Dict[str, Any]) -> Dict[str, Any]:
             "question": question
         }
     
-    # ===== 🔧 VALIDAR E CLASSIFICAR COM VERIFICAÇÃO DE DISCREPÂNCIA =====
+    # VALIDAR E CLASSIFICAR COM VERIFICAÇÃO DE DISCREPÂNCIA
     estagio_name, classificacao_valida, motivo_invalido = classificar_estagio_iris_com_validacao(
         float(creatinina_val) if creatinina_val is not None else None,
         float(sdma_val) if sdma_val is not None else None
@@ -414,7 +410,7 @@ def handle_inference(clinical_data: Dict[str, Any]) -> Dict[str, Any]:
     
     # Se classificação inválida, RETORNAR SEM INFERIR
     if not classificacao_valida:
-        print(f"[AGENTE B] ❌ CLASSIFICAÇÃO INVÁLIDA - NÃO SERÁ INFERIDO")
+        print(f"[AGENTE B] CLASSIFICAÇÃO INVÁLIDA - NÃO SERÁ INFERIDO")
         return {
             "estagio": None,
             "subestagio": None,
@@ -423,10 +419,10 @@ def handle_inference(clinical_data: Dict[str, Any]) -> Dict[str, Any]:
             "motivo_invalido": motivo_invalido,
             "properties": {"annotations": [], "data_properties": {}},
             "question": question,
-            "alerta": "⚠️ ERRO DE CLASSIFICAÇÃO: " + motivo_invalido
+            "alerta": "ERRO DE CLASSIFICAÇÃO: " + motivo_invalido
         }
     
-    # ===== CLASSIFICAÇÃO VÁLIDA - PROSSEGUIR =====
+    # CLASSIFICAÇÃO VÁLIDA - PROSSEGUIR 
     if estagio_name:
         print(f"[AGENTE B] ✓ Estágio calculado: {estagio_name}")
         
@@ -435,7 +431,7 @@ def handle_inference(clinical_data: Dict[str, Any]) -> Dict[str, Any]:
             patient.is_a.append(estagio_class)
             print(f"[AGENTE B]   ✓ Paciente classificado como {estagio_name}")
     
-    # ===== EXECUTAR REASONER =====
+    #  EXECUTAR REASONER
     print("[AGENTE B] Executando reasoner HermiT...")
     reasoner_ok = False
     
@@ -444,9 +440,9 @@ def handle_inference(clinical_data: Dict[str, Any]) -> Dict[str, Any]:
         reasoner_ok = True
         print("[AGENTE B] ✓ Reasoner executado")
     except Exception as e:
-        print(f"[AGENTE B] ⚠️ Erro no reasoner: {e}")
+        print(f"[AGENTE B] Erro no reasoner: {e}")
     
-    # ===== EXTRAIR INFERÊNCIAS =====
+    # EXTRAIR INFERÊNCIAS 
     extracted = _extract_claims_from_instance(patient)
     is_a = extracted["is_a"]
     properties = extracted["properties"]
@@ -459,7 +455,7 @@ def handle_inference(clinical_data: Dict[str, Any]) -> Dict[str, Any]:
     
     substage = _extract_substage(is_a)
     
-    # ===== CLASSIFICAR SUBETÁGIOS IRIS (AP e HT) =====
+    #  CLASSIFICAR SUBETÁGIOS IRIS (AP e HT) 
     upc = clinical_data.get("upc") or clinical_data.get("proteinuria")
     pressao = clinical_data.get("pressao") or clinical_data.get("pressao_arterial")
     
@@ -502,7 +498,7 @@ def handle_inference(clinical_data: Dict[str, Any]) -> Dict[str, Any]:
         "question": question
     }
     
-    print(f"[AGENTE B] ✅ Inferência concluída")
+    print(f"[AGENTE B] Inferência concluída")
     print(f"[AGENTE B]   Estágio: {detected_stage}")
     if subestagios_completo:
         print(f"[AGENTE B]   Subetágios: {subestagios_completo}")
@@ -512,16 +508,15 @@ def handle_inference(clinical_data: Dict[str, Any]) -> Dict[str, Any]:
     return result
 
 
-# =====================================================================
-# TESTE
-# =====================================================================
+    # TESTE
+
 if __name__ == "__main__":
     print("="*70)
     print("TESTES DE VALIDAÇÃO DE DISCREPÂNCIA")
     print("="*70)
     
     # Teste 1: Concordância perfeita
-    print("\n🧪 TESTE 1: Concordância (Creat=2.5, SDMA=22)")
+    print("\n TESTE 1: Concordância (Creat=2.5, SDMA=22)")
     resultado1 = handle_inference({
         "creatinina": 2.5,
         "sdma": 22,
@@ -530,7 +525,7 @@ if __name__ == "__main__":
     print(f"Resultado: {resultado1['estagio']}, Válido: {resultado1['classificacao_valida']}")
     
     # Teste 2: Discrepância de 1 estágio (OK)
-    print("\n🧪 TESTE 2: Discrepância 1 estágio (Creat=2.5→IRIS2, SDMA=28→IRIS3)")
+    print("\n TESTE 2: Discrepância 1 estágio (Creat=2.5→IRIS2, SDMA=28→IRIS3)")
     resultado2 = handle_inference({
         "creatinina": 2.5,
         "sdma": 28,

@@ -1,33 +1,63 @@
-# LangGraph e dependências
-langgraph>=0.2.0
+
+# REQUIREMENTS.TXT - Sistema Multi-Agente para Diagnóstico Médico
+
+# LangGraph e LangChain (Orquestração de Agentes)
+
 langgraph-cli
 langchain>=0.3.0
 langchain-core>=0.3.0
 langchain-community>=0.3.0
 
-# Embeddings e base vetorial
-langchain-chroma
-langchain_google_genai
 
+# LLM Providers (Groq, Google Gemini)
+
+langchain-groq>=0.1.0
+langchain-google-genai
+
+
+# RAG - Embeddings e Base Vetorial (Agente C)
+
+langchain-chroma
 chromadb>=0.4.0
 sentence-transformers
 
-# Processamento de PDFs
+
+# Processamento de PDFs (Agente C)
+
+
 pypdf
 pypdfium2
 
-# Ontologia OWL
+
+
+# Ontologias OWL (Agente B)
+
 owlready2>=0.46
+# NOTA: Owlready2 requer Java instalado para usar o reasoner Pellet/hermit
+# Download Java: https://www.oracle.com/java/technologies/downloads/
 
-# Reasoner Pellet (necessário para owlready2)
-# Certifique-se de ter Java instalado no sistema
+# Utilidades Gerais
 
-# Utilidades
 pydantic>=2.0
 requests
 python-dotenv
+typing-extensions
 
-# Opcional: para interface web
-streamlit>=1.28.0
-# Opcional: Langsmith
-#pip install -U "langgraph-cli[inmem]"
+
+# Opcional: Interface Web
+
+# streamlit>=1.28.0
+# Express
+
+# Opcional: LangSmith (Debugging e Monitoring)
+
+# langsmith
+
+# INSTALAÇÃO
+
+# Para instalar todas as dependências:
+ pip install -r requirements.txt
+
+# Para verificar versões instaladas:
+# pip list | grep -E "langgraph|langchain|chromadb|owlready2"
+

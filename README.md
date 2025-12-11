@@ -1,246 +1,654 @@
-<<<<<<< HEAD
-# MultiAgent
-=======
-# Sistema Multi-Agente para Diagnóstico IRIS em Gatos 🐱
+# Sistema Multi-Agente para Diagnóstico Médico
+## Integração LLM + RAG + Ontologias via LangGraph
 
-Sistema de suporte à decisão clínica para classificação de Doença Renal Crônica (DRC) em gatos segundo diretrizes IRIS.
+[![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![LangGraph](https://img.shields.io/badge/LangGraph-0.2+-green.svg)](https://github.com/langchain-ai/langgraph)
+[![License](https://img.shields.io/badge/License-Academic-yellow.svg)](LICENSE)
 
-## 🏗️ Arquitetura
+Sistema inteligente de suporte à decisão clínica que combina **3 agentes especializados** para análise, validação e fundamentação de diagnósticos médicos. Utiliza **LangGraph** para orquestração, **LLMs** para raciocínio clínico, **ontologias OWL** para validação formal e **RAG** para evidências científicas.
+
+---
+
+## Índice
+
+- [Sobre o Projeto](#-sobre-o-projeto)
+- [Arquitetura](#-arquitetura)
+- [Como Funciona](#-como-funciona)
+- [Tecnologias](#-tecnologias)
+- [Instalação](#-instalação)
+- [Uso](#-uso)
+- [Estrutura do Projeto](#-estrutura-do-projeto)
+- [API REST](#-api-rest)
+- [Exemplos](#-exemplos)
+- [Documentação](#-documentação)
+- [Troubleshooting](#-troubleshooting)
+- [Licença](#-licença)
+
+---
+
+## Sobre o Projeto
+
+Este sistema implementa uma arquitetura multi-agente para auxiliar no diagnóstico de **Doença Renal Crônica (DRC)** em gatos, seguindo as diretrizes oficiais **IRIS** (International Renal Interest Society).
+
+### Diferenciais:
+
+- **3 Agentes Especializados** que cooperam via LangGraph
+- **Raciocínio Clínico** com LLM (Groq/LLaMA 3.1 70B)
+- **Validação Formal** com ontologias OWL + reasoner Pellet
+- **Evidências Científicas** via RAG (ChromaDB)
+- **Estados Compartilhados** entre agentes
+- **API REST** para integração externa
+
+### Aplicação:
+
+Sistema de suporte à decisão clínica para veterinários, permitindo:
+- Análise de sintomas e parâmetros laboratoriais
+- Classificação automática de estágios IRIS
+- Validação cruzada entre múltiplas fontes de conhecimento
+- Fundamentação científica das recomendações
+
+---
+
+## Arquitetura
+
+### Fluxo Geral:
 
 ```
-Usuário → [Agente A] → [Agente B] → [Agente C] → [Agente A] → Resposta
-          Extração     Ontologia    Validação     Formatação
-          de dados     + Reasoner   + RAG
+┌─────────────┐
+│   Input     │  Sintomas + Dados Clínicos
+│  (JSON/API) │
+└──────┬──────┘
+       │
+       ▼
+┌─────────────────────────────────────────┐
+│         LangGraph (Orquestração)        │
+│  ┌───────────────────────────────────┐  │
+│  │     Estados Compartilhados        │  │
+│  │  (AgentState: TypedDict)          │  │
+│  └───────────────────────────────────┘  │
+└─────────────────────────────────────────┘
+       │
+       ├──► Agente A (Análise Clínica)
+       │      ↓ state["diagnosis"]
+       │
+       ├──► Agente B (Validação OWL)
+       │      ↓ state["validation"]
+       │
+       └──► Agente C (RAG + Evidências)
+              ↓ state["evidence"]
+       │
+       ▼
+┌─────────────┐
+│   Output    │  Diagnóstico + Validação + Evidências
+│  (JSON/API) │
+└─────────────┘
 ```
 
-### Agentes:
+### Agente A - Raciocínio Clínico
 
-- **Agente A**: Processa input do usuário, extrai parâmetros clínicos, formata resposta final
-- **Agente B**: Inferência ontológica usando OWL + Pellet reasoner
-- **Agente C**: Validação com RAG (Retrieval-Augmented Generation) das diretrizes IRIS
+**Responsabilidade:** Análise inicial de sintomas com LLM
 
-## 📋 Pré-requisitos
+**Tecnologias:**
+- Groq (LLaMA 3.1 70B)
+- LangChain
+- Chain-of-Thought prompting
 
-### Software necessário:
-1. **Python 3.10+**
-2. **Java JDK 8+** (para o reasoner Pellet)
-   ```bash
-   # Verificar se Java está instalado
-   java -version
-   ```
+**Entrada:** 
+```json
+{
+  "symptoms": "febre alta, tosse seca, dor no peito",
+  "patient_age": 45,
+  "patient_sex": "M"
+}
+```
 
-### Verificar Java:
+**Saída:** Lista priorizada de diagnósticos possíveis
+
+---
+
+### Agente B - Validação Ontológica
+
+**Responsabilidade:** Validação formal com conhecimento estruturado
+
+**Tecnologias:**
+- Owlready2
+- Ontologias OWL
+- Reasoner Pellet (DL)
+
+**Entrada:** Diagnósticos do Agente A
+
+**Saída:** Validação lógica + compatibilidade ontológica
+
+**Regras IRIS Implementadas:**
+- Classificação de estágios (1-4)
+- Validação cruzada Creatinina/SDMA
+- Detecção de discrepâncias (≥2 estágios = erro)
+
+---
+
+### Agente C - RAG e Evidências
+
+**Responsabilidade:** Busca em literatura científica
+
+**Tecnologias:**
+- ChromaDB (base vetorial)
+- Embeddings (Google Generative AI)
+- RAG (Retrieval-Augmented Generation)
+
+**Entrada:** Diagnósticos validados
+
+**Saída:** Artigos científicos relevantes + evidências
+
+**Base de Conhecimento:**
+- PDFs médicos indexados
+- Busca semântica
+- Top-k documentos mais relevantes
+
+---
+
+## Como Funciona
+
+### 1. Recepção de Dados
+
+```python
+# Input via API ou linha de comando
+input_data = {
+    "symptoms": "febre, tosse, dificuldade respiratória",
+    "patient_age": 45,
+    "patient_sex": "M"
+}
+```
+
+### 2. Orquestração LangGraph
+
+```python
+from langgraph.graph import StateGraph
+
+# Criar grafo
+workflow = StateGraph(AgentState)
+
+# Adicionar agentes como nós
+workflow.add_node("agent_a", agent_a_node)
+workflow.add_node("agent_b", agent_b_node)
+workflow.add_node("agent_c", agent_c_node)
+
+# Definir fluxo
+workflow.add_edge("agent_a", "agent_b")
+workflow.add_edge("agent_b", "agent_c")
+
+# Compilar e executar
+app = workflow.compile()
+result = app.invoke(input_data)
+```
+
+### 3. Estados Compartilhados
+
+```python
+class AgentState(TypedDict):
+    symptoms: str              # Input inicial
+    patient_age: int
+    patient_sex: str
+    diagnosis: List[str]       # Output Agente A
+    validation: Dict           # Output Agente B
+    evidence: List[str]        # Output Agente C
+    final_result: Dict         # Consolidado
+```
+
+### 4. Resultado Final
+
+```json
+{
+  "diagnosis": ["Pneumonia bacteriana", "COVID-19"],
+  "confidence": 0.85,
+  "iris_stage": "IRIS 3",
+  "validation": {
+    "ontology_compatible": true,
+    "reasoner_status": "success"
+  },
+  "evidence": [
+    "Artigo: Diagnóstico de pneumonia...",
+    "Estudo: Biomarcadores respiratórios..."
+  ],
+  "recommendations": "Antibioticoterapia + Exames complementares"
+}
+```
+
+---
+
+## Tecnologias
+
+### Backend Python
+
+| Tecnologia | Versão | Uso |
+|------------|--------|-----|
+| **LangGraph** | 0.2+ | Orquestração de agentes |
+| **LangChain** | 0.3+ | Framework LLM |
+| **Groq** | - | LLM Provider (LLaMA 3.1 70B) |
+| **Owlready2** | 0.46+ | Ontologias OWL |
+| **ChromaDB** | 0.4+ | Base vetorial (RAG) |
+| **Python** | 3.10+ | Linguagem principal |
+
+### API Node.js
+
+| Tecnologia | Uso |
+|------------|-----|
+| **Express.js** | API REST |
+| **CORS** | Cross-origin requests |
+| **Node.js** | Runtime |
+
+---
+
+## Instalação
+
+### Pré-requisitos
+
+- **Python 3.10+** ([Download](https://www.python.org/downloads/))
+- **Node.js 16+** ([Download](https://nodejs.org/))
+- **Java JDK 11+** (para reasoner Pellet) ([Download](https://www.oracle.com/java/technologies/downloads/))
+- **Git** ([Download](https://git-scm.com/downloads))
+
+### Passo a Passo
+
+**1. Clonar o repositório:**
+
+```bash
+git clone https://github.com/Maria-Beatriz-Mota/MultiAgent.git
+cd MultiAgent
+```
+
+**2. Criar ambiente virtual Python:**
+
 ```bash
 # Windows
-java -version
+python -m venv venv_mas
+.\venv_mas\Scripts\Activate.ps1
 
-# Instalar se necessário:
-# https://www.oracle.com/java/technologies/downloads/
+# Linux/Mac
+python3 -m venv venv_mas
+source venv_mas/bin/activate
 ```
 
-## 🚀 Instalação
-
-### 1. Clone ou baixe o projeto
+**3. Instalar dependências Python:**
 
 ```bash
-cd C:\Users\Maria Beatriz\Desktop\Projeto_MAS
-```
-
-### 2. Instale as dependências
-
-```bash
+pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-### 3. Configure a base de conhecimento (RAG)
+**4. Instalar dependências Node.js:**
+
+```bash
+cd api
+npm install
+cd ..
+```
+
+**5. Configurar variáveis de ambiente:**
+
+```bash
+# Copiar arquivo de exemplo
+cp .env.example .env
+
+# Editar .env e adicionar suas API keys:
+# GROQ_API_KEY=sua_chave_aqui
+# GOOGLE_API_KEY=sua_chave_aqui
+```
+
+**Onde obter API keys:**
+- **Groq (Gratuito):** https://console.groq.com/keys
+- **Google Gemini (Gratuito):** https://makersuite.google.com/app/apikey
+
+**6. Indexar PDFs médicos (RAG):**
 
 ```bash
 python setup_rag.py
 ```
 
-Coloque os PDFs das diretrizes IRIS em:
-```
-Projeto_MAS/Agent_C/pdfs/
-```
+**7. Verificar instalação:**
 
-### 4. Verifique a ontologia
+```bash
+# Teste rápido Python
+python run_lg.py
 
-Certifique-se que a ontologia OWL está em:
-```
-Projeto_MAS/Agent_B/onthology/ONTHOLOGY_MAS.owl
+# Teste com JSON
+Get-Content test_request.json | python run_lg_api.py
 ```
 
-## 💻 Uso
+**Guia completo:** Veja [GUIA_INSTALACAO.md](GUIA_INSTALACAO.md)
 
-### Método 1: Linha de comando
+---
+
+## Uso
+
+### Modo 1: Python Direto (Terminal)
 
 ```bash
 python run_lg.py
 ```
 
-Exemplo de input:
-```
-Gato com creatinina 3.5, SDMA 22, pressão 165
-```
+### Modo 2: API REST (Recomendado)
 
-### Método 2: LangGraph Studio (Recomendado)
+**Iniciar servidor:**
 
 ```bash
-langgraph dev
+cd api
+npm start
 ```
 
-Acesse `http://localhost:8123` no navegador
+**Fazer requisição:**
 
-O Studio permite:
-- ✅ Visualizar o fluxo entre agentes em tempo real
-- ✅ Inspecionar o estado em cada etapa
-- ✅ Debug interativo
-- ✅ Replay de execuções
+```bash
+# PowerShell
+Invoke-WebRequest -Uri http://localhost:3001/api/diagnosis `
+  -Method POST `
+  -ContentType "application/json" `
+  -Body '{"symptoms":"febre, tosse","patient_age":45,"patient_sex":"M"}'
 
-## 📊 Estrutura do Projeto
+# cURL
+curl -X POST http://localhost:3001/api/diagnosis \
+  -H "Content-Type: application/json" \
+  -d '{"symptoms":"febre, tosse","patient_age":45,"patient_sex":"M"}'
+```
+
+### Modo 3: Interface HTML
+
+Abra `test_api.html` no navegador para testar via interface visual.
+
+---
+
+## Estrutura do Projeto
 
 ```
-Projeto_MAS/
-├── langgraph.json          # Configuração do LangGraph Studio
-├── requirements.txt        # Dependências Python
-├── setup_rag.py           # Script de setup do RAG
-├── run_lg.py              # Ponto de entrada principal
-├── lg_states.py           # Definição do estado compartilhado
-├── lg_nodes.py            # Nodes do grafo
-├── Agent_A/
+MultiAgent/
+├── README.md                           # Este arquivo (documentação principal)
+├── API_GUIA_RAPIDO.md                  # Documentação da API REST
+├── ARQUITETURA_DETALHADA.md            # Decisões de design e arquitetura
+├── GUIA_INSTALACAO.md                  # Instalação passo a passo
+├── RELATORIO_TECNICO.md                # Resultados e métricas
+│
+├── requirements.txt                    # Dependências Python
+├── .env                                # Variáveis de ambiente (não commitado)
+├── .env.example                        # Template do .env
+├── .gitignore                          # Git ignore
+│
+├── lg_states.py                        # Estados LangGraph (AgentState)
+├── lg_nodes.py                         # Nós do grafo (funções dos agentes)
+├── graph.py                            # Definição do grafo LangGraph
+├── run_lg.py                           # Executar Python direto
+├── run_lg_api.py                       # Executar via API
+├── setup_rag.py                        # Indexar PDFs no ChromaDB
+│
+├── Agent_A/                            # Agente A - Análise Clínica
 │   ├── __init__.py
-│   └── agente_A.py        # Processamento de entrada/saída
-├── Agent_B/
+│   └── agente_A.py                     # LLM + raciocínio clínico
+│
+├── Agent_B/                            # Agente B - Validação Ontológica
 │   ├── __init__.py
-│   ├── agente_b.py        # Inferência ontológica
+│   ├── agente_b.py                     # Owlready2 + reasoner
 │   └── onthology/
-│       └── ONTHOLOGY_MAS.owl
-└── Agent_C/
-    ├── __init__.py
-    ├── agent_c.py         # Validação + RAG
-    ├── agent_c_db.py      # Gerenciamento da base vetorial
-    ├── pdfs/              # Documentos IRIS (você adiciona)
-    └── chroma_db/         # Base vetorial (gerada automaticamente)
+│       └── Ontology_MAS_projeto.owl    # Ontologia médica
+│
+├── Agent_C/                            # Agente C - RAG e Evidências
+│   ├── __init__.py
+│   ├── agent_c.py                      # Validação científica
+│   ├── agent_c_db.py                   # ChromaDB + embeddings
+│   ├── pdfs/                           # PDFs médicos
+│   ├── chroma_db/                      # Base vetorial indexada
+│   └── validations_database.csv        # Histórico de validações
+│
+├── api/                                # API Node.js REST
+│   ├── server.js                       # Servidor Express
+│   ├── package.json                    # Dependências Node
+│   ├── routes/                         # Rotas da API
+│   ├── controllers/                    # Lógica de controle
+│   └── services/                       # Serviços (ponte Python)
+│
+├── figs/                               # Diagramas (Mermaid exportados)
+│
+├── test_api.html                       # Interface de teste HTML
+├── test_request.json                   # JSON de teste
+│
+└── MDs/                                # Documentação Adicional
+    ├── OUTLINE_SLIDES.md               # Estrutura dos slides
+    ├── LISTA_AFAZERES_AMANHA.md        # Lista de tarefas
+    ├── METRICAS_AVALIACAO.md           # Métricas detalhadas
+    ├── RESUMO_TECNICO_API.md           # Resumo API
+    └── RELATORIO_VERIFICACAO_AGENTES.md # Status dos agentes
 ```
 
-## 🔄 Fluxo de Execução
+---
 
-### 1. Agente A (Entrada)
-- Recebe texto livre do usuário
-- Extrai parâmetros: creatinina, SDMA, pressão, UPC, etc.
-- Valida dados básicos
+## API REST
 
-### 2. Agente B (Ontologia)
-- Cria instância do paciente na ontologia
-- Executa reasoner Pellet
-- **CRÍTICO**: Deve inferir estágio IRIS (1-4)
+### Endpoint Principal
 
-### 3. Agente C (Validação + RAG)
+**POST** `/api/diagnosis`
 
-Implementa 4 cenários:
+**Request:**
 
-1. **✅ Ontologia OK + RAG consistente**
-   - Valida estágio com diretrizes IRIS
-   - Resposta completa e validada
-
-2. **⚠️ Ontologia OK + RAG inconsistente**
-   - Detecta divergência
-   - Usa valor do RAG (mais confiável)
-   - Alerta sobre inconsistência
-
-3. **🔄 Ontologia FALHOU + RAG tem info**
-   - Usa apenas diretrizes IRIS
-   - Sem inferência ontológica
-
-4. **❌ Ontologia FALHOU + RAG sem info**
-   - Falha completa
-   - Solicita dados melhores
-
-### 4. Agente A (Saída)
-- Formata resposta amigável
-- Inclui:
-  - Estágio IRIS
-  - Substágios (proteinúria, hipertensão)
-  - Risco global
-  - Alertas clínicos
-  - Plano terapêutico sugerido
-
-## 🧪 Testando
-
-### Teste rápido:
-
-```python
-from run_lg import run_pipeline
-
-resultado = run_pipeline("Gato com creatinina 4.2 e SDMA 28")
-print(resultado)
+```json
+{
+  "symptoms": "febre alta, tosse seca, dor no peito",
+  "patient_age": 45,
+  "patient_sex": "M",
+  "creatinine": 2.5,
+  "sdma": 22
+}
 ```
 
-### Casos de teste sugeridos:
+**Response (Success - 200):**
 
-1. **IRIS 1** (inicial):
-   ```
-   creatinina: 1.4, SDMA: 16
-   ```
+```json
+{
+  "success": true,
+  "diagnosis": ["Pneumonia", "Bronquite"],
+  "confidence": 0.85,
+  "iris_stage": "IRIS 2",
+  "validation": {
+    "ontology_compatible": true,
+    "reasoner_status": "success"
+  },
+  "evidence": [
+    "Artigo: Diagnóstico diferencial de pneumonia...",
+    "Estudo: Biomarcadores respiratórios..."
+  ],
+  "recommendations": "Antibioticoterapia empírica + Rx tórax",
+  "processing_time": "18.5s"
+}
+```
 
-2. **IRIS 2** (leve):
-   ```
-   creatinina: 2.5, SDMA: 20
-   ```
+**Response (Error - 400/500):**
 
-3. **IRIS 3** (moderada):
-   ```
-   creatinina: 3.5, SDMA: 28, pressão: 165
-   ```
+```json
+{
+  "success": false,
+  "error": "Dados insuficientes para diagnóstico",
+  "details": "Necessário informar sintomas e idade"
+}
+```
 
-4. **IRIS 4** (severa):
-   ```
-   creatinina: 6.0, SDMA: 45, UPC: 0.8
-   ```
+**Documentação completa:** [API_GUIA_RAPIDO.md](MDs/API_GUIA_RAPIDO.md)
 
-## 🐛 Resolução de Problemas
+---
 
-### Erro: "cannot import name 'validate_inference'"
-- **Causa**: Função não existe mais
-- **Solução**: Use o código atualizado dos artifacts
+## Exemplos
 
-### Erro: "Reasoner falhou"
-- **Causa**: Java não instalado ou ontologia com erros
-- **Solução**: 
-  1. Verifique Java: `java -version`
-  2. Valide ontologia no Protégé
+### Exemplo 1: IRIS Estágio 2 (Leve)
 
-### Erro: "Base vetorial não disponível"
-- **Causa**: RAG não configurado
-- **Solução**: Execute `python setup_rag.py`
+```json
+{
+  "symptoms": "polidipsia, poliúria",
+  "patient_age": 8,
+  "creatinine": 2.5,
+  "sdma": 20
+}
+```
 
-### Ontologia não infere estágio
-- **Verificar**: Classes e propriedades na ontologia
-- **Verificar**: Valores de creatinina/SDMA válidos
-- **Fallback**: Sistema usa cálculo clínico direto
+**Resultado Esperado:** IRIS 2 (ambos marcadores concordam)
 
-## 📚 Diretrizes IRIS
+---
 
-O sistema implementa as diretrizes oficiais:
-- **Estágios** (1-4): Baseados em creatinina e SDMA
-- **Substágios**:
-  - Proteinúria (UPC): < 0.2 / 0.2-0.4 / > 0.4
-  - Hipertensão (PAS): < 150 / 150-159 / 160-179 / ≥ 180
+### Exemplo 2: IRIS Estágio 3 (Moderado)
 
-Referência: [IRIS Kidney - International Renal Interest Society](http://www.iris-kidney.com/)
+```json
+{
+  "symptoms": "anorexia, perda de peso, vômitos",
+  "patient_age": 12,
+  "creatinine": 3.5,
+  "sdma": 28,
+  "blood_pressure": 165
+}
+```
 
-## ⚠️ Avisos Importantes
+**Resultado Esperado:** IRIS 3 + Hipertensão
 
-1. **Esta é uma ferramenta de SUPORTE à decisão clínica**
-2. **NÃO substitui avaliação veterinária completa**
-3. **Sempre consulte médico-veterinário**
+---
+
+### Exemplo 3: Discrepância Detectada
+
+```json
+{
+  "creatinine": 1.5,
+  "sdma": 50
+}
+```
+**Resultado Esperado:** Erro - Discrepância ≥2 estágios (não classificável)
+---
+## Documentação
+
+###  Documentação Principal (Raiz do Projeto):
+
+- [API_GUIA_RAPIDO.md](API_GUIA_RAPIDO.md) - Documentação da API REST
+- [ARQUITETURA_DETALHADA.md](ARQUITETURA_DETALHADA.md) - Decisões de design e arquitetura
+-  [GUIA_INSTALACAO.md](GUIA_INSTALACAO.md) - Instalação passo a passo
+-  [RELATORIO_TECNICO.md](RELATORIO_TECNICO.md) - Resultados e métricas
+
+###  Documentação Adicional
+
+-  [RELATORIO_VERIFICACAO_AGENTES.md](RELATORIO_VERIFICACAO_AGENTES.md) - Status dos agentes
+- [OUTLINE_SLIDES.md](OUTLINE_SLIDES.md) - Estrutura da apresentação
+- [METRICAS_AVALIACAO.md](METRICAS_AVALIACAO.md) - Métricas detalhadas
+-  [RESUMO_TECNICO_API.md](RESUMO_TECNICO_API.md) - Resumo técnico da API
+
+---
+
+## Troubleshooting
+
+### Problema: "Module not found"
+
+```bash
+pip install -r requirements.txt --force-reinstall
+```
+
+### Problema: "GROQ_API_KEY not found"
+
+Verifique se o arquivo `.env` existe e contém:
+
+```bash
+GROQ_API_KEY=sua_chave_aqui
+```
+
+### Problema: "Java not found" (Agente B)
+
+- Instale Java JDK 11+
+- Adicione ao PATH do sistema
+- Reinicie o terminal
+
+### Problema: "Port 3001 already in use"
+
+```bash
+# Windows PowerShell
+$process = Get-NetTCPConnection -LocalPort 3001 -ErrorAction SilentlyContinue | Select-Object -ExpandProperty OwningProcess -First 1
+if ($process) { Stop-Process -Id $process -Force }
+```
+
+### Problema: ChromaDB não indexa PDFs
+
+```bash
+# Verificar PDFs na pasta
+ls Agent_C/pdfs/
+
+# Reindexar
+python setup_rag.py
+```
+---
+
+## Contexto Acadêmico
+
+Este projeto foi desenvolvido como parte de pesquisa em:
+- Sistemas Multi-Agente
+- Integração LLM + Conhecimento Formal
+- RAG (Retrieval-Augmented Generation)
+- Aplicações de IA em Medicina Veterinária
+
+**Instituição:** [Univesidade de Pernambuco - UPE]  
+**Programa:** [PPGEC - Programa de pós graduação em Engenharia da Computação]  
+**Disciplina:** [Modelagem Conceitual e Raciocinio Automático (MORA)]
+
+---
+
+## Avisos Importantes
+
+1. **Este é um sistema de SUPORTE à decisão clínica**
+2. **NÃO substitui avaliação médica/veterinária completa**
+3. **Sempre consulte profissional qualificado**
 4. **Para uso educacional e pesquisa**
+5. **Dados sensíveis devem ser anonimizados**
 
-## 📝 Licença
+---
 
-Projeto acadêmico - Mestrado em Inteligência Computacional
+## Licença
 
-## 👥 Contato
+Este projeto é de uso acadêmico. Consulte o arquivo [LICENSE](LICENSE) para mais detalhes.
 
-Para dúvidas sobre o sistema, consulte a documentação ou abra uma issue.
->>>>>>> 740e5dc4bdac0368a9338fedba4877f5bc86beee
+---
+
+## Autora
+
+**Maria Beatriz Mota**
+
+- GitHub: [@Maria-Beatriz-Mota](https://github.com/Maria-Beatriz-Mota)
+- LinkedIn: [https://www.linkedin.com/in/maria-beatriz-ara%C3%BAjo-mota/]
+- Email: [mbeatriz.mbia@gmail.com]
+
+---
+
+## Contribuições
+
+Contribuições são bem-vindas! Para contribuir:
+
+1. Fork o projeto
+2. Crie uma branch (`git checkout -b feature/nova-funcionalidade`)
+3. Commit suas mudanças (`git commit -m 'Adiciona nova funcionalidade'`)
+4. Push para a branch (`git push origin feature/nova-funcionalidade`)
+5. Abra um Pull Request
+
+---
+
+## Suporte
+
+Para dúvidas ou problemas:
+
+- Abra uma [Issue](https://github.com/Maria-Beatriz-Mota/MultiAgent/issues)
+- Consulte a [Documentação](MDs/)
+- Entre em contato via email
+
+---
+
+## Agradecimentos
+
+- Equipe LangChain/LangGraph
+- Comunidade Owlready2
+- IRIS (International Renal Interest Society)
+- Universidade de Pernambuco - (curso de Pós graduação em engenharia da computação)
+- Professor Cleyton em sua disciplina (MORA)
+- [Outros agradecimentos]
+
+
+---
+
+<div align="center">
+
+**Desenvolvido por Maria Beatriz Mota**
+
+</div>

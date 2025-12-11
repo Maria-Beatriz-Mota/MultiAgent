@@ -18,10 +18,10 @@ RAG_AVAILABLE = False
 try:
     from .agent_c_db import rag_search, CHROMA_PATH
     RAG_AVAILABLE = True
-    print("[AGENTE C] ✅ RAG disponível")
+    print("[AGENTE C] RAG disponível")
 except ImportError as e:
-    print(f"[AGENTE C] ⚠️ RAG não disponível: {e}")
-    print(f"[AGENTE C] 💡 Instale: pip install langchain langchain-chroma chromadb")
+    print(f"[AGENTE C] RAG não disponível: {e}")
+    print(f"[AGENTE C] Instale: pip install langchain langchain-chroma chromadb")
     CHROMA_PATH = None
 
 
@@ -61,7 +61,7 @@ def salvar_validacao_csv(resultado: Dict[str, Any], dados_clinicos: Dict[str, An
     valida_b = resultado.get("valida_b")
     
     if caso not in [1, 2] or valida_b is False:
-        print("[AGENTE C] ⚠️ Validação não salva (não confirmada ou com inconsistência)")
+        print("[AGENTE C] Validação não salva (não confirmada ou com inconsistência)")
         return
     
     try:
@@ -98,13 +98,13 @@ def salvar_validacao_csv(resultado: Dict[str, Any], dados_clinicos: Dict[str, An
             # Escrever header se arquivo é novo
             if not file_exists:
                 writer.writeheader()
-                print(f"[AGENTE C] 📄 Arquivo CSV criado: {CSV_DATABASE_PATH}")
+                print(f"[AGENTE C] Arquivo CSV criado: {CSV_DATABASE_PATH}")
             
             writer.writerow(row_data)
-            print(f"[AGENTE C] 💾 Validação salva no banco de dados CSV")
+            print(f"[AGENTE C] Validação salva no banco de dados CSV")
             
     except Exception as e:
-        print(f"[AGENTE C] ⚠️ Erro ao salvar no CSV: {e}")
+        print(f" Erro ao salvar no CSV: {e}")
 
 # ----------------------
 # Tratamentos IRIS
@@ -173,7 +173,7 @@ def validar_subestagios_iris(
         resultado["ap_valido"] = (subestagio_ap_b == ap_esperado)
         
         if not resultado["ap_valido"] and subestagio_ap_b:
-            resultado["mensagem"] += f"⚠️ Proteinúria: B={subestagio_ap_b} vs Esperado={ap_esperado}. "
+            resultado["mensagem"] += f" Proteinúria: B={subestagio_ap_b} vs Esperado={ap_esperado}. "
     
     # Validar HT (hipertensão)
     if pressao is not None:
@@ -190,10 +190,10 @@ def validar_subestagios_iris(
         resultado["ht_valido"] = (subestagio_ht_b == ht_esperado)
         
         if not resultado["ht_valido"] and subestagio_ht_b:
-            resultado["mensagem"] += f"⚠️ Hipertensão: B={subestagio_ht_b} vs Esperado={ht_esperado}. "
+            resultado["mensagem"] += f" Hipertensão: B={subestagio_ht_b} vs Esperado={ht_esperado}. "
     
     if not resultado["mensagem"]:
-        resultado["mensagem"] = "✅ Subetágios validados"
+        resultado["mensagem"] = " Subetágios validados"
     
     return resultado
 
@@ -257,14 +257,14 @@ def validar_por_regras_iris(
             return {
                 "valido": True,
                 "estagio_esperado": f"IRIS{stage_creat}",
-                "mensagem": f"✅ Validação confirmada: Creatinina e SDMA concordam em IRIS {stage_creat}",
+                "mensagem": f" Validação confirmada: Creatinina e SDMA concordam em IRIS {stage_creat}",
                 "regra_aplicada": "Concordância perfeita (tabela IRIS oficial)"
             }
         else:
             return {
                 "valido": False,
                 "estagio_esperado": f"IRIS{stage_creat}",
-                "mensagem": f"❌ Agent B inferiu {estagio_b} mas creatinina ({creat}) e SDMA ({sdma}) indicam IRIS {stage_creat}",
+                "mensagem": f" Agent B inferiu {estagio_b} mas creatinina ({creat}) e SDMA ({sdma}) indicam IRIS {stage_creat}",
                 "regra_aplicada": "Discordância com tabela IRIS"
             }
     
@@ -275,14 +275,14 @@ def validar_por_regras_iris(
             return {
                 "valido": True,
                 "estagio_esperado": f"IRIS{estagio_esperado}",
-                "mensagem": f"✅ Validação confirmada: Discrepância de 1 estágio aceita, usando IRIS {estagio_esperado} (maior valor)",
-                "regra_aplicada": "Regra IRIS: usar maior valor quando diff≤1"
+                "mensagem": f" Validação confirmada: Discrepância de 1 estágio aceita, usando IRIS {estagio_esperado} (maior valor)",
+                "regra_aplicada": "Regra IRIS: usar maior valor quando diff<=1"
             }
         else:
             return {
                 "valido": False,
                 "estagio_esperado": f"IRIS{estagio_esperado}",
-                "mensagem": f"❌ Agent B inferiu {estagio_b} mas deveria ser IRIS {estagio_esperado} (maior entre creat={stage_creat} e sdma={stage_sdma})",
+                "mensagem": f" Agent B inferiu {estagio_b} mas deveria ser IRIS {estagio_esperado} (maior entre creat={stage_creat} e sdma={stage_sdma})",
                 "regra_aplicada": "Erro na aplicação da regra IRIS"
             }
     
@@ -292,14 +292,14 @@ def validar_por_regras_iris(
             return {
                 "valido": False,
                 "estagio_esperado": None,
-                "mensagem": f"❌ Discrepância de {discrepancia} estágios: Agent B não deveria ter classificado! (Creat→IRIS{stage_creat}, SDMA→IRIS{stage_sdma})",
+                "mensagem": f" Discrepância de {discrepancia} estágios: Agent B não deveria ter classificado! (Creat→IRIS{stage_creat}, SDMA→IRIS{stage_sdma})",
                 "regra_aplicada": "Regra IRIS: não classificar quando diff≥2"
             }
         else:
             return {
                 "valido": True,
                 "estagio_esperado": None,
-                "mensagem": f"✅ Agent B corretamente não classificou (discrepância de {discrepancia} estágios)",
+                "mensagem": f" Agent B corretamente não classificou (discrepância de {discrepancia} estágios)",
                 "regra_aplicada": "Regra IRIS: não classificar quando diff≥2"
             }
 
@@ -343,7 +343,7 @@ def responder_pergunta_usuario(user_question: str, context_rag: str, docs: list)
     if not context_rag or len(docs) == 0:
         return None
     
-    print(f"[AGENTE C] 💬 Tentando responder pergunta do usuário...")
+    print(f"[AGENTE C] Tentando responder pergunta do usuário...")
     
     # Tentar usar LLM se disponível (mais preciso)
     try:
@@ -377,11 +377,11 @@ Resposta:"""
             
             # Qualquer resposta válida do LLM é aceita
             if len(resposta_texto) > 20:
-                print(f"[AGENTE C] ✅ Resposta gerada com LLM")
-                return f"📚 {resposta_texto}"
+                print(f"[AGENTE C]  Resposta gerada com LLM")
+                return f" {resposta_texto}"
     
     except Exception as e:
-        print(f"[AGENTE C] ⚠️ LLM não disponível para responder: {str(e)[:50]}")
+        print(f"[AGENTE C]  LLM não disponível para responder: {str(e)[:50]}")
     
     # Fallback: busca por palavras-chave (método antigo)
     keywords_medicas = [
@@ -419,10 +419,10 @@ Resposta:"""
         unique_sentences = list(dict.fromkeys(relevant_sentences))[:3]
         resposta = '. '.join(unique_sentences)
         if resposta:
-            print(f"[AGENTE C] ✅ Resposta encontrada por palavra-chave")
-            return f"📚 Baseado na literatura IRIS:\n\n{resposta}."
+            print(f"[AGENTE C]  Resposta encontrada por palavra-chave")
+            return f" Baseado na literatura IRIS:\n\n{resposta}."
     
-    print(f"[AGENTE C] ⚠️ Pergunta fora do escopo dos documentos indexados")
+    print(f"[AGENTE C]  Pergunta fora do escopo dos documentos indexados")
     return None
 
 
@@ -437,7 +437,7 @@ def gerar_recomendacao(
 ) -> Dict[str, Any]:
 
     print("\n" + "=" * 60)
-    print("[AGENTE C] 🔬 VALIDADOR CIENTÍFICO")
+    print("[AGENTE C] VALIDADOR CIENTÍFICO")
     print("=" * 60)
 
     # ----------- Dados do Agent B -----------
@@ -451,18 +451,18 @@ def gerar_recomendacao(
     classificacao_b_valida = inference.get("classificacao_valida", True)
     motivo_invalido_b = inference.get("motivo_invalido")
 
-    print(f"[AGENTE C] 📊 Estágio B: {estagio_b}")
+    print(f"[AGENTE C]  Estágio B: {estagio_b}")
     if subestagio_ap_b or subestagio_ht_b:
-        print(f"[AGENTE C] 📊 Subetágios B: AP={subestagio_ap_b}, HT={subestagio_ht_b}")
-    print(f"[AGENTE C] 📊 Classificação B válida: {classificacao_b_valida}")
-    print(f"[AGENTE C] 📊 Creatinina: {creat}, SDMA: {sdma}")
+        print(f"[AGENTE C]  Subetágios B: AP={subestagio_ap_b}, HT={subestagio_ht_b}")
+    print(f"[AGENTE C]  Classificação B válida: {classificacao_b_valida}")
+    print(f"[AGENTE C]  Creatinina: {creat}, SDMA: {sdma}")
     if upc is not None or pressao is not None:
-        print(f"[AGENTE C] 📊 UPC: {upc}, Pressão: {pressao}")
-    print(f"[AGENTE C] 🔧 RAG: {'ATIVO' if RAG_AVAILABLE else 'INDISPONÍVEL (usando regras científicas)'}")
+        print(f"[AGENTE C]  UPC: {upc}, Pressão: {pressao}")
+    print(f"[AGENTE C]  RAG: {'ATIVO' if RAG_AVAILABLE else 'INDISPONÍVEL (usando regras científicas)'}")
     
     # ----------- VALIDAR SUBETÁGIOS -----------
     validacao_subestagios = validar_subestagios_iris(upc, pressao, subestagio_ap_b, subestagio_ht_b)
-    print(f"[AGENTE C] 🔍 {validacao_subestagios['mensagem']}")
+    print(f"[AGENTE C]  {validacao_subestagios['mensagem']}")
 
     # ----------- CASO 3: Discrepância detectada pelo B -----------
     if not classificacao_b_valida:
@@ -472,11 +472,11 @@ def gerar_recomendacao(
             "estagio_final": None,
             "valida_b": False,
             "inconsistencia": True,
-            "resposta_clinica": f"⚠️ DISCREPÂNCIA DETECTADA:\n\n{motivo_invalido_b}\n\n📋 Ações:\n• Repetir exames\n• Verificar interferências pré-analíticas\n• Avaliar condições atípicas",
+            "resposta_clinica": f" DISCREPÂNCIA DETECTADA:\n\n{motivo_invalido_b}\n\n📋 Ações:\n• Repetir exames\n• Verificar interferências pré-analíticas\n• Avaliar condições atípicas",
             "tratamento_recomendado": [],
             "num_docs": 0,
             "caso": 3,
-            "mensagem": f"⚠️ DISCREPÂNCIA: {motivo_invalido_b}",
+            "mensagem": f" DISCREPÂNCIA: {motivo_invalido_b}",
             "plano_terapeutico": [],
             "confianca": "INVÁLIDA"
         }
@@ -515,7 +515,7 @@ def gerar_recomendacao(
                 q_parts.append(user_question)
             query = " ".join(q_parts)
             
-            print(f"[AGENTE C] 🔎 Buscando na literatura: {query}")
+            print(f"[AGENTE C]  Buscando na literatura: {query}")
             rag_result = rag_search(CHROMA_PATH, query, k=5, max_context_length_chars=3000)
             context_rag = rag_result.get("context", "")
             docs = rag_result.get("docs", [])
@@ -526,7 +526,7 @@ def gerar_recomendacao(
             
             # Extrair estágio do contexto RAG (busca simples por padrões)
             if context_rag:
-                print(f"[AGENTE C] 📚 Contexto RAG recuperado ({len(context_rag)} chars)")
+                print(f"[AGENTE C] Contexto RAG recuperado ({len(context_rag)} chars)")
                 # Tentar identificar estágio mencionado no contexto
                 context_upper = context_rag.upper()
                 for i in range(1, 5):
@@ -538,20 +538,20 @@ def gerar_recomendacao(
                                (i == 3 and 2.9 <= creat <= 5.0) or \
                                (i == 4 and creat > 5.0):
                                 estagio_rag = f"IRIS{i}"
-                                print(f"[AGENTE C] 📌 Estágio extraído do RAG: {estagio_rag}")
+                                print(f"[AGENTE C]  Estágio extraído do RAG: {estagio_rag}")
                                 break
             elif user_question:
                 # RAG não retornou documentos
-                print(f"[AGENTE C] ⚠️ Nenhum documento encontrado para a pergunta")
-                resposta_pergunta = "⚠️ Não há informações disponíveis na base de conhecimento indexada para responder esta pergunta. Recomenda-se consultar a literatura IRIS oficial ou indexar mais documentos."
+                print(f"[AGENTE C] Nenhum documento encontrado para a pergunta")
+                resposta_pergunta = " Não há informações disponíveis na base de conhecimento indexada para responder esta pergunta. Recomenda-se consultar a literatura IRIS oficial ou indexar mais documentos."
                 
         except Exception as e:
-            print(f"[AGENTE C] ⚠️ Erro no RAG: {e}")
+            print(f"[AGENTE C] Erro no RAG: {e}")
 
     # ----------- VALIDAÇÃO: SEMPRE usar REGRAS IRIS (não comparação textual RAG) -----------
     # LÓGICA CORRIGIDA: RAG serve para Q&A, NÃO para validar estágios
     # Validação deve ser feita contra as REGRAS numéricas oficiais IRIS
-    print("[AGENTE C] 🔬 Validando por regras IRIS oficiais...")
+    print("[AGENTE C] Validando por regras IRIS oficiais...")
     validacao_regras = validar_por_regras_iris(creat, sdma, estagio_b)
     
     valida_b = validacao_regras["valido"]
@@ -588,7 +588,7 @@ def gerar_recomendacao(
     
     # Adicionar referências bibliográficas dos documentos utilizados
     if docs and len(docs) > 0:
-        resposta_texto += "\n\n📚 REFERÊNCIAS BIBLIOGRÁFICAS:\n"
+        resposta_texto += "\n\n REFERÊNCIAS BIBLIOGRÁFICAS:\n"
         resposta_texto += "-" * 70 + "\n"
         referencias_unicas = set()
         for i, doc in enumerate(docs, 1):
@@ -622,7 +622,7 @@ def gerar_recomendacao(
         caso = 3
         estagio_final = estagio_esperado
         inconsistencia = True
-        resposta_texto += f"\n⚠️ ATENÇÃO: Discrepância identificada. Recomenda-se revisar os dados e repetir exames laboratoriais.\n"
+        resposta_texto += f"\n ATENÇÃO: Discrepância identificada. Recomenda-se revisar os dados e repetir exames laboratoriais.\n"
     else:
         caso = 2
         estagio_final = estagio_esperado
@@ -667,13 +667,13 @@ def gerar_recomendacao(
         }
     }
 
-    print(f"[AGENTE C] ✅ Validação concluída - CASO {caso}, Estágio: {estagio_final}")
+    print(f"[AGENTE C]  Validação concluída - CASO {caso}, Estágio: {estagio_final}")
     if subestagio_ap_b or subestagio_ht_b:
-        print(f"[AGENTE C] 📊 Subetágios: AP={subestagio_ap_b}, HT={subestagio_ht_b}")
-    print(f"[AGENTE C] 🎯 Validação: {'✅ Confirmada' if valida_b else '❌ Reprovada' if valida_b is False else '⚠️ Inconclusiva'}")
+        print(f"[AGENTE C] Subetágios: AP={subestagio_ap_b}, HT={subestagio_ht_b}")
+    print(f"[AGENTE C] Validação: {' Confirmada' if valida_b else '❌ Reprovada' if valida_b is False else '⚠️ Inconclusiva'}")
     if inconsistencia:
         estagio_comparacao = estagio_rag if estagio_rag else (estagio_esperado if 'estagio_esperado' in locals() else 'N/A')
-        print(f"[AGENTE C] ⚠️ Inconsistência: B={estagio_b} vs RAG/Regras={estagio_comparacao}")
+        print(f"[AGENTE C]  Inconsistência: B={estagio_b} vs RAG/Regras={estagio_comparacao}")
 
     # Salvar validação no CSV se foi bem-sucedida
     if valida_b is not False and caso in [1, 2]:
