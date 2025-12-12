@@ -4,9 +4,12 @@ import sys
 import json
 import uuid
 
-# Forçar UTF-8 em todo o Python
-if sys.stdout.encoding != 'utf-8':
-    sys.stdout.reconfigure(encoding='utf-8')
+# Forçar UTF-8 em todo o Python (se possível)
+if hasattr(sys.stdout, 'reconfigure') and sys.stdout.encoding != 'utf-8':
+    try:
+        sys.stdout.reconfigure(encoding='utf-8')
+    except:
+        pass  # Ignorar se falhar (ex: quando roda via API com StringIO)
 
 from pathlib import Path
 from typing import Dict, Any, List, Optional, Tuple

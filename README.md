@@ -799,10 +799,10 @@ MIT - Permissão para usar, modificar e distribuir livremente.
 
 ## Contato e Suporte
 
-- 📧 **Email**: maria.beatriz.mota@email.com (substitua pelo seu)
-- 📱 **Issues**: GitHub Issues do repositório
+- � **Issues**: GitHub Issues do repositório
 - 💬 **Discussões**: GitHub Discussions para perguntas gerais
 - 📚 **Wiki**: Documentação adicional em MDs/
+- 🔗 **Repositório**: https://github.com/Maria-Beatriz-Mota/MultiAgent
 
 ---
 
@@ -850,10 +850,10 @@ Se utilizar este sistema em pesquisa académica, cite como:
 ```bibtex
 @software{iris_multident_2025,
   title={Sistema Multi-Agente IRIS - Diagnóstico de DRC Felina},
-  author={Mota, Maria Beatriz Araújo},
+  author={Mota, Maria Beatriz Araújo and Finizola, Janduhy},
   year={2025},
-  url={https://github.com/seu-usuario/sistema-iris},
-  note={Versão 1.0}
+  url={https://github.com/Maria-Beatriz-Mota/MultiAgent},
+  note={Versão 1.0 - Sistema Multiagente para Estadiamento de DRC Felina}
 }
 ```
 
