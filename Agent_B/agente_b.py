@@ -1,20 +1,13 @@
-"""
-Agente B – Inferência Ontológica (CORRIGIDO COM VALIDAÇÃO DE DISCREPÂNCIA)
---------------------------------------------------------------------------
-
-NOVA REGRA IMPLEMENTADA:
-- Detectar discrepâncias entre creatinina e SDMA
-- Se discrepância > 1 estágio: NÃO INFERIR (alertar erro)
-- Se discrepância ≤ 1 estágio: Usar o maior (regra IRIS padrão)
-
-Exemplo:
-- Creat=2.5 (IRIS 2), SDMA=28 (IRIS 3) → OK, usar IRIS 3 
-- Creat=1.5 (IRIS 1), SDMA=50 (IRIS 4) → ERRO, não classificar! 
-"""
-
+# -*- coding: utf-8 -*-
 import os
+import sys
 import json
 import uuid
+
+# Forçar UTF-8 em todo o Python
+if sys.stdout.encoding != 'utf-8':
+    sys.stdout.reconfigure(encoding='utf-8')
+
 from pathlib import Path
 from typing import Dict, Any, List, Optional, Tuple
 from owlready2 import (
@@ -26,11 +19,11 @@ from owlready2 import (
 
 # CONFIGURAÇÃO
 
-ONTO_PATH = Path(r"Agent_B/onthology/Ontology_MAS_projeto.owl")
+ONTO_PATH = Path(r"ontologia.owl")  # Raiz do projeto, sem espaços no caminho
 
 
 def _load_ontology():
-    """Carrega a ontologia"""
+    """Carrega a ontologia com suporte para caminhos com espaços"""
     world = World()
     
     if not ONTO_PATH.exists():
@@ -39,11 +32,14 @@ def _load_ontology():
     print(f"[AGENTE B] Carregando ontologia de: {ONTO_PATH}")
     
     try:
-        onto = world.get_ontology(f"file://{ONTO_PATH.absolute()}").load()
+        # Usar caminho relativo ao invés de URL para evitar problemas com espaços
+        onto = world.get_ontology(str(ONTO_PATH)).load()
         print(f"[AGENTE B] ✓ Ontologia carregada")
         print(f"[AGENTE B]   - Classes: {len(list(onto.classes()))}")
         return world, onto
     except Exception as e:
+        print(f"[AGENTE B] ⚠️ Aviso: Falha ao carregar ontologia: {e}")
+        print(f"[AGENTE B] Continuando com validação numérica apenas...")
         raise Exception(f"Erro ao carregar ontologia: {e}")
 
 # CLASSIFICAÇÃO IRIS COM VALIDAÇÃO DE DISCREPÂNCIA
@@ -525,7 +521,7 @@ if __name__ == "__main__":
     print(f"Resultado: {resultado1['estagio']}, Válido: {resultado1['classificacao_valida']}")
     
     # Teste 2: Discrepância de 1 estágio (OK)
-    print("\n TESTE 2: Discrepância 1 estágio (Creat=2.5→IRIS2, SDMA=28→IRIS3)")
+    print("\n TESTE 2: Discrepância 1 estágio (Creat=2.5 > IRIS2, SDMA=28 > IRIS3)")
     resultado2 = handle_inference({
         "creatinina": 2.5,
         "sdma": 28,
@@ -534,7 +530,7 @@ if __name__ == "__main__":
     print(f"Resultado: {resultado2['estagio']}, Válido: {resultado2['classificacao_valida']}")
     
     # Teste 3: Discrepância grande (ERRO!)
-    print("\n🧪 TESTE 3: Discrepância 3 estágios (Creat=1.5→IRIS1, SDMA=50→IRIS4)")
+    print("\n TESTE 3: Discrepância 3 estágios (Creat=1.5 > IRIS1, SDMA=50 > IRIS4)")
     resultado3 = handle_inference({
         "creatinina": 1.5,
         "sdma": 50,
