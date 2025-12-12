@@ -279,6 +279,100 @@
         const resultDiv = document.getElementById('result');
         const submitBtn = document.getElementById('submitBtn');
 
+        // Função para baixar JSON
+        function downloadJSON(resultado, nomePaciente) {
+            try {
+                const dataStr = JSON.stringify(resultado, null, 2);
+                const blob = new Blob([dataStr], { type: 'application/json;charset=utf-8' });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = `diagnostico_${nomePaciente || 'paciente'}_${new Date().toISOString().split('T')[0]}.json`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+                console.log('✅ JSON baixado com sucesso!');
+            } catch (error) {
+                console.error('❌ Erro ao baixar JSON:', error);
+                alert('❌ Erro ao baixar JSON: ' + error.message);
+            }
+        }
+
+        // Função para gerar e baixar Relatório
+        function gerarRelatorioPDF(resultado, nomePaciente) {
+            try {
+                const classificacao = resultado.classificacao;
+                const biomarcadores = resultado.biomarcadores;
+                
+                let conteudo = `DIAGNÓSTICO IRIS - DOENÇA RENAL CRÔNICA FELINA\n`;
+                conteudo += `${'='.repeat(60)}\n\n`;
+                
+                conteudo += `DATA: ${new Date().toLocaleDateString('pt-BR')}\n`;
+                conteudo += `PACIENTE: ${nomePaciente}\n`;
+                conteudo += `${'='.repeat(60)}\n\n`;
+                
+                conteudo += `BIOMARCADORES\n`;
+                conteudo += `${'-'.repeat(40)}\n`;
+                conteudo += `Creatinina: ${biomarcadores.creatinina || 'N/A'} mg/dL\n`;
+                conteudo += `SDMA: ${biomarcadores.sdma || 'N/A'} µg/dL\n`;
+                conteudo += `UPC: ${biomarcadores.upc || 'N/A'}\n`;
+                conteudo += `Pressão Arterial: ${biomarcadores.pressao_arterial || 'N/A'} mmHg\n\n`;
+                
+                conteudo += `CLASSIFICAÇÃO IRIS\n`;
+                conteudo += `${'-'.repeat(40)}\n`;
+                conteudo += `Estágio: ${classificacao.estagio}\n`;
+                conteudo += `Subetágio AP (Proteinúria): ${classificacao.subestagio_ap}\n`;
+                conteudo += `Subetágio HT (Hipertensão): ${classificacao.subestagio_ht}\n`;
+                conteudo += `Nível de Confiança: ${classificacao.confianca}\n\n`;
+                
+                if (resultado.resposta_pergunta) {
+                    conteudo += `RESPOSTA À PERGUNTA\n`;
+                    conteudo += `${'-'.repeat(40)}\n`;
+                    conteudo += `${resultado.resposta_pergunta}\n\n`;
+                }
+                
+                if (resultado.recomendacoes && resultado.recomendacoes.length > 0) {
+                    conteudo += `RECOMENDAÇÕES TERAPÊUTICAS\n`;
+                    conteudo += `${'-'.repeat(40)}\n`;
+                    resultado.recomendacoes.forEach((rec, idx) => {
+                        conteudo += `${idx + 1}. ${rec}\n`;
+                    });
+                    conteudo += `\n`;
+                }
+                
+                conteudo += `VALIDAÇÃO\n`;
+                conteudo += `${'-'.repeat(40)}\n`;
+                conteudo += `Análise Ontológica (Agente B): ${resultado.validacao.estagio_ontologia}\n`;
+                conteudo += `Análise RAG (Agente C): ${resultado.validacao.estagio_rag}\n`;
+                conteudo += `Concordância entre Agentes: ${resultado.validacao.concordancia ? 'SIM ✅' : 'NÃO ❌'}\n\n`;
+                
+                conteudo += `OBSERVAÇÕES\n`;
+                conteudo += `${'-'.repeat(40)}\n`;
+                conteudo += `• Este relatório é um SUPORTE à decisão.\n`;
+                conteudo += `• Não substitui avaliação veterinária completa.\n`;
+                conteudo += `• Sempre consulte um veterinário qualificado.\n`;
+                conteudo += `\n`;
+                conteudo += `Gerado por: Sistema Multi-Agente IRIS\n`;
+                conteudo += `${new Date().toLocaleString('pt-BR')}\n`;
+                
+                const blob = new Blob([conteudo], { type: 'text/plain;charset=utf-8' });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = `relatorio_iris_${nomePaciente || 'paciente'}_${new Date().toISOString().split('T')[0]}.txt`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+                
+                console.log('✅ Relatório baixado com sucesso!');
+            } catch (error) {
+                console.error('❌ Erro ao gerar relatório:', error);
+                alert('❌ Erro ao gerar relatório: ' + error.message);
+            }
+        }
+
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
 
@@ -398,10 +492,14 @@
                                 <pre style="max-height: 400px; overflow-y: auto;">${data.resposta_completa}</pre>
                             </details>
 
-                            <details style="margin-top: 10px;">
-                                <summary style="cursor: pointer; font-weight: 600; margin-bottom: 10px; color: #999;">🔍 Ver dados técnicos (JSON)</summary>
-                                <pre style="max-height: 400px; overflow-y: auto;">${JSON.stringify(data, null, 2)}</pre>
-                            </details>
+                            <div style="margin-top: 15px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                <button type="button" style="background: linear-gradient(135deg, #4caf50 0%, #45a049 100%); padding: 12px; border-radius: 8px; color: white; border: none; cursor: pointer; font-weight: 600;" onclick="downloadJSON(${JSON.stringify(resultado)}, '${paciente.nome}')">
+                                    📥 Baixar JSON
+                                </button>
+                                <button type="button" style="background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%); padding: 12px; border-radius: 8px; color: white; border: none; cursor: pointer; font-weight: 600;" onclick="gerarRelatorioPDF(${JSON.stringify(resultado)}, '${paciente.nome}')">
+                                    📄 Baixar Relatório
+                                </button>
+                            </div>
                         </div>
                     `;
                 } else {

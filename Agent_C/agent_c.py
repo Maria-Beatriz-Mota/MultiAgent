@@ -323,15 +323,16 @@ def normalize_stage(stage: Optional[str]) -> Optional[str]:
 # ----------------------
 # Resposta de perguntas específicas via RAG
 # ----------------------
-def responder_pergunta_usuario(user_question: str, context_rag: str, docs: list) -> Optional[str]:
+def responder_pergunta_usuario(user_question: str, context_rag: str, docs: list, clinical_data: Dict[str, Any] = None) -> Optional[str]:
     """
-    Responde perguntas específicas do usuário baseado no contexto RAG
+    Responde perguntas específicas do usuário baseado no contexto RAG e dados clínicos
     Usa LLM quando disponível para gerar respostas mais precisas
     
     Args:
         user_question: Pergunta do usuário
         context_rag: Contexto recuperado do RAG
         docs: Documentos encontrados
+        clinical_data: Dados clínicos do paciente (para análise de discrepâncias)
     
     Returns:
         Resposta baseada na literatura ou None se não encontrado
@@ -345,7 +346,46 @@ def responder_pergunta_usuario(user_question: str, context_rag: str, docs: list)
     
     print(f"[AGENTE C] Tentando responder pergunta do usuário...")
     
-    # Tentar usar LLM se disponível (mais preciso)
+    # PRIMEIRO: Validar se pergunta está no escopo veterinário/clínico
+    keywords_escopo = [
+        'drc', 'doença renal', 'kidney disease', 'renal', 'creatinina', 'creatinine',
+        'sdma', 'upc', 'proteinúria', 'proteinuria', 'pressão', 'pressure',
+        'felino', 'gato', 'cat', 'feline', 'veterinário', 'veterinary',
+        'tratamento', 'treatment', 'therapy', 'terapia',
+        'dieta', 'diet', 'alimentação', 'nutrition',
+        'sintoma', 'symptom', 'sinal', 'sign',
+        'prognóstico', 'prognosis', 'expectativa',
+        'medicação', 'medication', 'drug', 'remédio',
+        'monitoramento', 'monitoring', 'follow-up',
+        'comorbidade', 'comorbidity',
+        'risco', 'risk', 'complicação', 'complication',
+        'hipertensão', 'hypertension',
+        'fósforo', 'phosphorus', 'phosphate',
+        'estágio iris', 'iris stage', 'iris',
+        'clínico', 'clinical', 'diagnóstico', 'diagnosis'
+    ]
+    
+    question_lower = user_question.lower()
+    
+    # Verificar se contém pelo menos UMA palavra-chave do escopo
+    tem_palavra_chave = any(keyword in question_lower for keyword in keywords_escopo)
+    
+    # EXCEPTION: Se a pergunta tem "gato" mas não tem nenhuma outra palavra-chave clínica/IRIS,
+    # é provavelmente uma pergunta fora do escopo (como "gato de botas")
+    if ("gato" in question_lower or "cat" in question_lower) and tem_palavra_chave:
+        # Verificar se tem contexto clínico além de "gato"
+        palavras_clinicas = [k for k in keywords_escopo if k not in ['gato', 'cat', 'felino', 'feline']]
+        tem_contexto_clinico = any(palavra in question_lower for palavra in palavras_clinicas)
+        
+        if not tem_contexto_clinico:
+            print(f"[AGENTE C] Pergunta menciona 'gato' mas sem contexto clínico - fora do escopo")
+            return "Não encontrei informações sobre isso no RAG. O sistema foi desenvolvido para responder perguntas sobre diagnóstico e manejo de doença renal crônica felina (DRC) conforme diretrizes IRIS."
+    
+    if not tem_palavra_chave:
+        print(f"[AGENTE C] Pergunta fora do escopo veterinário/clínico")
+        return "Não encontrei informações sobre isso no RAG. O sistema foi desenvolvido para responder perguntas sobre diagnóstico e manejo de doença renal crônica felina (DRC) conforme diretrizes IRIS."
+    
+    # SEGUNDO: Tentar usar LLM se disponível (mais preciso)
     try:
         import os
         from langchain_groq import ChatGroq
@@ -354,21 +394,58 @@ def responder_pergunta_usuario(user_question: str, context_rag: str, docs: list)
         if os.environ.get("GROQ_API_KEY"):
             llm = ChatGroq(model="llama-3.1-8b-instant", temperature=0.3)
             
+            # Construir contexto clínico específico se disponível
+            clinical_context = ""
+            if clinical_data:
+                creat = clinical_data.get("creatinina")
+                sdma = clinical_data.get("sdma")
+                if creat is not None and sdma is not None:
+                    # Detectar estágios individuais
+                    creat_stage = "desconhecido"
+                    sdma_stage = "desconhecido"
+                    
+                    if creat < 1.6:
+                        creat_stage = "IRIS 1"
+                    elif 1.6 <= creat <= 2.8:
+                        creat_stage = "IRIS 2"
+                    elif 2.9 <= creat <= 5.0:
+                        creat_stage = "IRIS 3"
+                    elif creat > 5.0:
+                        creat_stage = "IRIS 4"
+                    
+                    if sdma < 25:
+                        sdma_stage = "IRIS 1-2"
+                    elif 25 <= sdma <= 35:
+                        sdma_stage = "IRIS 3"
+                    elif sdma > 35:
+                        sdma_stage = "IRIS 4"
+                    
+                    discrepancia = abs(hash(creat_stage) - hash(sdma_stage)) > 0
+                    clinical_context = f"\nDADOS CLÍNICOS DO PACIENTE:\n"
+                    clinical_context += f"• Creatinina: {creat} mg/dL → Sugere {creat_stage}\n"
+                    clinical_context += f"• SDMA: {sdma} µg/dL → Sugere {sdma_stage}\n"
+                    if discrepancia or creat_stage != sdma_stage:
+                        clinical_context += f"⚠️ DISCREPÂNCIA DETECTADA: Há divergência entre os biomarcadores.\n"
+                        clinical_context += f"   Segundo IRIS: usar o MAIOR valor entre os dois marcadores quando diferem.\n"
+            
             prompt = f"""Você é um especialista veterinário em doença renal crônica felina.
 
 CONTEXTO DA LITERATURA IRIS:
 {context_rag[:2000]}
+{clinical_context}
 
 PERGUNTA DO VETERINÁRIO:
 {user_question}
 
 INSTRUÇÕES:
 - Responda com base no contexto fornecido
+- Se houver discrepância entre Creatinina e SDMA, SEMPRE mencione isto e cite a regra IRIS de usar o maior valor
 - Se a informação específica não estiver no contexto, forneça orientação geral baseada em conhecimento veterinário
-- Para perguntas sobre raças específicas: as diretrizes IRIS são geralmente aplicadas igualmente a todas as raças, salvo exceções documentadas
+- Para perguntas sobre raças específicas: as diretrizes IRIS são geralmente aplicadas igualmente a todas as raças
 - Seja conciso e objetivo (2-4 sentenças)
 - Use termos técnicos veterinários
 - RESPONDA SEMPRE EM PORTUGUÊS BRASILEIRO
+- Se a pergunta NÃO for sobre DRC felina ou sua classificação IRIS, responda: "Não encontrei informações sobre isso no RAG. O sistema foi desenvolvido para diagnóstico de DRC felina."
 
 Resposta:"""
             
@@ -377,13 +454,13 @@ Resposta:"""
             
             # Qualquer resposta válida do LLM é aceita
             if len(resposta_texto) > 20:
-                print(f"[AGENTE C]  Resposta gerada com LLM")
+                print(f"[AGENTE C]  Resposta gerada com LLM (com contexto clínico)")
                 return f" {resposta_texto}"
     
     except Exception as e:
         print(f"[AGENTE C]  LLM não disponível para responder: {str(e)[:50]}")
     
-    # Fallback: busca por palavras-chave (método antigo)
+    # TERCEIRO: Fallback - busca por palavras-chave (método antigo)
     keywords_medicas = [
         'tratamento', 'treatment', 'therapy', 'terapia',
         'dieta', 'diet', 'alimentação', 'nutrition',
@@ -399,10 +476,10 @@ Resposta:"""
         'raça', 'breed', 'birmanês', 'birmanese', 'persa', 'persian'
     ]
     
-    question_lower = user_question.lower()
     is_medical_question = any(keyword in question_lower for keyword in keywords_medicas)
     
     if not is_medical_question:
+        print(f"[AGENTE C] Pergunta não é sobre aspectos clínicos específicos")
         return None
     
     # Buscar resposta no contexto RAG
@@ -502,6 +579,7 @@ def gerar_recomendacao(
     docs = []
     context_rag = ""
     resposta_pergunta = None
+    rag_disponivel = False  # Flag para rastrear se RAG retornou algo
     
     if RAG_AVAILABLE and CHROMA_PATH:
         try:
@@ -520,30 +598,37 @@ def gerar_recomendacao(
             context_rag = rag_result.get("context", "")
             docs = rag_result.get("docs", [])
             
+            # Marcar que RAG foi tentado
+            if context_rag and len(docs) > 0:
+                rag_disponivel = True
+                print(f"[AGENTE C] RAG disponível com {len(docs)} documentos")
+            
             # Tentar responder pergunta específica do usuário
             if user_question and context_rag:
-                resposta_pergunta = responder_pergunta_usuario(user_question, context_rag, docs)
+                resposta_pergunta = responder_pergunta_usuario(user_question, context_rag, docs, clinical_data)
             
-            # Extrair estágio do contexto RAG (busca simples por padrões)
+            # Extrair estágio do contexto RAG usando múltiplas estratégias
             if context_rag:
                 print(f"[AGENTE C] Contexto RAG recuperado ({len(context_rag)} chars)")
-                # Tentar identificar estágio mencionado no contexto
                 context_upper = context_rag.upper()
+                
+                # Estratégia 1: Buscar padrões de "STAGE X" ou "IRIS X"
                 for i in range(1, 5):
                     if f"STAGE {i}" in context_upper or f"IRIS {i}" in context_upper:
-                        if creat is not None:
-                            # Verificar se os valores batem com a descrição
-                            if (i == 1 and creat < 1.6) or \
-                               (i == 2 and 1.6 <= creat <= 2.8) or \
-                               (i == 3 and 2.9 <= creat <= 5.0) or \
-                               (i == 4 and creat > 5.0):
-                                estagio_rag = f"IRIS{i}"
-                                print(f"[AGENTE C]  Estágio extraído do RAG: {estagio_rag}")
-                                break
-            elif user_question:
+                        estagio_rag = f"IRIS{i}"
+                        print(f"[AGENTE C]  Estágio encontrado no RAG: {estagio_rag}")
+                        break
+                
+                # Estratégia 2: Se não encontrou padrão, deixar None para depois
+                if estagio_rag is None:
+                    print(f"[AGENTE C] Nenhum padrão encontrado no contexto RAG")
+                    print(f"[AGENTE C] Será determinado por validação das regras IRIS")
+                        
+            else:
                 # RAG não retornou documentos
-                print(f"[AGENTE C] Nenhum documento encontrado para a pergunta")
-                resposta_pergunta = " Não há informações disponíveis na base de conhecimento indexada para responder esta pergunta. Recomenda-se consultar a literatura IRIS oficial ou indexar mais documentos."
+                print(f"[AGENTE C] RAG não retornou documentos relevantes")
+                if user_question:
+                    resposta_pergunta = "Não há informações disponíveis na base de conhecimento indexada para responder esta pergunta. Recomenda-se consultar a literatura IRIS oficial ou indexar mais documentos."
                 
         except Exception as e:
             print(f"[AGENTE C] Erro no RAG: {e}")
@@ -556,6 +641,14 @@ def gerar_recomendacao(
     
     valida_b = validacao_regras["valido"]
     estagio_esperado = validacao_regras["estagio_esperado"]
+    
+    # GARANTIR que estagio_rag SEMPRE tem um valor válido
+    # Se RAG não retornou estágio explícito, usar o estagio_esperado das regras IRIS
+    if estagio_rag is None or estagio_rag == "":
+        estagio_rag = estagio_esperado
+        print(f"[AGENTE C] ✓ estagio_rag definido por validação de regras IRIS: {estagio_rag}")
+    else:
+        print(f"[AGENTE C] ✓ estagio_rag extraído do RAG: {estagio_rag}")
     
     # Construir mensagem detalhada
     resposta_texto = f"ANÁLISE CLÍNICA - DOENÇA RENAL CRÔNICA FELINA\n\n"
@@ -643,7 +736,7 @@ def gerar_recomendacao(
         confianca = "BAIXA"
 
     resultado = {
-        "estagio_rag": estagio_rag,
+        "estagio_rag": estagio_rag if estagio_rag else estagio_final,  # SEGURANÇA: Se ainda null, usar estagio_final
         "estagio_b": estagio_b,
         "estagio_final": estagio_final,
         "subestagio_ap": subestagio_ap_b,  # NOVO: Propagar subetágios
@@ -663,14 +756,17 @@ def gerar_recomendacao(
             "creatinina": creat,
             "sdma": sdma,
             "estagio_b": estagio_b,
-            "estagio_rag": estagio_rag
+            "estagio_rag": estagio_rag if estagio_rag else estagio_final  # SEGURANÇA: garantir valor válido
         }
     }
 
     print(f"[AGENTE C]  Validação concluída - CASO {caso}, Estágio: {estagio_final}")
+    print(f"[AGENTE C]  ✓ estagio_rag FINAL = {estagio_rag}")
+    print(f"[AGENTE C]  ✓ estagio_b = {estagio_b}")
+    print(f"[AGENTE C]  ✓ estagio_esperado (regras) = {estagio_esperado}")
     if subestagio_ap_b or subestagio_ht_b:
         print(f"[AGENTE C] Subetágios: AP={subestagio_ap_b}, HT={subestagio_ht_b}")
-    print(f"[AGENTE C] Validação: {' Confirmada' if valida_b else '❌ Reprovada' if valida_b is False else '⚠️ Inconclusiva'}")
+    print(f"[AGENTE C] Validação: {' ✓ Confirmada' if valida_b else ' Reprovada' if valida_b is False else ' Inconclusiva'}")
     if inconsistencia:
         estagio_comparacao = estagio_rag if estagio_rag else (estagio_esperado if 'estagio_esperado' in locals() else 'N/A')
         print(f"[AGENTE C]  Inconsistência: B={estagio_b} vs RAG/Regras={estagio_comparacao}")
