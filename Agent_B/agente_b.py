@@ -37,11 +37,11 @@ def _load_ontology():
     try:
         # Usar caminho relativo ao invés de URL para evitar problemas com espaços
         onto = world.get_ontology(str(ONTO_PATH)).load()
-        print(f"[AGENTE B] ✓ Ontologia carregada")
-        print(f"[AGENTE B]   - Classes: {len(list(onto.classes()))}")
+        print(f"[AGENTE B] Ontologia carregada")
+        print(f"[AGENTE B] - Classes: {len(list(onto.classes()))}")
         return world, onto
     except Exception as e:
-        print(f"[AGENTE B] ⚠️ Aviso: Falha ao carregar ontologia: {e}")
+        print(f"[AGENTE B] Aviso: Falha ao carregar ontologia: {e}")
         print(f"[AGENTE B] Continuando com validação numérica apenas...")
         raise Exception(f"Erro ao carregar ontologia: {e}")
 
@@ -111,12 +111,12 @@ def classificar_estagio_iris_com_validacao(
     
     # Caso 1: Só tem um biomarcador
     if stage_creat is None and stage_sdma is not None:
-        print(f"[AGENTE B] ⚠️ Apenas SDMA disponível → IRIS {stage_sdma}")
+        print(f"[AGENTE B] Apenas SDMA disponível -> IRIS {stage_sdma}")
         print(f"[AGENTE B]    Recomendado: confirmar com creatinina")
         return f"EstagioIRIS{stage_sdma}", True, None
     
     if stage_sdma is None and stage_creat is not None:
-        print(f"[AGENTE B] ⚠️ Apenas Creatinina disponível → IRIS {stage_creat}")
+        print(f"[AGENTE B] Apenas Creatinina disponível -> IRIS {stage_creat}")
         print(f"[AGENTE B]    Recomendado: confirmar com SDMA")
         return f"EstagioIRIS{stage_creat}", True, None
     
@@ -124,39 +124,37 @@ def classificar_estagio_iris_com_validacao(
     discrepancia = abs(stage_creat - stage_sdma)
     
     print(f"[AGENTE B] Valores:")
-    print(f"[AGENTE B]   Creatinina {creat} mg/dL → IRIS {stage_creat}")
-    print(f"[AGENTE B]   SDMA {sdma} µg/dL → IRIS {stage_sdma}")
+    print(f"[AGENTE B]   Creatinina {creat} mg/dL -> IRIS {stage_creat}")
+    print(f"[AGENTE B]   SDMA {sdma} ug/dL -> IRIS {stage_sdma}")
     print(f"[AGENTE B]   Discrepância: {discrepancia} estágios")
     
     # REGRA DE VALIDAÇÃO
     
     if discrepancia == 0:
-        # ✅ Concordância perfeita
-        print(f"[AGENTE B] ✅ Concordância perfeita")
+        # Concordância perfeita
+        print(f"[AGENTE B] Concordância perfeita")
         return f"EstagioIRIS{stage_creat}", True, None
     
     elif discrepancia == 1:
-        # ✅ Discrepância de 1 estágio - ACEITAR (usar o maior)
+        # Discrepância de 1 estágio - ACEITAR (usar o maior)
         estagio_final = max(stage_creat, stage_sdma)
-        print(f"[AGENTE B] ✅ Discrepância de 1 estágio aceita (regra IRIS)")
+        print(f"[AGENTE B] Discrepância de 1 estágio aceita (regra IRIS)")
         print(f"[AGENTE B]    Usando IRIS {estagio_final} (maior valor)")
         return f"EstagioIRIS{estagio_final}", True, None
     
     else:
-        # ❌ Discrepância ≥2 estágios - NÃO CLASSIFICAR!
+        # Discrepância >=2 estágios - NÃO CLASSIFICAR!
         motivo = f"Discrepância de {discrepancia} estágios: Creatinina indica IRIS {stage_creat}, SDMA indica IRIS {stage_sdma}"
-        
-        print(f"[AGENTE B] ❌ ERRO: Discrepância muito grande ({discrepancia} estágios)")
-        print(f"[AGENTE B]    Creat={creat} → IRIS {stage_creat}")
-        print(f"[AGENTE B]    SDMA={sdma} → IRIS {stage_sdma}")
-        print(f"[AGENTE B]    → NÃO É POSSÍVEL CLASSIFICAR COM SEGURANÇA")
-        print(f"[AGENTE B]    Possíveis causas:")
-        print(f"[AGENTE B]      • Erro laboratorial")
-        print(f"[AGENTE B]      • Interferência pré-analítica")
-        print(f"[AGENTE B]      • Condição clínica atípica")
-        print(f"[AGENTE B]      • Desidratação (eleva creatinina)")
-        print(f"[AGENTE B]      • Massa muscular reduzida (reduz creatinina)")
-        
+        print(f"[AGENTE B] ERRO: Discrepância muito grande ({discrepancia} estágios)")
+        print(f"[AGENTE B]  Creat={creat} -> IRIS {stage_creat}")
+        print(f"[AGENTE B]  SDMA={sdma} -> IRIS {stage_sdma}")
+        print(f"[AGENTE B]  -> NÃO É POSSÍVEL CLASSIFICAR COM SEGURANÇA")
+        print(f"[AGENTE B]  Possíveis causas:")
+        print(f"[AGENTE B]  - Erro laboratorial")
+        print(f"[AGENTE B]  - Interferência pré-analítica")
+        print(f"[AGENTE B]  - Condição clínica atípica")
+        print(f"[AGENTE B]  - Desidratação (eleva creatinina)")
+        print(f"[AGENTE B]  - Massa muscular reduzida (reduz creatinina)")
         return None, False, motivo
 
 
@@ -191,7 +189,7 @@ def _create_patient_instance(world, onto, patient_id: str, clinical: Dict[str, A
                     try:
                         val = float(value)
                         prop[patient].append(val)
-                        print(f"[AGENTE B]     ✓ {prop.name} = {val}")
+                        print(f"[AGENTE B]     {prop.name} = {val}")
                         break
                     except:
                         continue
@@ -375,12 +373,12 @@ def handle_inference(clinical_data: Dict[str, Any]) -> Dict[str, Any]:
         world, onto = _load_ontology()
     except Exception as e:
         return {
-            "estagio": None,
+                    print(f"[AGENTE B] Estágio calculado: {estagio_name}")
             "subestagio": None,
             "reasoner_ok": False,
             "classificacao_valida": False,
             "motivo_invalido": f"Erro na ontologia: {e}",
-            "properties": {"annotations": [], "data_properties": {}},
+                        print(f"[AGENTE B]   Paciente classificado como {estagio_name}")
             "question": question
         }
     
@@ -389,7 +387,7 @@ def handle_inference(clinical_data: Dict[str, Any]) -> Dict[str, Any]:
     print(f"[AGENTE B] Criando paciente: {patient_id}")
     
     try:
-        patient = _create_patient_instance(world, onto, patient_id, clinical_data)
+                    print("[AGENTE B] Reasoner executado")
     except Exception as e:
         return {
             "estagio": None,

@@ -900,3 +900,13 @@ MIT - Permissão para usar, modificar e distribuir livremente.
 Última atualização: Dezembro 12, 2025
 
 ---
+
+## Cenários de Teste
+
+1. **Cenário 1:** Ontologia infere corretamente e RAG concorda.
+2. **Cenário 2:** Ontologia recebe dados incorretos com diferença de 1.
+3. **Cenário 3:** Ontologia recebe dados incorretos com diferença de 2.
+4. **Cenário 4:** Ontologia recebe dados, mas não há perguntas.
+5. **Cenário 5:** Pergunta fora do escopo, mas ontologia recebe dados corretamente.
+
+Esses cenários cobrem os principais fluxos de validação, inferência e integração entre ontologia e RAG no sistema multiagente IRIS.

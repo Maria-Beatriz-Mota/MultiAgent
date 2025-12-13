@@ -1,3 +1,11 @@
+<!--
+    ATENÇÃO: Este arquivo ontologia.owl é uma cópia fiel da ontologia original
+    (Agent_B/onthology/Ontology_MAS_projeto.owl), apenas renomeada para não conter
+    espaços no nome do arquivo. O conteúdo é idêntico ao original.
+    
+    Motivo: Usar uma cópia evita problemas de path e também protege o arquivo original
+    contra possíveis corrupções durante testes e execuções experimentais do sistema.
+-->
 <?xml version="1.0"?>
 <Ontology xmlns="http://www.w3.org/2002/07/owl#"
      xml:base="http://www.semanticweb.org/mariabeatriz/ontologies/2025/8/ontologia-renal-felina"
